@@ -1,6 +1,10 @@
 package com.example.reasy;
 
-public class rating_previous_orders_page {
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class rating_previous_orders_page extends AppCompatActivity {
+
     public rating_previous_orders_page() {
     }
 
@@ -15,5 +19,10 @@ public class rating_previous_orders_page {
     }
     public void show(){
 
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_rating_previous_orders_page);
     }
 }
