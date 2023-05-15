@@ -1,6 +1,9 @@
 package com.example.reasy;
 
-public class shop_budget_jo_duration_page {
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class shop_budget_jo_duration_page extends AppCompatActivity {
 
     public shop_budget_jo_duration_page() {
     }
@@ -12,5 +15,10 @@ public class shop_budget_jo_duration_page {
     }
     public void show(){
 
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_shop_budget_jo_duration_page);
     }
 }
