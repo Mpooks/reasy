@@ -1,6 +1,9 @@
 package com.example.reasy;
 
-public class requests_page {
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class requests_page extends AppCompatActivity {
     public void fillRequests(){
 
     }
@@ -9,5 +12,10 @@ public class requests_page {
     }
     public void create(){
 
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_requests_page);
     }
 }

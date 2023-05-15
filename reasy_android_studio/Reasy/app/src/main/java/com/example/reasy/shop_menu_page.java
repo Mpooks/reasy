@@ -1,6 +1,9 @@
 package com.example.reasy;
 
-public class shop_menu_page {
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class shop_menu_page extends AppCompatActivity {
     public void chooseProductAndQuantity(){
 
     }
@@ -10,4 +13,10 @@ public class shop_menu_page {
     public void createOrder(){
 
     }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_shop_menu_page);
+    }
+
 }
