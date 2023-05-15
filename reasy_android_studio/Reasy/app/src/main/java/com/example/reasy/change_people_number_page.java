@@ -1,6 +1,15 @@
 package com.example.reasy;
 
-public class change_people_number_page {
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class change_people_number_page extends AppCompatActivity {
+
     public void changeNumber(){}
     public void show(){}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_change_people_number_page);
+    }
 }
