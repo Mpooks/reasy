@@ -10,7 +10,7 @@ public class reception_area {
     private String name;
     private int reception_area_id;
     private static int num_of_guests;
-    private ArrayList<reception> receptions = new ArrayList<reception>();
+    private static ArrayList<reception> receptions = new ArrayList<reception>();
     private float cost;
 
     public reception_area(String name, int reception_area_id, int num_of_guests, ArrayList<reception> receptions, float cost) {
@@ -21,7 +21,11 @@ public class reception_area {
         this.cost = cost;
     }
 
-    public static int getAvailability(int n,int d) {
+    public static int getAvailability(int n,String d) {
+        int found=0;
+        if(n>num_of_guests){
+            found=1;
+        }
         for(int i=0;i<receptions.size();i++){
             String r_d=receptions.get(i).getDate();
             if(r_d.compareTo(d)==0){
