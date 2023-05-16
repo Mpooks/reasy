@@ -12,5 +12,7 @@ public class supplier {
         this.products = products;
     }
 
-    public void getSupplierProducts(){}
+    public ArrayList<product_supplier> getSupplierProducts(){
+        return products;
+    }
 }

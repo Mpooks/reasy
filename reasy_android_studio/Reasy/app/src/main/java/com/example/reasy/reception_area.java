@@ -20,27 +20,17 @@ public class reception_area {
         this.receptions = receptions;
         this.cost = cost;
     }
-/*
+
     public static int getAvailability(int n,int d) {
-        tv1 = (EditText)findViewById(R.id.tv1);
-        tv2 = (EditText)findViewById(R.id.tv2);
-        tv3 = (EditText)findViewById(R.id.tv3);
-
-        int n1 = Integer.parseInt(tv1.getText().toString());
-        int n2 = Integer.parseInt(tv2.getText().toString());
-
-        if(n1>n2){
-            tv3.setText("n1>n2\n");
+        for(int i=0;i<receptions.size();i++){
+            String r_d=receptions.get(i).getDate();
+            if(r_d.compareTo(d)==0){
+                found=1;
+            }
         }
-        else if (n1<n2) {
-            tv3.setText("n1<n2\n");
-        }
-        else {
-            tv3.setText("n1=n2\n");
-        }
+        return found;
     }
-
- */
+    
     public void addtoReceptionArea(reception new_r) {
         receptions.add(new_r);
     }

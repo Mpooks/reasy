@@ -23,23 +23,23 @@ public class main {
         this.supplier_list = supplier_list;
     }
 
-    public void getReceptionArea(){
-
+    public ArrayList<reception_area> getReceptionArea(){
+        return reception_area_list;
     }
-    public void getCatering(){
-
+    public ArrayList<catering> getCatering(){
+        return catering_list;
     }
-    public void getArtistList(){
-
+    public ArrayList<artist> getArtistList(){
+        return artist_list;
     }
-    public void getSupplierList(){
-
+    public ArrayList<supplier> getSupplierList(){
+        return supplier_list;
     }
-    public void getJobOffer(){
-
+    public ArrayList<job_offer> getJobOffer(){
+        return job_offers;
     }
-    public void addToJobOffer(){
-
+    public void addToJobOffer(job_offer jo){
+        job_offers.add(jo);
     }
 
 }

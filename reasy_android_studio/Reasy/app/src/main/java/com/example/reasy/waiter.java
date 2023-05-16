@@ -1,5 +1,7 @@
 package com.example.reasy;
 
+import java.util.ArrayList;
+
 public class waiter {
 
     private String name;
@@ -8,5 +10,9 @@ public class waiter {
 
     private int shop_id;
 
-    private String working_hours;
+    private ArrayList<String> working_hours = new ArrayList<String>();
+
+    public ArrayList<String> getWaiterHours(){
+        return working_hours;
+    }
 }
