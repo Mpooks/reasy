@@ -21,7 +21,7 @@ public class job_offer {
         this.end_date = end_date;
         this.description = description;
     }
-    public void getSalary(){
-
+    public float getSalary(){
+        return salary;
     }
 }

@@ -15,16 +15,24 @@ public class user {
         this.reservations = reservations;
     }
 
-    public void getBalance(){
-
+    public float getBalance(){
+        return balance;
     }
-    public void setBalance(){
-
+    public void setBalance(float balance){
+        this.balance=balance;
     }
-    public void saveToUser(){
-
+    public void saveToUser(reservation newres){
+        reservations.add(newres);
     }
-    public void getReservations(){
-
+    public ArrayList<reservation> getReservations(){
+        return reservations;
+    }
+    public void updateRes(int resid){
+        for(int i=0;i<reservations.size();i++){
+           int j= (reservations.get(i)).getReservation_id();
+           if(resid==j){
+               
+           }
+        }
     }
 }

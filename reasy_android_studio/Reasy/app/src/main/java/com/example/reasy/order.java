@@ -20,4 +20,9 @@ public class order {
         this.payment_method = payment_method;
         this.products = products;
     }
+
+    public ArrayList<product_order> getProducts() {
+        return products;
+    }
+
 }

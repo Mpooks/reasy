@@ -13,7 +13,7 @@ public class calendar {
         this.reception_id = reception_id;
         this.date = date;
     }
-    public void getWaiterHours(){
-
+    public String getDate() {
+        return date;
     }
 }

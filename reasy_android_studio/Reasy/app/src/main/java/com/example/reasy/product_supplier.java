@@ -10,6 +10,10 @@ public class product_supplier {
     private int supplier_id;
     private int available_quantity;
 
-    public void getQuantity(){}
-    public void updateQuantity(){}
+    public int getQuantity(){
+        return available_quantity;
+    }
+    public void updateQuantity(int q){
+        available_quantity=available_quantity-q;
+    }
 }

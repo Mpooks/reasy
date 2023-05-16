@@ -14,5 +14,7 @@ public class artist {
         this.music_genre = music_genre;
     }
 
-    public void getArtist() {}
+    public int getArtist() {
+        return artist_id;
+    }
 }

@@ -21,5 +21,15 @@ public class reception {
 
 
 
-    public void changeReception()   {}
+    public void changeReception(int newnumber)   {
+        guest_number=newnumber;
+    }
+
+    public int getReception_id() {
+        return reception_id;
+    }
+
+    public String getDate() {
+        return date;
+    }
 }

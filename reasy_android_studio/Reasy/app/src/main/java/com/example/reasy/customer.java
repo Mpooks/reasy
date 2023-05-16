@@ -24,40 +24,37 @@ public class customer extends user{
         this.rated_order_history = rated_order_history;
     }
 
-    public void getOrderHistory(){
-
+    public ArrayList<order> getOrderHistory(){
+        return order_history;
     }
-    public void getReceptions(){
-
+    public ArrayList<reception> getReceptions(){
+        return receptions;
     }
-    public void getFriendList(){
-
+    public ArrayList<customer> getFriendList(){
+        return friend_list;
     }
-    public void getCalendar(){
-
+    public ArrayList<calendar> getCalendar(){
+        return calendar;
     }
-    public void getRatingHistory(){
-
+    public ArrayList<rating> getRatingHistory(){
+        return rating_history;
     }
-    public void getOrderRatingHistory(){
-
+    public ArrayList<order> getOrderRatingHistory(){
+        return rated_order_history;
     }
-    public void addToOrderHistory(){
-
+    public void addToOrderHistory(order newor){
+        order_history.add(newor);
     }
-    public void addDateReception(){
-
+    public void addPoints(int p){
+        points=points+p;
     }
-    public void addPoints(){
-
-    }
-    public void getNumOfReservations(){
-
+    public int getNumOfReservations(){
+        return num_of_reservations;
     }
     public void updateNumOfReservations(){
-
+        num_of_reservations++;
     }
-    public void updateReception(){
+    public void updateReception(int newnum){
 
     }
     public void addtoCustomer(){

@@ -14,7 +14,9 @@ public class catering {
         this.cost = cost;
     }
 
-    public void getCatering() {}
+    public int getCatering() {
+        return catering_id;
+    }
 
 
 

@@ -25,13 +25,22 @@ public class reservation {
         this.requests = requests;
     }
 
-    public void getTime(){
-
+    public String getTime(String d){
+        String el="different date";
+        if(date.compareTo(d)==0) {
+            return time;
+        }
+        else{
+            return el;
+        }
     }
-    public void getWaiter(){
-
+    public int getWaiter(){
+       return waiter_id;
     }
-    public void setWaiterToRes(){
-
+    public void setWaiterToRes(int wid){
+        this.waiter_id=wid;
+    }
+    public int getReservation_id(){
+        return reservation_id;
     }
 }

@@ -17,8 +17,16 @@ public class reception_area {
         this.cost = cost;
     }
 
-    public void getAvailability() {}
-    public void addtoReceptionArea() {}
+    public int getAvailability(int n,String d) {
+        int found=0;
+        if(n>num_of_guests){
+            found=1;
+        }
+        return found;
+    }
+    public void addtoReceptionArea(reception new_r) {
+        receptions.add(new_r);
+    }
 
 
 

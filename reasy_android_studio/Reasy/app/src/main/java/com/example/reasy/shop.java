@@ -6,6 +6,7 @@ public class shop extends user{
     private String address;
     private ArrayList<String> opening_hours = new ArrayList<String>();
     private int capacity;
+    private int numofrates;
     private String cuisine_type;
     private float income;
     private float expenses;
@@ -14,11 +15,12 @@ public class shop extends user{
     private ArrayList<table> table_list = new ArrayList<table>();
     private ArrayList<supply> supply_history = new ArrayList<supply>();
 
-    public shop(String name, int id, float balance, ArrayList<reservation> reservations, String address, ArrayList<String> opening_hours, int capacity, String cuisine_type, float income, float expenses, float goal, float rating, ArrayList<table> table_list, ArrayList<supply> supply_history) {
+    public shop(String name, int id, float balance, ArrayList<reservation> reservations, String address, ArrayList<String> opening_hours, int capacity, int numofrates, String cuisine_type, float income, float expenses, float goal, float rating, ArrayList<table> table_list, ArrayList<supply> supply_history) {
         super(name, id, balance, reservations);
         this.address = address;
         this.opening_hours = opening_hours;
         this.capacity = capacity;
+        this.numofrates = numofrates;
         this.cuisine_type = cuisine_type;
         this.income = income;
         this.expenses = expenses;
@@ -28,31 +30,34 @@ public class shop extends user{
         this.supply_history = supply_history;
     }
 
-    public void addToSupplyHistory(){
-
+    public ArrayList<supply> getSupplyHistory(){
+        return supply_history;
     }
-    public void getOpeningHours(){
-
+    public ArrayList<String> getOpeningHours(){
+        return opening_hours;
     }
-    public void getCapacity(){
-
+    public int getCapacity(){
+        return capacity;
     }
-    public void getTables(){
-
+    public ArrayList<table> getTables(){
+        return table_list;
     }
-    public void getAddress(){
-
+    public String getAddress(){
+        return address;
     }
-    public void getInOutGoal(){
-
+    public float[] getInOutGoal(){
+        float[] res=new float[3];
+        res[0]=income;
+        res[1]=expenses;
+        res[2]=goal;
+        return res;
     }
-    public void getSupplyHistory(){
-
+    public void addToSupplyHistory(supply newsupply){
+        supply_history.add(newsupply);
     }
-    public void changeRating(){
-
-    }
-    public void updateShop(){
-
+    public void changeRating(float newr){
+        float r=numofrates*rating;
+        numofrates++;
+        rating=(rating+newr)/numofrates;
     }
 }

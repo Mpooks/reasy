@@ -1,7 +1,8 @@
 package com.example.reasy;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class shop_budget_jo_duration_page extends AppCompatActivity {
 

@@ -9,7 +9,11 @@ public class product_menu {
     private int shop_id;
     private int available_quantity;
 
-    public void get_Quantity(){}
-    public void updateQuantity(){}
+    public int get_Quantity(){
+        return available_quantity;
+    }
+    public void updateQuantity(int q){
+        available_quantity=available_quantity-q;
+    }
 
 }

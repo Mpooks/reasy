@@ -1,7 +1,8 @@
 package com.example.reasy;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class final_order_page extends AppCompatActivity {
     public void validate(){
