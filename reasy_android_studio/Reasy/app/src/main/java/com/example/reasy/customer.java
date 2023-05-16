@@ -45,8 +45,12 @@ public class customer extends user{
     public void addToOrderHistory(order newor){
         order_history.add(newor);
     }
-    public void addPoints(int p){
+    public void addPointsRShop(int p){
         points=points+p;
+    }
+    public void addPointsROrder(int p, order o){
+        points=points+p;
+        rated_order_history.add(o);
     }
     public int getNumOfReservations(){
         return num_of_reservations;
@@ -54,13 +58,21 @@ public class customer extends user{
     public void updateNumOfReservations(){
         num_of_reservations++;
     }
-    public void updateReception(int newnum){
-
+    public void updateReception(int new_num, int rec_id){
+        for(int i=0;i<receptions.size();i++){
+            int j= (receptions.get(i)).getReception_id();
+            if(rec_id==j){
+                receptions.get(i).changeReception(new_num);
+            }
+        }
     }
-    public void addtoCustomer(){
-
+    public void addtoCustomer(reception new_rec){
+        receptions.add(new_rec);
     }
-    public void save(){
-
+    public void addtoCalendar(calendar event){
+        calendar.add(event);
+    }
+    public void save(rating rate){
+        rating_history.add(rate);
     }
 }

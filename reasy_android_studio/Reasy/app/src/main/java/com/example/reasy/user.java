@@ -21,17 +21,17 @@ public class user {
     public void setBalance(float balance){
         this.balance=balance;
     }
-    public void saveToUser(reservation newres){
-        reservations.add(newres);
+    public void saveToUser(reservation new_res){
+        reservations.add(new_res);
     }
     public ArrayList<reservation> getReservations(){
         return reservations;
     }
-    public void updateRes(int resid){
+    public void updateRes(int res_id,int waiter_id){
         for(int i=0;i<reservations.size();i++){
            int j= (reservations.get(i)).getReservation_id();
-           if(resid==j){
-               
+           if(res_id==j){
+               reservations.get(i).setWaiterToRes(waiter_id);
            }
         }
     }

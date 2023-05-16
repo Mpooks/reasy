@@ -22,6 +22,12 @@ public class reception_area {
         if(n>num_of_guests){
             found=1;
         }
+        for(int i=0;i<receptions.size();i++){
+            String r_d=receptions.get(i).getDate();
+            if(r_d.compareTo(d)==0){
+                found=1;
+            }
+        }
         return found;
     }
     public void addtoReceptionArea(reception new_r) {

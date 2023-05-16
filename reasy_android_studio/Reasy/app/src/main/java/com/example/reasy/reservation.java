@@ -37,8 +37,8 @@ public class reservation {
     public int getWaiter(){
        return waiter_id;
     }
-    public void setWaiterToRes(int wid){
-        this.waiter_id=wid;
+    public void setWaiterToRes(int waiter_id){
+        this.waiter_id=waiter_id;
     }
     public int getReservation_id(){
         return reservation_id;

@@ -21,8 +21,8 @@ public class reception {
 
 
 
-    public void changeReception(int newnumber)   {
-        guest_number=newnumber;
+    public void changeReception(int new_number)   {
+        guest_number=new_number;
     }
 
     public int getReception_id() {
