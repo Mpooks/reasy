@@ -1,11 +1,15 @@
 package com.example.reasy;
 
+import android.widget.Button;
+import android.widget.EditText;
+
 import java.util.ArrayList;
 
 public class reception_area {
+
     private String name;
     private int reception_area_id;
-    private int num_of_guests;
+    private static int num_of_guests;
     private ArrayList<reception> receptions = new ArrayList<reception>();
     private float cost;
 
@@ -16,14 +20,27 @@ public class reception_area {
         this.receptions = receptions;
         this.cost = cost;
     }
+/*
+    public static int getAvailability(int n,int d) {
+        tv1 = (EditText)findViewById(R.id.tv1);
+        tv2 = (EditText)findViewById(R.id.tv2);
+        tv3 = (EditText)findViewById(R.id.tv3);
 
-    public int getAvailability(int n,String d) {
-        int found=0;
-        if(n>num_of_guests){
-            found=1;
+        int n1 = Integer.parseInt(tv1.getText().toString());
+        int n2 = Integer.parseInt(tv2.getText().toString());
+
+        if(n1>n2){
+            tv3.setText("n1>n2\n");
         }
-        return found;
+        else if (n1<n2) {
+            tv3.setText("n1<n2\n");
+        }
+        else {
+            tv3.setText("n1=n2\n");
+        }
     }
+
+ */
     public void addtoReceptionArea(reception new_r) {
         receptions.add(new_r);
     }
