@@ -22,6 +22,7 @@ public class reception_area_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reception_area_page);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //back btn in ActionBar
 
     }
 }
