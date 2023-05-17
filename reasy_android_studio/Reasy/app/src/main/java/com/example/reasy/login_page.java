@@ -24,4 +24,8 @@ public class login_page extends AppCompatActivity {
         Intent intent=new Intent(this,final_order_page.class);
         startActivity(intent);
     }
+    public void goBack(View v){
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 }
