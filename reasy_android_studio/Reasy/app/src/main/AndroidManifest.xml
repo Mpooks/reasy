@@ -14,6 +14,84 @@
         android:theme="@style/Theme.Reasy"
         tools:targetApi="31">
         <activity
+            android:name=".table_reservations_page"
+            android:exported="false" />
+        <activity
+            android:name=".table_list_page"
+            android:exported="false" />
+        <activity
+            android:name=".supplier_products_page"
+            android:exported="false" />
+        <activity
+            android:name=".supplier_list_page"
+            android:exported="false" />
+        <activity
+            android:name=".shop_menu_page"
+            android:exported="false" />
+        <activity
+            android:name=".shop_main_page"
+            android:exported="false" />
+        <activity
+            android:name=".shop_calendar_page"
+            android:exported="false" />
+        <activity
+            android:name=".shop_budget_jo_duration_page"
+            android:exported="false" />
+        <activity
+            android:name=".shipping_address_page"
+            android:exported="false" />
+        <activity
+            android:name=".set_salary_page"
+            android:exported="false" />
+        <activity
+            android:name=".sample_request_page"
+            android:exported="false" />
+        <activity
+            android:name=".requests_page"
+            android:exported="false" />
+        <activity
+            android:name=".rejection_page"
+            android:exported="false" />
+        <activity
+            android:name=".recommend_shop_page"
+            android:exported="false" />
+        <activity
+            android:name=".reception_area_page"
+            android:exported="false" />
+        <activity
+            android:name=".rating_previous_orders_page"
+            android:exported="false" />
+        <activity
+            android:name=".rating_form_page"
+            android:exported="false" />
+        <activity
+            android:name=".organize_reception_page"
+            android:exported="false" />
+        <activity
+            android:name=".order_page"
+            android:exported="false" />
+        <activity
+            android:name=".order_history_page"
+            android:exported="false" />
+        <activity
+            android:name=".notify_customers_page"
+            android:exported="false" />
+        <activity
+            android:name=".neighbouring_tables_page"
+            android:exported="false" />
+        <activity
+            android:name=".music_genre_page"
+            android:exported="false" />
+        <activity
+            android:name=".main_page"
+            android:exported="false" />
+        <activity
+            android:name=".job_offer_form_page"
+            android:exported="false" />
+        <activity
+            android:name=".invitation_page"
+            android:exported="false" />
+        <activity
             android:name=".friend_list_page"
             android:exported="false" />
         <activity
@@ -41,9 +119,6 @@
             android:name=".available_artists_page"
             android:exported="false" />
         <activity
-            android:name=".reception_area_page"
-            android:exported="false" />
-        <activity
             android:name=".AAMainActivity"
             android:exported="true">
             <intent-filter>
@@ -53,43 +128,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main_page"
-            android:exported="false" />
-        <activity
             android:name=".active_receptions_page"
             android:exported="false" />
         <activity
-            android:name=".invitation_page"
-            android:exported="false" />
-        <activity
-            android:name=".music_genre_page"
-            android:exported="false" />
-        <activity
             android:name=".cuisine_and_reception_type"
-            android:exported="false" />
-        <activity
-            android:name=".organize_reception_page"
-            android:exported="false" />
-        <activity
-            android:name=".recommend_shop_page"
-            android:exported="false" />
-        <activity
-            android:name=".rating_previous_orders_page"
-            android:exported="false" />
-        <activity
-            android:name=".rating_form_page"
-            android:exported="false" />
-        <activity
-            android:name=".notify_customers_page"
-            android:exported="false" />
-        <activity
-            android:name=".shop_budget_jo_duration_page"
-            android:exported="false" />
-        <activity
-            android:name=".set_salary_page"
-            android:exported="false" />
-        <activity
-            android:name=".job_offer_form_page"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
