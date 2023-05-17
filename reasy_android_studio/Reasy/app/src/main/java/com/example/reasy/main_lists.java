@@ -2,7 +2,7 @@ package com.example.reasy;
 
 import java.util.ArrayList;
 
-public class main {
+public class main_lists {
     private ArrayList<shop> shop_list = new ArrayList<shop>();
     private ArrayList<user> user_list = new ArrayList<user>();
     private ArrayList<customer> customer_list = new ArrayList<customer>();
@@ -12,7 +12,7 @@ public class main {
     private ArrayList<artist> artist_list = new ArrayList<artist>();
     private ArrayList<supplier> supplier_list = new ArrayList<supplier>();
 
-    public main(ArrayList<shop> shop_list, ArrayList<user> user_list, ArrayList<customer> customer_list, ArrayList<job_offer> job_offers, ArrayList<reception_area> reception_area_list, ArrayList<catering> catering_list, ArrayList<artist> artist_list, ArrayList<supplier> supplier_list) {
+    public main_lists(ArrayList<shop> shop_list, ArrayList<user> user_list, ArrayList<customer> customer_list, ArrayList<job_offer> job_offers, ArrayList<reception_area> reception_area_list, ArrayList<catering> catering_list, ArrayList<artist> artist_list, ArrayList<supplier> supplier_list) {
         this.shop_list = shop_list;
         this.user_list = user_list;
         this.customer_list = customer_list;

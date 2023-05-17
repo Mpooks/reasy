@@ -21,18 +21,21 @@ public class reception_area {
         this.cost = cost;
     }
 
-    public static int getAvailability(int n,String d) {
+    public static String getAvailability(int n,int d) {  //to deutero orisma einai string kai to int d einai gia testing
         int found=0;
-        if(n>num_of_guests){
-            found=1;
+        if(n<=d){
+            return "Ta atoma xwrane";
         }
-        for(int i=0;i<receptions.size();i++){
+        else{
+            return "Ta atoma den xwrane";
+        }
+      /*  for(int i=0;i<receptions.size();i++){
             String r_d=receptions.get(i).getDate();
             if(r_d.compareTo(d)==0){
                 found=1;
             }
-        }
-        return found;
+        }*/
+
     }
     
     public void addtoReceptionArea(reception new_r) {
