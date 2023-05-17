@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.reasy" >
+    package="com.example.reasy">
 
     <application
         android:allowBackup="true"
@@ -12,13 +12,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Reasy"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".friend_list_page"
+            android:exported="false" />
+        <activity
+            android:name=".final_order_page"
+            android:exported="false" />
+        <activity
+            android:name=".customers_time_page"
+            android:exported="false" />
+        <activity
+            android:name=".chosen_shop_page"
+            android:exported="false" />
+        <activity
+            android:name=".change_people_number_page"
+            android:exported="false" />
+        <activity
+            android:name=".catering_page"
+            android:exported="false" />
+        <activity
+            android:name=".calendar_page"
+            android:exported="false" />
+        <activity
+            android:name=".available_waiters_page"
+            android:exported="false" />
+        <activity
+            android:name=".available_artists_page"
+            android:exported="false" />
         <activity
             android:name=".reception_area_page"
             android:exported="false" />
         <activity
             android:name=".AAMainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,22 +59,10 @@
             android:name=".active_receptions_page"
             android:exported="false" />
         <activity
-            android:name=".friend_list_page"
-            android:exported="false" />
-        <activity
             android:name=".invitation_page"
             android:exported="false" />
         <activity
-            android:name=".change_people_number_page"
-            android:exported="false" />
-        <activity
-            android:name=".available_artists_page"
-            android:exported="false" />
-        <activity
             android:name=".music_genre_page"
-            android:exported="false" />
-        <activity
-            android:name=".catering_page"
             android:exported="false" />
         <activity
             android:name=".cuisine_and_reception_type"
@@ -78,7 +93,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
