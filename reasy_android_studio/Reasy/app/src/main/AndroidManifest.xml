@@ -23,9 +23,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main_lists"
-            android:exported="false" />
-        <activity
             android:name=".supplier_list_page"
             android:exported="false" />
         <activity
