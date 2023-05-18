@@ -29,8 +29,9 @@ public class reception_area_page extends AppCompatActivity {
 
          if(n2<2023|| n3<1 || n3>12 || n4<1 || n4>31){
              t5.setText("Please Try again");
-         }
-         else{
+         } else if (((n3==4 || n3 ==6 || n3==9 || n3==11)&&(n4>30 || n4<1)) || ((n2%4==0)&& (n4>29) && (n3==2))  || ((n2%4!=0)&& (n4>28) && (n3==2))) {
+             t5.setText("wrong day selection");
+         } else{
              String year = Integer.toString(n2);
              String month = Integer.toString(n3);
              String day = Integer.toString(n4);
@@ -45,7 +46,7 @@ public class reception_area_page extends AppCompatActivity {
              }
 
              String date;
-             date= year.concat(month).concat(day);
+             date= year.concat("-").concat(month).concat("-").concat(day);
              t5.setText(reception_area.getAvailability(n1,date));
 
          }

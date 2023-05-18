@@ -22,14 +22,20 @@ public class reception_area {
     }
 
     public static String getAvailability(int n,String d) {  //to deutero orisma einai string kai to int d einai gia testing
-        int found=0;
-        if(d == "2023"){
-            return "Ta atoma xwrane kai i imerominia einai valid";
+        int found = 0;
+        if(n<=100){
+            if(d.equals("2025-02-28")){
+                if(found==0) {
+                    return "You are able to book";
+                }else {
+                    return "Rest booked";
+                }
+            }else{
+                return "date not valid";
+            }
+        }else{
+            return "people not valid";
         }
-        else{
-            return "den mporei na ginei ekdilwsi";
-        }
-
 
 /*
 
