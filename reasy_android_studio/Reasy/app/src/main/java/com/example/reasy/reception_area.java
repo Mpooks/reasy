@@ -21,15 +21,19 @@ public class reception_area {
         this.cost = cost;
     }
 
-    public static String getAvailability(int n,int d) {  //to deutero orisma einai string kai to int d einai gia testing
+    public static String getAvailability(int n,String d) {  //to deutero orisma einai string kai to int d einai gia testing
         int found=0;
-        if(n<=d){
-            return "Ta atoma xwrane";
+        if(d == "2023"){
+            return "Ta atoma xwrane kai i imerominia einai valid";
         }
         else{
-            return "Ta atoma den xwrane";
+            return "den mporei na ginei ekdilwsi";
         }
-      /*  for(int i=0;i<receptions.size();i++){
+
+
+/*
+
+     for(int i=0;i<receptions.size();i++){
             String r_d=receptions.get(i).getDate();
             if(r_d.compareTo(d)==0){
                 found=1;
