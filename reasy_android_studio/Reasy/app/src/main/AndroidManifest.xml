@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Reasy"
         tools:targetApi="31">
         <activity
+            android:name=".search_page"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -130,16 +133,14 @@
         <activity
             android:name=".reception_area_page"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
-            />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".cuisine_and_reception_type"
             android:exported="false" />
         <activity
             android:name=".login_page"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
