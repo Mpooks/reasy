@@ -6,4 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".customers_time_page">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="322dp"
+        android:layout_height="64dp"
+        android:text="Omakase 100"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:background="@drawable/menu_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -112,7 +112,8 @@
             android:exported="false" />
         <activity
             android:name=".chosen_shop_page"
-            android:exported="false" />
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".change_people_number_page"
             android:exported="false" />
