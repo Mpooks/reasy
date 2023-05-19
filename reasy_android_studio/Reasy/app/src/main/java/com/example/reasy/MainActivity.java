@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openNextActivity(){
-        Intent intent = new Intent(this, reception_area_page.class);
+        Intent intent = new Intent(this, organize_reception_page.class);
         startActivity(intent);
 
     }

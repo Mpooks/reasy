@@ -75,7 +75,8 @@
             android:exported="false" />
         <activity
             android:name=".organize_reception_page"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".order_page"
             android:exported="false" />
@@ -132,8 +133,7 @@
             android:exported="false" />
         <activity
             android:name=".reception_area_page"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:exported="false" />
         <activity
             android:name=".cuisine_and_reception_type"
             android:exported="false" />
