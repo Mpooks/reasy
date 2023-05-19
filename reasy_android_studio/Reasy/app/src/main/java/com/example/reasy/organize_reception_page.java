@@ -1,11 +1,14 @@
 package com.example.reasy;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Objects;
 
 public class organize_reception_page extends AppCompatActivity {
 
@@ -72,6 +75,5 @@ public class organize_reception_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organize_reception_page);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //back btn in ActionBar
-    }
+        }
 }

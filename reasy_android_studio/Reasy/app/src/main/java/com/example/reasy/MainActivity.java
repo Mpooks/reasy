@@ -3,10 +3,13 @@ package com.example.reasy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         nextpage = findViewById(R.id.nextpage);
         nextpage.setOnClickListener(new View.OnClickListener() {
@@ -33,26 +37,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-   /* public void add(View v){
-
-        tv1 = (EditText)findViewById(R.id.tv1);
-        tv2 = (EditText)findViewById(R.id.tv2);
-        tv3 = (EditText)findViewById(R.id.tv3);
-
-        int n1 = Integer.parseInt(tv1.getText().toString());
-        int n2 = Integer.parseInt(tv2.getText().toString());
-
-        if(n1>n2){
-            tv3.setText("n1>n2\n");
-        }
-        else if (n1<n2) {
-            tv3.setText("n1<n2\n");
-        }
-        else {
-            tv3.setText("n1=n2\n");
-        }
-
-    }
-
-    */
 }

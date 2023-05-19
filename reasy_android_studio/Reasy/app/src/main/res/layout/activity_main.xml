@@ -8,9 +8,11 @@
 
     <Button
         android:id="@+id/nextpage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="145dp"
+        android:layout_height="50dp"
+        android:background="@drawable/orange_button"
         android:text="Go to Next Page"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
