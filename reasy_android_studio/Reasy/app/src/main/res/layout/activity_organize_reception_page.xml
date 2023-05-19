@@ -6,14 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".organize_reception_page">
 
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="225dp"
+        android:layout_height="113dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:text="reasy"
+        android:textColor="#ff5c00"
+        android:textFontWeight="1000"
+        android:textSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+
     <EditText
         android:id="@+id/t1"
         android:layout_width="122dp"
         android:layout_height="48dp"
         android:layout_marginTop="168dp"
+        android:backgroundTint="@color/gray"
         android:ems="10"
         android:hint="Enter people"
-        android:backgroundTint="@color/gray"
         android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
@@ -23,7 +39,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.149"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
@@ -31,10 +47,10 @@
         android:layout_width="80dp"
         android:layout_height="56dp"
         android:layout_marginBottom="60dp"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="year"
         android:backgroundTint="@color/gray"
+        android:ems="10"
+        android:hint="year"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
@@ -48,10 +64,10 @@
         android:layout_width="80dp"
         android:layout_height="56dp"
         android:layout_marginBottom="60dp"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="day"
         android:backgroundTint="@color/gray"
+        android:ems="10"
+        android:hint="day"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
@@ -60,29 +76,16 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="177dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="264dp"
-        android:onClick="chooseDateAndPeople"
-        android:text="Search"
-        android:background="@drawable/orange_button"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/t3"
         android:layout_width="80dp"
         android:layout_height="56dp"
         android:layout_marginBottom="60dp"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="month"
         android:backgroundTint="@color/gray"
+        android:ems="10"
+        android:hint="month"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
@@ -94,7 +97,7 @@
     <EditText
         android:id="@+id/t5"
         android:layout_width="409dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:gravity="center"
@@ -115,24 +118,54 @@
         android:layout_height="wrap_content"
         android:text="choose how many people you want to invite"
         android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/t1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.738" />
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.642"
+        tools:layout_editor_absoluteX="16dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="choose the date for the reception"
+        android:textSize="18sp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/t3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/t1"
         app:layout_constraintVertical_bias="0.426" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="177dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="264dp"
+        android:background="@drawable/orange_button"
+        android:onClick="chooseDateAndPeople"
+        android:text="Search"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="177dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="116dp"
+        android:background="@drawable/orange_button"
+        android:text="Click here to search for reacption areas"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/t5"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

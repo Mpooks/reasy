@@ -26,15 +26,15 @@ public class reception_area {
         if(n<=100){
             if(d.equals("2025-02-28")){
                 if(found==0) {
-                    return "You are able to book";
+                    return "You are able to book a reception";
                 }else {
                     return "Rest booked";
                 }
             }else{
-                return "date not valid";
+                return "Date not valid";
             }
         }else{
-            return "people not valid";
+            return "People not valid";
         }
 
 /*
