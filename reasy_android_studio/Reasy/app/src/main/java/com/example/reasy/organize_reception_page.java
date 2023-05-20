@@ -8,16 +8,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
-public class organize_reception_page extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-
-    private Spinner spinner;
-    private static final String[] paths = {"item 1", "item 2", "item 3"};
+public class organize_reception_page extends AppCompatActivity {
 
     private Button btn1;
     private EditText t1,t2,t3,t4,t5;
@@ -82,36 +81,35 @@ public class organize_reception_page extends AppCompatActivity implements Adapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organize_reception_page);
 
+        final Spinner spinner;
+
+          ArrayList<String> reception_area_list = new ArrayList<>();
+        int size = main_lists.getReceptionArea().size();
+        int x;
+        for(x=0; x<size; x++){
+            reception_area_list.add("aa");
+        }
+
+
         spinner = (Spinner)findViewById(R.id.spinner);
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(organize_reception_page.this,
-                android.R.layout.simple_spinner_item,paths);
+        ArrayAdapter<String>adapter = new ArrayAdapter<String>(organize_reception_page.this, android.R.layout.simple_spinner_item,reception_area_list);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String newItem = reception_area_list.get(position);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-
-        switch (position) {
-            case 0:
-                // Whatever you want to happen when the first item gets selected
-                break;
-            case 1:
-                // Whatever you want to happen when the second item gets selected
-                break;
-            case 2:
-                // Whatever you want to happen when the thrid item gets selected
-                break;
-
-        }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        // TODO Auto-generated method stub
-    }
 }

@@ -19,6 +19,7 @@ public class reception {
     private int reception_area_id;
     private int catering_id;
 
+    reception newReception = new reception(100,2,3,"2025-02-28",4,5,6);
 
 
     public void changeReception(int new_number)   {
@@ -32,4 +33,5 @@ public class reception {
     public String getDate() {
         return date;
     }
+
 }
