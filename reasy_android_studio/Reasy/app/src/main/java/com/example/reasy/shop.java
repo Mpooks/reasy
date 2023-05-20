@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class shop extends user{
     private static String address;
+    private static String city;
     private ArrayList<String> opening_hours = new ArrayList<String>();
     private int capacity;
     private int numofrates;
@@ -15,10 +16,12 @@ public class shop extends user{
     private static String phone;
     private ArrayList<table> table_list = new ArrayList<table>();
     private ArrayList<supply> supply_history = new ArrayList<supply>();
+    private static menu shop_m;
 
-    public shop(String name, int id, double balance, ArrayList<reservation> reservations, String address, ArrayList<String> opening_hours, int capacity, int numofrates, String cuisine_type, double income, double expenses, double goal, double rating, ArrayList<table> table_list, ArrayList<supply> supply_history, String phone) {
-        super(name, id, balance, reservations);
+    public shop(String email, String password,String name, int id, double balance, ArrayList<reservation> reservations, String address, String city, ArrayList<String> opening_hours, int capacity, int numofrates, String cuisine_type, double income, double expenses, double goal, double rating, ArrayList<table> table_list, ArrayList<supply> supply_history, String phone, menu shop_m) {
+        super(email,password,name, id, balance, reservations);
         this.address = address;
+        this.city=city;
         this.opening_hours = opening_hours;
         this.capacity = capacity;
         this.numofrates = numofrates;
@@ -30,11 +33,17 @@ public class shop extends user{
         this.table_list = table_list;
         this.supply_history = supply_history;
         this.phone = phone;
+        this.shop_m=shop_m;
     }
 
     public static String getPhone(){
         return phone;
     }
+
+    public static menu getShop_m() {
+        return shop_m;
+    }
+
     public ArrayList<supply> getSupplyHistory(){
         return supply_history;
     }
@@ -49,6 +58,9 @@ public class shop extends user{
     }
     public String getAddress(){
         return address;
+    }
+    public static String getCity(){
+        return city;
     }
     public double[] getInOutGoal(){
         double[] res=new double[3];

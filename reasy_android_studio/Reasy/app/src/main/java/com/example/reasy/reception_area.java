@@ -13,16 +13,16 @@ public class reception_area {
     private static ArrayList<reception> receptions = new ArrayList<reception>();
 
 
-    private float cost;
+    private double cost;
 
-    public reception_area(String name, int reception_area_id, int num_of_guests, ArrayList<reception> receptions, float cost) {
+    public reception_area(String name, int reception_area_id, int num_of_guests, ArrayList<reception> receptions, double cost) {
         this.name = name;
         this.reception_area_id = reception_area_id;
         this.num_of_guests = num_of_guests;
         this.receptions = receptions;
         this.cost = cost;
     }
-    reception_area new_r_a = new reception_area("M1",2,100,receptions,2000);
+    //reception_area new_r_a = new reception_area("M1",2,100,receptions,2000);
 
     public static String getAvailability(int n,String d) {
         int found = 0;

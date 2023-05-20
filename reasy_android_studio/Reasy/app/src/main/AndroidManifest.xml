@@ -19,7 +19,8 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -76,7 +77,7 @@
             android:exported="false" />
         <activity
             android:name=".organize_reception_page"
-            android:exported="false"
+            android:exported="true"
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".order_page"

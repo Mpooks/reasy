@@ -1,7 +1,8 @@
 package com.example.reasy;
 
-public class product_order {
-    public product_order(int order_id, int quantity) {
+public class product_order extends product{
+    public product_order(int id,String name, double cost, int order_id, int quantity) {
+        super(id,name,cost);
         this.order_id = order_id;
         this.quantity = quantity;
     }

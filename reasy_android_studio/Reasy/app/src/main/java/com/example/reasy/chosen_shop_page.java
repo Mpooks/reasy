@@ -18,8 +18,8 @@ public class chosen_shop_page extends AppCompatActivity {
     private TextView text3,text4,text5;
     private LinearLayout linearLayout;
     private ArrayList<String> arrayList;
-    user u=new user("Matsuhisa",1,231.56,null);
-    shop s=new shop("Matsuhisa",1,231.56,null,"40, Apollonos street, Vouliagmeni 166 71",null,56,56,"Asian",231,201,35,4.3,null,null,"2108960510");
+    user u=new user("mats@gmail.com","123","Matsuhisa Athens",2,1287,null);
+    shop s=new shop("mats@gmail.com","123","Matsuhisa Athens",2,1287,null,"40, Apollonos street, Vouliagmeni 166 71","Athens",null,6,820,"Asian",7000,4500,2200,4.3,null,null,"2108960510",null);
 
     public void makeReservation(View v){
         Intent intent=new Intent(this,calendar_page.class);

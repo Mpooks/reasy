@@ -12,8 +12,8 @@ public class customer extends user{
     private ArrayList<rating> rating_history = new ArrayList<rating>();
     private ArrayList<order> rated_order_history = new ArrayList<order>();
 
-    public customer(String name, int id, float balance, ArrayList<reservation> reservations, int points, ArrayList<customer> friend_list, ArrayList<reception> receptions, ArrayList<calendar> calendar, int num_of_reservations, ArrayList<order> order_history, ArrayList<rating> rating_history, ArrayList<order> rated_order_history) {
-        super(name, id, balance, reservations);
+    public customer(String email, String password,String name, int id, double balance, ArrayList<reservation> reservations, int points, ArrayList<customer> friend_list, ArrayList<reception> receptions, ArrayList<calendar> calendar, int num_of_reservations, ArrayList<order> order_history, ArrayList<rating> rating_history, ArrayList<order> rated_order_history) {
+        super(email,password,name, id, balance, reservations);
         this.points = points;
         this.friend_list = friend_list;
         this.receptions = receptions;
@@ -74,5 +74,9 @@ public class customer extends user{
     }
     public void save(rating rate){
         rating_history.add(rate);
+    }
+
+    public void setFriend_list(ArrayList<customer> friend_list) {
+        this.friend_list = friend_list;
     }
 }

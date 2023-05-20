@@ -6,6 +6,13 @@ public class waiter {
 
     private String name;
 
+    public waiter(String name, int waiter_id, int shop_id, ArrayList<String> working_hours) {
+        this.name = name;
+        this.waiter_id = waiter_id;
+        this.shop_id = shop_id;
+        this.working_hours = working_hours;
+    }
+
     private int waiter_id;
 
     private int shop_id;
