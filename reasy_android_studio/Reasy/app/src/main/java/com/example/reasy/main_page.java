@@ -24,7 +24,7 @@ public class main_page extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
     }
     public void createRes(View v){
-        Intent intent=new Intent(this,MainActivity.class);
+        Intent intent=new Intent(this,search_page.class);
         startActivity(intent);
     } //edw prepei na se paei se katasthmata
 
