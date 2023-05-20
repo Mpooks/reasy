@@ -11,6 +11,8 @@ public class reception_area {
     private int reception_area_id;
     private static int num_of_guests;
     private static ArrayList<reception> receptions = new ArrayList<reception>();
+
+
     private float cost;
 
     public reception_area(String name, int reception_area_id, int num_of_guests, ArrayList<reception> receptions, float cost) {
@@ -20,8 +22,9 @@ public class reception_area {
         this.receptions = receptions;
         this.cost = cost;
     }
+    reception_area new_r_a = new reception_area("M1",2,100,receptions,2000);
 
-    public static String getAvailability(int n,String d) {  //to deutero orisma einai string kai to int d einai gia testing
+    public static String getAvailability(int n,String d) {
         int found = 0;
         if(n<=100){
             if(d.equals("2025-02-28")){

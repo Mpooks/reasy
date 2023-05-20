@@ -3,11 +3,17 @@ package com.example.reasy;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class organize_reception_page extends AppCompatActivity {
@@ -75,6 +81,35 @@ public class organize_reception_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organize_reception_page);
 
+        final Spinner spinner;
+
+          ArrayList<String> reception_area_list = new ArrayList<>();
+        int size = main_lists.getReceptionArea().size();
+        int x;
+        for(x=0; x<size; x++){
+            reception_area_list.add("aa");
+        }
+
+
+        spinner = (Spinner)findViewById(R.id.spinner);
+        ArrayAdapter<String>adapter = new ArrayAdapter<String>(organize_reception_page.this, android.R.layout.simple_spinner_item,reception_area_list);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String newItem = reception_area_list.get(position);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         }
+
 }
