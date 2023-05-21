@@ -15,6 +15,7 @@ import java.util.Collections;
 public class login_page extends AppCompatActivity {
 
     private TextView t;
+    private int idu;
     private main_lists ml;
     private ArrayList<user> ulist=new ArrayList<>();
     private ArrayList<shop> slist=new ArrayList<>();
@@ -40,6 +41,7 @@ public class login_page extends AppCompatActivity {
         t = findViewById(R.id.logt);
         for(user u: ulist){
             if(((u.getEmail()).compareTo(email)==0)&&((u.getPassword()).compareTo(pass)==0)){
+                idu=u.getId();
                 found=1;
             }
         }
@@ -47,12 +49,20 @@ public class login_page extends AppCompatActivity {
             for(customer c: clist){
                 if((c.getEmail()).compareTo(email)==0){
                     Intent intent = new Intent(this, main_page.class);
+                    Bundle b = new Bundle();
+                    //Add your data to bundle
+                    b.putInt("id", idu);
+                    intent.putExtras(b);
                     startActivity(intent);
                 }
             }
             for(shop s: slist){
                 if((s.getEmail()).compareTo(email)==0){
                     Intent intent = new Intent(this, shop_main_page.class);
+                    Bundle b = new Bundle();
+                    //Add your data to bundle
+                    b.putInt("id", idu);
+                    intent.putExtras(b);
                     startActivity(intent);
                 }
             }

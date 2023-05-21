@@ -12,7 +12,7 @@
         android:layout_height="41dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:onClick="makeReservation"
+        android:onClick="show"
         android:text="Book Now"
         android:textAllCaps="false"
         android:textColor="#ffffff"

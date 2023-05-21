@@ -15,57 +15,44 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class chosen_shop_page extends AppCompatActivity {
+    private int id,sid;
+    private ArrayList<shop> slist=new ArrayList<>();
+    private ArrayList<String> oh;
     private TextView text3,text4,text5;
     private LinearLayout linearLayout;
-    private ArrayList<String> arrayList;
-    user u=new user("mats@gmail.com","123","Matsuhisa Athens",2,1287,null);
-    shop s=new shop("mats@gmail.com","123","Matsuhisa Athens",2,1287,null,"40, Apollonos street, Vouliagmeni 166 71","Athens",null,6,820,"Asian",7000,4500,2200,4.3,null,null,"2108960510",null);
+    private menu m;
+    private ArrayList<product_menu> arrayList;
+    private main_lists ml;
+    private String n,a,p;
 
-    public void makeReservation(View v){
-        Intent intent=new Intent(this,calendar_page.class);
-        startActivity(intent);
-    }
-    public void show(){
-
-    }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void makeReservation(){
+        ml= main_lists.createLists();
+        slist = (ArrayList<shop>) ml.getShop_list().clone();
         Bundle bundle = getIntent().getExtras();
         String text= bundle.getString("stuff");
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chosen_shop_page);
-        linearLayout = findViewById(R.id.linear_layout);
-        if(text.compareTo("123")==0) {
-            text3 = findViewById(R.id.textView3);
-            String n=u.getName();
-            String a=s.getAddress();
-            String p=s.getPhone();
-            text3.setText(n);
-            text4 = findViewById(R.id.textView4);
-            text4.setText("Address: "+a);
-            text5 = findViewById(R.id.textView5);
-            text5.setText("Telephone: "+p);
+        id= bundle.getInt("id");
+        sid= bundle.getInt("sid");
+        for(shop s: slist){
+            if(s.getId()==sid){
+                n=s.getName();
+                a=s.getAddress();
+                p=s.getPhone();
+                m = s.getShop_m();
+                arrayList=(ArrayList<product_menu>) m.getProducts().clone();
+                oh=(ArrayList<String>) s.getOpeningHours();
+            }
         }
-
-        arrayList = new ArrayList<>();
-        arrayList.add("1 Kg");
-        arrayList.add("2 Kg");
-        arrayList.add("3 Kg");
-        arrayList.add("4 Kg");
-        arrayList.add("5 Kg");
-        arrayList.add("6 Kg");
-        arrayList.add("7 Kg");
-        arrayList.add("8 Kg");
-        arrayList.add("9 Kg");
-        arrayList.add("10 Kg");
-        arrayList.add("11 Kg");
-        arrayList.add("12 Kg");
-        arrayList.add("13 Kg");
-        arrayList.add("14 Kg");
+        linearLayout = findViewById(R.id.linear_layout);
+        text3 = findViewById(R.id.textView3);
+        text3.setText(n);
+        text4 = findViewById(R.id.textView4);
+        text4.setText("Address: "+a);
+        text5 = findViewById(R.id.textView5);
+        text5.setText("Telephone: "+p);
 
         for (int i = 0; i < arrayList.size(); i++) {
             TextView tv = new TextView(this);
-            tv.setText(arrayList.get(i));
+            tv.setText((arrayList.get(i)).getName()+"         "+(arrayList.get(i)).getPrice());
             tv.setTextSize(18);
             tv.setHeight(192);
             tv.setWidth(966);
@@ -84,8 +71,28 @@ public class chosen_shop_page extends AppCompatActivity {
             linearLayout.addView(tv);
         }
     }
+    public void show(View v){
+        Intent intent=new Intent(this,calendar_page.class);
+        Bundle b = new Bundle();
+        //Add your data to bundle
+        b.putInt("id",id);
+        b.putInt("sid",sid);
+        b.putStringArrayList("open",oh);
+        intent.putExtras(b);
+        startActivity(intent);
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chosen_shop_page);
+        makeReservation();
+    }
     public void goBack(View v){
         Intent intent=new Intent(this,search_page.class);
+        Bundle b = new Bundle();
+        //Add your data to bundle
+        b.putInt("id",id);
+        intent.putExtras(b);
         startActivity(intent);
     }
 }

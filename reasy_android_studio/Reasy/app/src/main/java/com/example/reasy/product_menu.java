@@ -16,5 +16,4 @@ public class product_menu extends product{
     public void updateQuantity(int q){
         available_quantity=available_quantity-q;
     }
-
 }

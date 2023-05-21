@@ -7,7 +7,7 @@ public class user {
     private String password;
     private String name;
     private int id;
-    private static double balance;
+    private double balance;
     private ArrayList<reservation> reservations = new ArrayList<reservation>();
 
     public user(String email, String password, String name, int id, double balance, ArrayList<reservation> reservations) {
@@ -19,7 +19,11 @@ public class user {
         this.reservations = reservations;
     }
 
-    public static double getBalance(){
+    public int getId() {
+        return id;
+    }
+
+    public double getBalance(){
         return balance;
     }
 

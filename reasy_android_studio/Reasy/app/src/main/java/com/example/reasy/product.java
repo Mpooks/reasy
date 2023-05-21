@@ -10,4 +10,12 @@ public class product {
     private String name;
     private double price;
     private int id;
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
 }

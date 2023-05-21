@@ -3,8 +3,8 @@ package com.example.reasy;
 import java.util.ArrayList;
 
 public class shop extends user{
-    private static String address;
-    private static String city;
+    private String address;
+    private String city;
     private ArrayList<String> opening_hours = new ArrayList<String>();
     private int capacity;
     private int numofrates;
@@ -13,10 +13,10 @@ public class shop extends user{
     private double expenses;
     private double goal;
     private double rating;
-    private static String phone;
+    private String phone;
     private ArrayList<table> table_list = new ArrayList<table>();
     private ArrayList<supply> supply_history = new ArrayList<supply>();
-    private static menu shop_m;
+    private menu shop_m;
 
     public shop(String email, String password,String name, int id, double balance, ArrayList<reservation> reservations, String address, String city, ArrayList<String> opening_hours, int capacity, int numofrates, String cuisine_type, double income, double expenses, double goal, double rating, ArrayList<table> table_list, ArrayList<supply> supply_history, String phone, menu shop_m) {
         super(email,password,name, id, balance, reservations);
@@ -36,11 +36,11 @@ public class shop extends user{
         this.shop_m=shop_m;
     }
 
-    public static String getPhone(){
+    public String getPhone(){
         return phone;
     }
 
-    public static menu getShop_m() {
+    public menu getShop_m() {
         return shop_m;
     }
 
@@ -59,7 +59,7 @@ public class shop extends user{
     public String getAddress(){
         return address;
     }
-    public static String getCity(){
+    public String getCity(){
         return city;
     }
     public double[] getInOutGoal(){
