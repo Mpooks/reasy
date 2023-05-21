@@ -44,7 +44,8 @@
             android:exported="false" />
         <activity
             android:name=".shop_main_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".shop_calendar_page"
             android:exported="false" />
@@ -96,7 +97,8 @@
             android:exported="false" />
         <activity
             android:name=".main_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".job_offer_form_page"
             android:exported="false" />

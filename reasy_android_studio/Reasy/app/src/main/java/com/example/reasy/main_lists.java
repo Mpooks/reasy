@@ -3,9 +3,9 @@ package com.example.reasy;
 import java.util.ArrayList;
 
 public class main_lists {
-    private static ArrayList<shop> shop_list = new ArrayList<shop>();
-    private static ArrayList<customer> customer_list = new ArrayList<customer>();
-    private static ArrayList<user> user_list = new ArrayList<user>();
+    private ArrayList<shop> shop_list = new ArrayList<shop>();
+    private ArrayList<customer> customer_list = new ArrayList<customer>();
+    private ArrayList<user> user_list = new ArrayList<user>();
     private static ArrayList<job_offer> job_offers = new ArrayList<job_offer>();
     private static ArrayList<reception_area> reception_area_list = new ArrayList<reception_area>();
     private static ArrayList<catering> catering_list = new ArrayList<catering>();
@@ -35,15 +35,15 @@ public class main_lists {
         return artist_list;
     }
 
-    public static ArrayList<user> getUser_list() {
+    public ArrayList<user> getUser_list() {
         return user_list;
     }
 
-    public static ArrayList<customer> getCustomer_list() {
+    public ArrayList<customer> getCustomer_list() {
         return customer_list;
     }
 
-    public static ArrayList<shop> getShop_list() {
+    public ArrayList<shop> getShop_list() {
         return shop_list;
     }
 

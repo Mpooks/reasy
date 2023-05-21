@@ -16,36 +16,48 @@ public class login_page extends AppCompatActivity {
 
     private TextView t;
     private main_lists ml;
+    private ArrayList<user> ulist=new ArrayList<>();
+    private ArrayList<shop> slist=new ArrayList<>();
+    private ArrayList<customer> clist=new ArrayList<>();
     EditText emailt,passt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ml= main_lists.createLists();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
     }
     public void GCMain(View v) {
+        ml= main_lists.createLists();
         int found=0;
+        String a=null;
         emailt=(EditText)findViewById(R.id.email);
         String email=emailt.getText().toString();
         passt=(EditText)findViewById(R.id.pass);
         String pass=passt.getText().toString();
-        ArrayList<user> ul = new ArrayList<user>();
-        ul=ml.getUser_list();
-        for(int i=0;i<ul.size();i++){
-            user u=ul.get(i);
-            String j=u.getEmail();
-            String p= u.getPassword();
-            if((j.compareTo(email)==0)&&(p.compareTo(pass)==0)){
+        ulist = (ArrayList<user>) ml.getUser_list().clone();
+        slist = (ArrayList<shop>) ml.getShop_list().clone();
+        clist = (ArrayList<customer>) ml.getCustomer_list().clone();
+        t = findViewById(R.id.logt);
+        for(user u: ulist){
+            if(((u.getEmail()).compareTo(email)==0)&&((u.getPassword()).compareTo(pass)==0)){
                 found=1;
             }
         }
         if(found==1) {
-            Intent intent = new Intent(this, final_order_page.class);
-            startActivity(intent);
+            for(customer c: clist){
+                if((c.getEmail()).compareTo(email)==0){
+                    Intent intent = new Intent(this, main_page.class);
+                    startActivity(intent);
+                }
+            }
+            for(shop s: slist){
+                if((s.getEmail()).compareTo(email)==0){
+                    Intent intent = new Intent(this, shop_main_page.class);
+                    startActivity(intent);
+                }
+            }
         }
         else{
-            t = findViewById(R.id.logt);
             t.setText("Wrong credentials");
         }
     }

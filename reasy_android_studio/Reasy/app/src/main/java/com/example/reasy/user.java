@@ -3,9 +3,9 @@ package com.example.reasy;
 import java.util.ArrayList;
 
 public class user {
-    private static String email;
-    private static String password;
-    private static String name;
+    private String email;
+    private String password;
+    private String name;
     private int id;
     private static double balance;
     private ArrayList<reservation> reservations = new ArrayList<reservation>();
@@ -23,11 +23,11 @@ public class user {
         return balance;
     }
 
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public static String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -49,7 +49,7 @@ public class user {
         }
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 }
