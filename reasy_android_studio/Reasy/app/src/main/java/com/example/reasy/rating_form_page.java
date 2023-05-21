@@ -1,5 +1,6 @@
 package com.example.reasy;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +14,8 @@ public class rating_form_page extends AppCompatActivity {
 
     }
     public void show(){
-
+        Intent intent=new Intent(this,rating_previous_orders_page.class);
+        startActivity(intent);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
