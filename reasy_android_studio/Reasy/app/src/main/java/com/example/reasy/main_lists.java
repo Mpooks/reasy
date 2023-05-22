@@ -6,13 +6,14 @@ public class main_lists {
     private ArrayList<shop> shop_list = new ArrayList<shop>();
     private ArrayList<customer> customer_list = new ArrayList<customer>();
     private ArrayList<user> user_list = new ArrayList<user>();
+    private ArrayList<reservation> res_list = new ArrayList<reservation>();
     private static ArrayList<job_offer> job_offers = new ArrayList<job_offer>();
     private static ArrayList<reception_area> reception_area_list = new ArrayList<reception_area>();
     private static ArrayList<catering> catering_list = new ArrayList<catering>();
     private static ArrayList<artist> artist_list = new ArrayList<artist>();
     private static ArrayList<supplier> supplier_list = new ArrayList<supplier>();
 
-    public main_lists(ArrayList<shop> shop_list, ArrayList<customer> customer_list, ArrayList<user> user_list, ArrayList<job_offer> job_offers, ArrayList<reception_area> reception_area_list, ArrayList<catering> catering_list, ArrayList<artist> artist_list, ArrayList<supplier> supplier_list) {
+    public main_lists(ArrayList<shop> shop_list, ArrayList<customer> customer_list, ArrayList<user> user_list, ArrayList<job_offer> job_offers, ArrayList<reception_area> reception_area_list, ArrayList<catering> catering_list, ArrayList<artist> artist_list, ArrayList<supplier> supplier_list, ArrayList<reservation> res_list) {
         this.shop_list = shop_list;
         this.customer_list = customer_list;
         this.user_list=user_list;
@@ -21,6 +22,7 @@ public class main_lists {
         this.catering_list = catering_list;
         this.artist_list = artist_list;
         this.supplier_list = supplier_list;
+        this.res_list=res_list;
     }
 
 
@@ -37,6 +39,10 @@ public class main_lists {
 
     public ArrayList<user> getUser_list() {
         return user_list;
+    }
+
+    public ArrayList<reservation> getRes_list() {
+        return res_list;
     }
 
     public ArrayList<customer> getCustomer_list() {
@@ -63,6 +69,12 @@ public class main_lists {
         reservation res3 = new reservation(2,5,3,2,"2023-05-01","20:30",5,null,3,null);
         reservation res4 = new reservation(3,6,4,2,"2023-05-20","22:30",1,null,4,null);
         reservation res5 = new reservation(4,7,5,3,"2023-05-01","19:30",3,null,5,null);
+        ArrayList<reservation> allres = new ArrayList<reservation>();
+        allres.add(res1);
+        allres.add(res2);
+        allres.add(res3);
+        allres.add(res4);
+        allres.add(res5);
         ArrayList<reservation> rs2 = new ArrayList<reservation>();
         rs2.add(res2);
         rs2.add(res3);
@@ -138,6 +150,7 @@ public class main_lists {
         wo.add("8:00-20:00");
         wo.add("8:00-21:00");
         wo.add("8:00-21:00");
+        wo.add("closed");
         job_offer jo = new job_offer(2,"waiter",800,wo,2.5,"2023-05-20","2023-06-06",null);
         ArrayList<job_offer> jl = new ArrayList<job_offer>();
         jl.add(jo);
@@ -259,7 +272,7 @@ public class main_lists {
         ulist.add(u6);
         ulist.add(u7);
         ulist.add(u8);
-        main_lists list = new main_lists(slist,clist,ulist,jl,recl,cl,al,suppl);
+        main_lists list = new main_lists(slist,clist,ulist,jl,recl,cl,al,suppl,allres);
         return list;
     }
 

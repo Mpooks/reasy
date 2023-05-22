@@ -22,16 +22,11 @@ public class table {
         this.neighbouring_tables = neighbouring_tables;
     }
 
-    public int[] getCapacity(int n){
-        int[] res=new int[2];
-        if(n<=capacity){
-            res[0]=1;
-        }
-        else{
-            res[0]=0;
-        }
-        res[1]=table_id;
-        return res;
+    public int getCapacity(){
+        return capacity;
+    }
+    public int getTable_id(){
+        return table_id;
     }
 
     public ArrayList<reservation> getReservations(){

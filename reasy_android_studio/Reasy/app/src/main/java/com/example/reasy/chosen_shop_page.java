@@ -29,7 +29,6 @@ public class chosen_shop_page extends AppCompatActivity {
         ml= main_lists.createLists();
         slist = (ArrayList<shop>) ml.getShop_list().clone();
         Bundle bundle = getIntent().getExtras();
-        String text= bundle.getString("stuff");
         id= bundle.getInt("id");
         sid= bundle.getInt("sid");
         for(shop s: slist){

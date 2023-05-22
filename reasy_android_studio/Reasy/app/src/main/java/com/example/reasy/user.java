@@ -39,6 +39,7 @@ public class user {
         this.balance=balance;
     }
     public void saveToUser(reservation new_res){
+        reservations= new ArrayList<>();
         reservations.add(new_res);
     }
     public ArrayList<reservation> getReservations(){
