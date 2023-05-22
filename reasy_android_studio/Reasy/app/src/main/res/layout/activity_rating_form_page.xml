@@ -21,13 +21,13 @@
         app:layout_constraintVertical_bias="0.769" />
 
     <Button
-        android:id="@+id/loginButton2"
+        android:id="@+id/submitButton"
         android:layout_width="138dp"
-        android:layout_height="41dp"
+        android:layout_height="48dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:onClick="makeReservation"
-        android:text="Submit"
+        android:onClick="show"
+        android:text="Continue"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="23dp"
@@ -38,6 +38,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.992" />
+
+    <Button
+        android:id="@+id/rate"
+        android:layout_width="92dp"
+        android:layout_height="35dp"
+        android:background="@drawable/orange_button"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:onClick="changeRating"
+        android:text="Rate"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.808" />
 
     <TextView
         android:id="@+id/textView5"
@@ -97,10 +116,10 @@
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.64" />
+        app:layout_constraintVertical_bias="0.599" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -131,13 +150,13 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription=" "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776" />
-
+        app:layout_constraintVertical_bias="0.715" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
