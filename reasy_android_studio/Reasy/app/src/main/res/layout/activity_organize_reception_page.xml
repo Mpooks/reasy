@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".organize_reception_page">
 
+    <ImageButton
+        android:id="@+id/backb34"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="back"
+
+        android:onClick="goBack"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071"
+        app:srcCompat="@drawable/back" />
+
     <TextView
         android:id="@+id/logo"
         android:layout_width="225dp"
@@ -30,6 +47,7 @@
         android:backgroundTint="@color/gray"
         android:ems="10"
         android:hint="Enter people"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
         android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
@@ -42,6 +60,7 @@
         app:layout_constraintVertical_bias="0.149"
         tools:ignore="SpeakableTextPresentCheck" />
 
+
     <EditText
         android:id="@+id/t2"
         android:layout_width="80dp"
@@ -50,9 +69,11 @@
         android:backgroundTint="@color/gray"
         android:ems="10"
         android:hint="year"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
         android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
+        android:nextFocusForward="@+id/t3"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
@@ -67,6 +88,7 @@
         android:backgroundTint="@color/gray"
         android:ems="10"
         android:hint="day"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
         android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
@@ -85,9 +107,11 @@
         android:backgroundTint="@color/gray"
         android:ems="10"
         android:hint="month"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
         android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
+        android:nextFocusForward="@+id/t4"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -116,14 +140,16 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
         android:text="choose how many people you want to invite"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/t1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:layout_constraintVertical_bias="0.642"
+        app:layout_constraintVertical_bias="0.684"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -132,6 +158,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="120dp"
         android:text="choose the date for the reception"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/t3"
@@ -145,9 +172,12 @@
         android:layout_width="177dp"
         android:layout_height="48dp"
         android:layout_marginBottom="264dp"
+        android:textSize="20sp"
         android:background="@drawable/orange_button"
         android:onClick="chooseDateAndPeople"
         android:text="Search for reception areas"
+        android:textAllCaps="false"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -159,8 +189,11 @@
         android:layout_width="177dp"
         android:layout_height="48dp"
         android:layout_marginBottom="30dp"
+        android:textSize="20sp"
         android:background="@drawable/orange_button"
         android:text="Go to next page "
+        android:textAllCaps="false"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

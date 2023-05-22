@@ -153,7 +153,8 @@
             android:exported="false" />
         <activity
             android:name=".reception_area_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".cuisine_and_reception_type"
             android:exported="false" />
