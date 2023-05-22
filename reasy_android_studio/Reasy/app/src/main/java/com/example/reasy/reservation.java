@@ -43,4 +43,8 @@ public class reservation {
     public int getReservation_id(){
         return reservation_id;
     }
+
+    public int getShop_id() {
+        return shop_id;
+    }
 }
