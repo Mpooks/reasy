@@ -3,6 +3,8 @@ package com.example.reasy;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,10 +23,10 @@ import java.util.Objects;
 public class organize_reception_page extends AppCompatActivity {
 
     private Button btn1,btn2;
-    private EditText t1,t2,t3,t4,t5;
+     EditText t1,t2,t3,t4,t5;
 
 
-    private int n1,n2,n3,n4;
+    private int n1,n2,n3,n4, id;
 
     private String date;
     private ArrayList<reception_area> ral = new ArrayList<reception_area>();
@@ -41,6 +43,8 @@ public class organize_reception_page extends AppCompatActivity {
         t4 = (EditText)findViewById(R.id.t4);
 
         t5 = (EditText)findViewById(R.id.t5);
+
+
 
         String input1 = t1.getText().toString();
         String input2 = t2.getText().toString();
@@ -123,6 +127,15 @@ public class organize_reception_page extends AppCompatActivity {
 
     public ArrayList<Integer> getListIds() {
         return ids;
+    }
+
+    public void goBack(View v){
+        Intent intent=new Intent(this, main_page.class);
+        Bundle b = new Bundle();
+        //Add your data to bundle
+        b.putInt("id",id);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 
 }

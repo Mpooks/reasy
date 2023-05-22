@@ -1,5 +1,6 @@
 package com.example.reasy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,13 +29,9 @@ public class reception_area_page extends AppCompatActivity {
 
     private EditText t6;
 
+    private int id; //for back button
+
     public void chooseReceptionArea() {
-
-
-
-
-
-
 
 
     /*   spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -108,9 +105,15 @@ public class reception_area_page extends AppCompatActivity {
             }
         });
 
+    }
 
 
-
-
+    public void goBack(View v){
+        Intent intent=new Intent(this, organize_reception_page.class);
+        Bundle b = new Bundle();
+        //Add your data to bundle
+        b.putInt("id",id);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 }
