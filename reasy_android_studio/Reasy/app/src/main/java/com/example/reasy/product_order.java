@@ -9,4 +9,8 @@ public class product_order extends product{
 
     private int order_id;
     private int quantity;
+
+    public int getQuantity() {
+        return quantity;
+    }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -17,17 +18,41 @@ import java.util.ArrayList;
 public class order_history_page extends AppCompatActivity {
     private int id,sid,oid;
     private main_lists ml;
+    private menu smenu;
     private LinearLayout linearLayout;
     private ArrayList<user> ul=new ArrayList<user>();
     private ArrayList<shop> slist=new ArrayList<>();
     private ArrayList<customer> cl=new ArrayList<>();
-    private ArrayList<Integer> orders=new ArrayList<>();
+    private ArrayList<Integer> orders,prods=new ArrayList<>();
+    private ArrayList<product_menu> pms=new ArrayList<>();
     private ArrayList<order> oh,foundo=new ArrayList<>();
-    public void newOrPrevOrder(){
-
+    public void newOrPrevOrder(View view){
+        for(shop s:slist){
+            if(s.getId()==sid){
+                smenu=s.getShop_m();
+                pms=smenu.getProducts();
+                if(pms.isEmpty()) {
+                prods.add(0);
+                }else {
+                    for (product_menu pm : pms) {
+                        prods.add(pm.getId());
+                    }
+                }
+            }
+        }
+        show();
     }
     public void show(){
-
+        Intent intent=new Intent(this,shop_menu_page.class);
+        //Create the bundle
+        Bundle b = new Bundle();
+        //Add your data to bundle
+        b.putInt("sid",sid);
+        b.putInt("id",id);
+        b.putIntegerArrayList("orders",orders);
+        b.putIntegerArrayList("prods",prods);
+        intent.putExtras(b);
+        startActivity(intent);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,12 +119,13 @@ public class order_history_page extends AppCompatActivity {
 
             linearLayout.addView(b);
             for(order o: foundo){
-                Button tv = new Button(this);
+                TextView tv = new TextView(this);
                 tv.setText("");
                 for(product_order po: o.getProducts())
                 {
-                    tv.setText(String.valueOf(tv.getText())+po.getName()+ "    "+ po.getPrice()+"\n\n");
+                    tv.setText(String.valueOf(tv.getText())+po.getName()+ "    "+ po.getPrice()+"\nQuantity: "+po.getQuantity()+"\n");
                 }
+                tv.setText(String.valueOf(tv.getText())+"Total cost: "+o.getCost()+"\n\n");
                 tv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -117,9 +143,9 @@ public class order_history_page extends AppCompatActivity {
                     }
                 });
                 tv.setTextSize(18);
-                tv.setHeight(250);
+                tv.setHeight(300);
                 tv.setWidth(966);
-                tv.setPadding(30, 90, 30, 90);
+                tv.setPadding(30, 20, 30, 20);
                 tv.setId(o.getOrder_id());
                 tv.setGravity(Gravity.CENTER);
                 tv.setBackgroundResource(R.drawable.menu_item);
