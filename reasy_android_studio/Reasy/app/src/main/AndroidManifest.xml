@@ -85,7 +85,8 @@
         <activity
             android:name=".organize_reception_page"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".order_page"
             android:exported="false" />

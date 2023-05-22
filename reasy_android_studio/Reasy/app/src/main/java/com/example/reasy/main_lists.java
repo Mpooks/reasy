@@ -8,7 +8,7 @@ public class main_lists {
     private ArrayList<user> user_list = new ArrayList<user>();
     private ArrayList<reservation> res_list = new ArrayList<reservation>();
     private static ArrayList<job_offer> job_offers = new ArrayList<job_offer>();
-    private static ArrayList<reception_area> reception_area_list = new ArrayList<reception_area>();
+    private ArrayList<reception_area> reception_area_list = new ArrayList<reception_area>();
     private static ArrayList<catering> catering_list = new ArrayList<catering>();
     private static ArrayList<artist> artist_list = new ArrayList<artist>();
     private static ArrayList<supplier> supplier_list = new ArrayList<supplier>();
@@ -27,7 +27,7 @@ public class main_lists {
 
 
 
-    public static ArrayList<reception_area> getReceptionArea(){
+    public ArrayList<reception_area> getReceptionArea(){
         return reception_area_list;
     }
     public static ArrayList<catering> getCatering(){
