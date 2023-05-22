@@ -25,4 +25,11 @@ public class order {
         return products;
     }
 
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public int getShop_id() {
+        return shop_id;
+    }
 }

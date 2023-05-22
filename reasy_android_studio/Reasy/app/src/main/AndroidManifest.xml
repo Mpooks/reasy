@@ -92,7 +92,8 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".order_history_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".notify_customers_page"
             android:exported="false" />

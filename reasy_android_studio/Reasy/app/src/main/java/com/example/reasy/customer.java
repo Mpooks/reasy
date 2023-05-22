@@ -43,6 +43,7 @@ public class customer extends user{
         return rated_order_history;
     }
     public void addToOrderHistory(order newor){
+        order_history=new ArrayList<>();
         order_history.add(newor);
     }
     public void addPointsRShop(int p){

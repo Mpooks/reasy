@@ -133,7 +133,7 @@ public class main_lists {
         pm3_array.add(pfm7);
         ArrayList<product_menu> pm4_array=new ArrayList<product_menu>();
         pm4_array.add(pfm8);
-        order o1 = new order(1,1,2,250,"Online","Online",po_array);
+        order o1 = new order(5,1,2,250,"Online","Online",po_array);
         ArrayList<order> ol = new ArrayList<order>();
         ol.add(o1);
         supply supply1 = new supply(1,3,1,ps_array,"Leoforos Poseidonos 20 Athens",true,20.5);
