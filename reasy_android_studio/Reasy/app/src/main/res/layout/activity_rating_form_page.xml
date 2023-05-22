@@ -42,7 +42,7 @@
     <Button
         android:id="@+id/rate"
         android:layout_width="92dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
         android:onClick="changeRating"
@@ -157,6 +157,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.715" />
+
+    <TextView
+        android:id="@+id/rateg"
+        android:layout_width="77dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="488dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

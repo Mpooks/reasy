@@ -9,7 +9,7 @@ public class reception_area {
 
     private String name;
     private int reception_area_id;
-    private static int num_of_guests;
+    private  int num_of_guests;
     private static ArrayList<reception> receptions = new ArrayList<reception>();
 
 
@@ -24,7 +24,7 @@ public class reception_area {
     }
     //reception_area new_r_a = new reception_area("M1",2,100,receptions,2000);
 
-    public static String getAvailability(int n,String d) {
+    public String getAvailability(int n,String d) {
         int found = 0;
         if(n<=100){
             if(d.equals("2025-02-28")){
@@ -40,14 +40,6 @@ public class reception_area {
             return "People not valid";
         }
 
-/*
-
-     for(int i=0;i<receptions.size();i++){
-            String r_d=receptions.get(i).getDate();
-            if(r_d.compareTo(d)==0){
-                found=1;
-            }
-        }*/
 
     }
     
@@ -55,7 +47,15 @@ public class reception_area {
         receptions.add(new_r);
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public int getNum_of_guests() {
+        return num_of_guests;
+    }
 
-
+    public int getReception_area_id() {
+        return reception_area_id;
+    }
 }
