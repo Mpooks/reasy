@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Reasy</string>
+    <string name="title_activity_shop_list_page">shop_list_page</string>
 </resources>

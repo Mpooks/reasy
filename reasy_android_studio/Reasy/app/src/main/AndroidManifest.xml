@@ -47,6 +47,10 @@
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
+            android:name=".shop_list_page"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
             android:name=".shop_calendar_page"
             android:exported="false" />
         <activity
@@ -89,7 +93,8 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".order_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".order_history_page"
             android:exported="false" />

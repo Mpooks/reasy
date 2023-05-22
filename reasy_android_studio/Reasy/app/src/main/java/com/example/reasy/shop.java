@@ -77,4 +77,12 @@ public class shop extends user{
         numofrates++;
         rating=(rating+newr)/numofrates;
     }
+
+    public int getNumofrates() {
+        return numofrates;
+    }
+
+    public double getRating() {
+        return rating;
+    }
 }

@@ -15,7 +15,11 @@ public class main_page extends AppCompatActivity {
     }
     public void show(){}
     public void rate(View v){
-        Intent intent=new Intent(this,rating_form_page.class);
+        Intent intent=new Intent(this,shop_list_page.class);
+        Bundle b = new Bundle();
+        //Add your data to bundle
+        b.putInt("id", id);
+        intent.putExtras(b);
         startActivity(intent);
     }
 
