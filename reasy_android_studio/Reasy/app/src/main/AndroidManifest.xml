@@ -37,10 +37,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".table_reservations_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".table_list_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".supplier_products_page"
             android:exported="false"
@@ -58,7 +60,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".shop_calendar_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".shop_budget_jo_duration_page"
             android:exported="false" />
@@ -111,7 +114,8 @@
             android:exported="false" />
         <activity
             android:name=".neighbouring_tables_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".music_genre_page"
             android:exported="false" />
@@ -151,7 +155,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".available_waiters_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".available_artists_page"
             android:exported="false" />
