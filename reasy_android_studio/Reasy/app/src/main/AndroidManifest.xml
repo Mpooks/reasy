@@ -63,7 +63,8 @@
             android:exported="false" />
         <activity
             android:name=".shipping_address_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".address_page"
             android:exported="false"
