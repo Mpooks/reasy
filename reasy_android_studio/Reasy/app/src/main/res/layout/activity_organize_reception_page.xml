@@ -22,44 +22,28 @@
         app:layout_constraintVertical_bias="0.071"
         app:srcCompat="@drawable/back" />
 
-    <TextView
-        android:id="@+id/logo"
-        android:layout_width="225dp"
-        android:layout_height="113dp"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:gravity="center"
-        android:text="reasy"
-        android:textColor="#ff5c00"
-        android:textFontWeight="1000"
-        android:textSize="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
-
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
         android:fontFamily="@font/seoulhangang_cbl_regular"
         android:text="choose how many people you want to invite:"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/t1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintHorizontal_bias="0.239"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:layout_constraintVertical_bias="0.433"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/t3"
         android:layout_width="80dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/edit_text"
         android:ems="10"
         android:fontFamily="@font/seoulhangang_cbl_regular"
@@ -70,7 +54,6 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -89,17 +72,16 @@
         app:flow_horizontalAlign="center"
         app:layout_constraintBottom_toTopOf="@+id/t3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356"
+        app:layout_constraintVertical_bias="0.647"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/t4"
         android:layout_width="80dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/edit_text"
         android:ems="10"
         android:fontFamily="@font/seoulhangang_cbl_regular"
@@ -109,7 +91,7 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -117,7 +99,7 @@
         android:id="@+id/t2"
         android:layout_width="80dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/edit_text"
         android:ems="10"
         android:fontFamily="@font/seoulhangang_cbl_regular"
@@ -128,7 +110,7 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btn1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -140,19 +122,19 @@
         android:fontFamily="@font/seoulhangang_cbl_regular"
         android:text="choose the date for the reception:"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/t3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.303"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/t1"
-        app:layout_constraintVertical_bias="0.446" />
+        app:layout_constraintTop_toBottomOf="@+id/t1" />
 
     <Button
         android:id="@+id/btn1"
         android:layout_width="268dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="372dp"
+        android:layout_marginBottom="212dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
         android:onClick="chooseDateAndPeople"
@@ -187,25 +169,20 @@
         android:fontFamily="@font/seoulhangang_cbl_regular"
         android:textAlignment="center"
         android:textSize="20sp"
-
         app:layout_constraintBottom_toTopOf="@+id/btn2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn1"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintVertical_bias="0.64" />
 
     <ImageView
-        android:id="@+id/imageView23"
-        android:layout_width="250dp"
+        android:id="@+id/imageView25"
+        android:layout_width="wrap_content"
         android:layout_height="250dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.978"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn1"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/calendar_illustation" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/reception_calendar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.widget.Button;
 public class cuisine_and_reception_type extends AppCompatActivity {
 
     private Button button_cart;
+    private int id;
 
     public void chooseReceptionAndCuisineType(){}
     public void show(){}
@@ -31,6 +32,15 @@ public class cuisine_and_reception_type extends AppCompatActivity {
 
     public void openNewActivy(){
         Intent intent = new Intent(this,catering.class);
+        startActivity(intent);
+    }
+
+    public void goBack(View v){
+        Intent intent=new Intent(this, reception_area_page.class);
+        Bundle b = new Bundle();
+        //Add your data to bundle
+        b.putInt("id",id);
+        intent.putExtras(b);
         startActivity(intent);
     }
 }

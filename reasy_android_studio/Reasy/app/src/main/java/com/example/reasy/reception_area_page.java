@@ -141,4 +141,6 @@ public class reception_area_page extends AppCompatActivity {
         Intent intent = new Intent(this, cuisine_and_reception_type.class);
         startActivity(intent);
     }
+
+
 }
