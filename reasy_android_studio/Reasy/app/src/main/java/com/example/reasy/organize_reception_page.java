@@ -68,7 +68,7 @@ public class organize_reception_page extends AppCompatActivity {
         else {
             try {
 
-               // ids.clear();
+                ids.clear();
 
                  n1 = Integer.parseInt(t1.getText().toString());  //posa atoma thelw stin ekdilwsi
                  n2 = Integer.parseInt(t2.getText().toString());  //xronos pou thelw na ginei i ekdilwsi
