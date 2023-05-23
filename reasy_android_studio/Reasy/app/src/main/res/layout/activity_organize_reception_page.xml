@@ -6,6 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".organize_reception_page">
 
+    <TextView
+        android:id="@+id/textView53"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/point"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.992" />
+
+    <TextView
+        android:id="@+id/textView52"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/balance"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.992" />
+
     <ImageButton
         android:id="@+id/backb34"
         android:layout_width="48dp"
@@ -25,17 +55,18 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_width="418dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="32dp"
         android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:text="choose how many people you want to invite:"
+        android:gravity="center"
+        android:text="Choose how many people you want to invite:"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/t1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -118,22 +149,23 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginEnd="120dp"
         android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:text="choose the date for the reception:"
+        android:text="Choose the date for the reception:"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/t3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/t1" />
+        app:layout_constraintTop_toBottomOf="@+id/t1"
+        app:layout_constraintVertical_bias="0.533" />
 
     <Button
         android:id="@+id/btn1"
-        android:layout_width="268dp"
-        android:layout_height="56dp"
+        android:layout_width="254dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="212dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
@@ -148,9 +180,9 @@
 
     <Button
         android:id="@+id/btn2"
-        android:layout_width="268dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="28dp"
+        android:layout_width="179dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
         android:text="Go to next page "
