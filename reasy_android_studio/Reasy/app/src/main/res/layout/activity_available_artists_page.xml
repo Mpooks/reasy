@@ -4,6 +4,141 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".available_artists_page">
+    tools:context=".organize_reception_page">
+
+    <TextView
+        android:id="@+id/logo2"
+        android:layout_width="225dp"
+        android:layout_height="113dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:text="reasy"
+        android:textColor="#ff5c00"
+        android:textFontWeight="1000"
+        android:textSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ExtraText"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="365dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="416dp"
+            android:background="@drawable/spinner"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tv25"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_above="@+id/spinner2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="153dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="200dp"
+            android:fontFamily="@font/seoulhangang_cbl_regular"
+            android:gravity="center"
+            android:text="Chosen music genre type:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv26"
+            android:layout_width="329dp"
+            android:layout_height="43dp"
+            android:layout_above="@+id/spinner2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="210dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="147dp"
+            android:fontFamily="@font/seoulhangang_cbl_regular"
+            android:gravity="center"
+            android:text="(music genre)"
+            android:textAlignment="center"
+            android:textColor="@color/orange"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/tv27"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_above="@+id/spinner2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="307dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="46dp"
+            android:fontFamily="@font/seoulhangang_cbl_regular"
+            android:gravity="center"
+            android:text="Choose artist:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_aap"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="757dp"
+            android:layout_marginEnd="128dp"
+            android:layout_marginBottom="47dp"
+            android:background="@drawable/orange_button"
+            android:fontFamily="@font/seoulhangang_cbl_regular"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="23dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/backb3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="back"
+        android:onClick="goBack"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071"
+        app:srcCompat="@drawable/back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

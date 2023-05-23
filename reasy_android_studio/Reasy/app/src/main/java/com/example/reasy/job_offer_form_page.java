@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 public class job_offer_form_page extends AppCompatActivity {
 
+    private int id; //for back button
+
 
     public job_offer_form_page() {
 

@@ -66,15 +66,15 @@
         <Button
             android:id="@+id/button_arep"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="61dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="135dp"
-            android:layout_marginTop="730dp"
+            android:layout_marginTop="793dp"
             android:layout_marginEnd="135dp"
-            android:layout_marginBottom="86dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/orange_button"
             android:fontFamily="@font/seoulhangang_cbl_regular"
             android:text="Continue"
@@ -90,21 +90,6 @@
             android:layout_marginTop="-60dp"
             app:srcCompat="@drawable/reception_photo" />
 
-        <ImageButton
-            android:id="@+id/backb3"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="back"
-            android:onClick="goBack"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.071"
-            app:srcCompat="@drawable/back" />
 
         <TextView
             android:id="@+id/tv12"
@@ -122,5 +107,21 @@
 
 
     </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/backb34"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="back"
+        android:onClick="goBack"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071"
+        app:srcCompat="@drawable/back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
