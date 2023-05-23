@@ -82,12 +82,23 @@ public class supplier_products_page extends AppCompatActivity {
 
     }
 
-    public void goBack(View v) {
-        Intent intent = new Intent(this, supplier_list_page.class);
-        Bundle b = new Bundle();
+    public void onClick(View view) {
+        Intent intent1 = new Intent(supplier_products_page.this, sample_request_page.class);
+        //Create the bundle
+        Bundle b1 = new Bundle();
         //Add your data to bundle
-        b.putInt("id", id);
-        intent.putExtras(b);
-        startActivity(intent);
+        b1.putInt("supp_id", supp_id);
+        b1.putInt("id", id);
+        intent1.putExtras(b1);
+        startActivity(intent1);
+    }
+
+    public void goBack(View v) {
+        Intent intent2 = new Intent(this, supplier_list_page.class);
+        Bundle b2 = new Bundle();
+        //Add your data to bundle
+        b2.putInt("id", id);
+        intent2.putExtras(b2);
+        startActivity(intent2);
     }
 }
