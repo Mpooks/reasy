@@ -67,6 +67,9 @@ public class organize_reception_page extends AppCompatActivity {
 
         else {
             try {
+
+               // ids.clear();
+
                  n1 = Integer.parseInt(t1.getText().toString());  //posa atoma thelw stin ekdilwsi
                  n2 = Integer.parseInt(t2.getText().toString());  //xronos pou thelw na ginei i ekdilwsi
                  n3 = Integer.parseInt(t3.getText().toString());  //mhnas pou thelw na ginei i ekdilwsi
@@ -103,7 +106,7 @@ public class organize_reception_page extends AppCompatActivity {
                                 }
                     String num_of_ra = Integer.toString(ids.size());
                     t5.setText(num_of_ra + " reception areas found.\n" +"Click Next to book one!");
-                    ids.clear();
+
 
                         }//end of small else
             }catch (NumberFormatException e) {}
@@ -134,7 +137,10 @@ public class organize_reception_page extends AppCompatActivity {
 
         public void openReceptionAreaPage(){
             Intent intent2 = new Intent(this, reception_area_page.class);
+            intent2.putIntegerArrayListExtra("ids", ids);
             startActivity(intent2);
+
+
     }
 
     public ArrayList<Integer> getListIds() {
@@ -149,5 +155,6 @@ public class organize_reception_page extends AppCompatActivity {
         intent.putExtras(b);
         startActivity(intent);
     }
+
 
 }

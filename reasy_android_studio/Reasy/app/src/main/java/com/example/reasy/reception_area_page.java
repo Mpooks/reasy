@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,9 +18,7 @@ import java.util.ArrayList;
 public class reception_area_page extends AppCompatActivity {
 
 
-    private reception_area ra;
-    private main_lists ml;
-    private ArrayList<reception_area> idss = new ArrayList<reception_area>();
+
 
     private ArrayList<String> area_name = new ArrayList<String>();
 
@@ -28,8 +27,15 @@ public class reception_area_page extends AppCompatActivity {
     private String date;
 
     private EditText t6;
+    private TextView t12;
 
     private int id; //for back button
+
+    // Create an instance of organize_reception_page
+    organize_reception_page receptionPage = new organize_reception_page();
+
+    // Access the ids list
+    ArrayList<Integer> ids = receptionPage.getListIds();
 
     public void chooseReceptionArea() {
 
@@ -75,17 +81,23 @@ public class reception_area_page extends AppCompatActivity {
         setContentView(R.layout.activity_reception_area_page);
 
 
+        // Retrieve the ids list from intent extras
+        ArrayList<Integer> ids = getIntent().getIntegerArrayListExtra("ids");
+
 
         final Spinner spinner;
         //  ml = main_lists.createLists();
         //idss = (ArrayList<reception_area>) ml.getReceptionArea().clone();
-        int a = idss.size();
-        area_name.add("S = " + a);
+        //int size = ids.size();
+        String num_of_ra = Integer.toString(ids.size());
+        area_name.add(num_of_ra);
         area_avaiblt.add(0);
-        for (reception_area r : idss) {
-            area_name.add("S = " + a);
-            area_avaiblt.add((r.getNum_of_guests()));
-        }
+     //   for (reception_area r : idss) {
+
+
+        //    area_name.add("S = " + size);
+        //    area_avaiblt.add((r.getNum_of_guests()));
+      //  }
 
 
         spinner = (Spinner) findViewById(R.id.spinner);
