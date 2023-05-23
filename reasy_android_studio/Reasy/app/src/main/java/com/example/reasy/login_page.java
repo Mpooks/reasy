@@ -2,7 +2,9 @@ package com.example.reasy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +23,7 @@ public class login_page extends AppCompatActivity {
     private ArrayList<shop> slist=new ArrayList<>();
     private ArrayList<customer> clist=new ArrayList<>();
     EditText emailt,passt;
+    DatabaseManager dbm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +38,18 @@ public class login_page extends AppCompatActivity {
         String email=emailt.getText().toString();
         passt=(EditText)findViewById(R.id.pass);
         String pass=passt.getText().toString();
-        ulist = (ArrayList<user>) ml.getUser_list().clone();
+        //ulist = (ArrayList<user>) ml.getUser_list().clone();
         slist = (ArrayList<shop>) ml.getShop_list().clone();
         clist = (ArrayList<customer>) ml.getCustomer_list().clone();
         t = findViewById(R.id.logt);
+        ulist=user.getUsers(login_page.this);
         for(user u: ulist){
             if(((u.getEmail()).compareTo(email)==0)&&((u.getPassword()).compareTo(pass)==0)){
                 idu=u.getId();
                 found=1;
             }
         }
+
         if(found==1) {
             for(customer c: clist){
                 if((c.getEmail()).compareTo(email)==0){
