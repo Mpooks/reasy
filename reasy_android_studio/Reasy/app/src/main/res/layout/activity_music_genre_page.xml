@@ -4,6 +4,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".music_genre_page">
+    tools:context=".organize_reception_page">
+
+    <TextView
+        android:id="@+id/logo2"
+        android:layout_width="225dp"
+        android:layout_height="113dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:text="reasy"
+        android:textColor="#ff5c00"
+        android:textFontWeight="1000"
+        android:textSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ExtraText"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <Spinner
+            android:id="@+id/spinner5"
+            android:layout_width="365dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="19dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="558dp"
+            android:background="@drawable/spinner"
+            android:textAlignment="center" />
+
+
+        <TextView
+            android:id="@+id/tv23"
+            android:layout_width="386dp"
+            android:layout_height="1dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="507dp"
+            android:background="@color/gray"
+            android:text="AAAAA"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv24"
+            android:layout_width="209dp"
+            android:layout_height="33dp"
+            android:layout_above="@+id/spinner2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="185dp"
+            android:layout_marginEnd="228dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/seoulhangang_cbl_regular"
+            android:gravity="center"
+            android:text="Choose music genre:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+        <Button
+            android:id="@+id/button_mgp"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="132dp"
+            android:layout_marginTop="793dp"
+            android:layout_marginEnd="132dp"
+            android:layout_marginBottom="23dp"
+            android:background="@drawable/orange_button"
+            android:fontFamily="@font/seoulhangang_cbl_regular"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="23dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/backb3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="back"
+        android:onClick="goBack"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071"
+        app:srcCompat="@drawable/back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
