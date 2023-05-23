@@ -1,5 +1,6 @@
 package com.example.reasy;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class shop extends user{
@@ -75,7 +76,8 @@ public class shop extends user{
     public void changeRating(double newr){
         double r=numofrates*rating;
         numofrates++;
-        rating=(rating+newr)/numofrates;
+        //rating= Double.parseDouble(df.format((r+newr)/numofrates));
+        rating = (r+newr)/numofrates;
     }
 
     public int getNumofrates() {
