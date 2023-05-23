@@ -22,12 +22,11 @@ public class reception_area {
         this.receptions = receptions;
         this.cost = cost;
     }
-    //reception_area new_r_a = new reception_area("M1",2,100,receptions,2000);
 
     public String getAvailability(int n,String d) {
         int found = 0;
         if(n<=100){
-            if(d.equals("2025-02-28")){
+            if(d.equals("2023-05-23")){
                 if(found==0) {
                     return "You are able to book a reception";
                 }else {

@@ -11,9 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,17 +26,17 @@ import java.util.Objects;
 public class organize_reception_page extends AppCompatActivity {
 
     private Button btn1,btn2;
-     EditText t1,t2,t3,t4,t5;
+     EditText t1,t2,t3,t4;
 
+     TextView t5;
 
     private int n1,n2,n3,n4, id;
 
     private String date;
     private ArrayList<reception_area> ral = new ArrayList<reception_area>();
 
-    private ArrayList<Integer> ids = new ArrayList<Integer>();
-
-    private ArrayList<reception_area> newDataList = new ArrayList<reception_area>();
+    private main_lists ml;
+    private ArrayList<Integer> ids=new ArrayList<Integer>();
 
 
     public void chooseDateAndPeople(View v){
@@ -42,7 +45,7 @@ public class organize_reception_page extends AppCompatActivity {
         t3 = (EditText)findViewById(R.id.t3);
         t4 = (EditText)findViewById(R.id.t4);
 
-        t5 = (EditText)findViewById(R.id.t5);
+        t5 = (TextView) findViewById(R.id.t5);
 
 
 
@@ -50,6 +53,12 @@ public class organize_reception_page extends AppCompatActivity {
         String input2 = t2.getText().toString();
         String input3 = t3.getText().toString();
         String input4 = t4.getText().toString();
+
+
+        ml= main_lists.createLists();
+        ral = (ArrayList<reception_area>) ml.getReceptionArea().clone();
+
+
 
         if(input1.isEmpty()|| input2.isEmpty() || input3.isEmpty() || input4.isEmpty()){
             t5.setText("Not all gaps are filled");
@@ -85,13 +94,16 @@ public class organize_reception_page extends AppCompatActivity {
 
                             date = year.concat("-").concat(month).concat("-").concat(day);
 
-                                t5.setText("NICE");
+
 
                                 for (reception_area r : ral) {
                                     if(n1<=r.getNum_of_guests()){
-                                        ids.add(r.getReception_area_id());
+                                        ids.add(1);
                                     }
                                 }
+                    String num_of_ra = Integer.toString(ids.size());
+                    t5.setText(num_of_ra + " reception areas found.\n" +"Click Next to book one!");
+                    ids.clear();
 
                         }//end of small else
             }catch (NumberFormatException e) {}
@@ -107,7 +119,7 @@ public class organize_reception_page extends AppCompatActivity {
 
 
 
-      // if ((String.valueOf(t5.getText()).compareTo("You are able to book a reception") == 0) || String.valueOf(t5.getText()).compareTo(null) == 0) {
+
 
 
             btn2 = (Button) findViewById(R.id.btn2);
