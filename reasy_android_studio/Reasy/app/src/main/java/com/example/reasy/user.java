@@ -1,5 +1,9 @@
 package com.example.reasy;
 
+import android.content.Context;
+import android.database.Cursor;
+
+import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class user {
@@ -8,6 +12,7 @@ public class user {
     private String name;
     private int id;
     private double balance;
+
     private ArrayList<reservation> reservations = new ArrayList<reservation>();
 
     public user(String email, String password, String name, int id, double balance, ArrayList<reservation> reservations) {
@@ -56,5 +61,28 @@ public class user {
 
     public String getName() {
         return name;
+    }
+    public static ArrayList<user> getUsers(Context c){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+        Cursor cursor=dbm.fetch();
+        ArrayList<user> userl = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                userl.add(new user(
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getInt(0),cursor.getDouble(4),null));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return userl;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

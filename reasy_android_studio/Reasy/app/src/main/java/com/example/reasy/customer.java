@@ -80,4 +80,8 @@ public class customer extends user{
     public void setFriend_list(ArrayList<customer> friend_list) {
         this.friend_list = friend_list;
     }
+
+    public int getPoints() {
+        return points;
+    }
 }
