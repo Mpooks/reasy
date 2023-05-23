@@ -107,6 +107,8 @@ public class main_lists {
         product_supplier pfs2 = new product_supplier(10,"Potatoes", 0.34,1,34);
         product_supplier pfs3 = new product_supplier(11,"Cucumbers", 0.65,2,23);
         product_supplier pfs4 = new product_supplier(12,"Eggplants", 0.89,2,34);
+        product_supplier pfs5 = new product_supplier(13,"Carrots", 0.42,3,69);
+        product_supplier pfs6 = new product_supplier(14,"Lettuce", 0.75,3,54);
         product_supply ps1 = new product_supply(9,"Tomatoes",0.5125,1,40);
         product_order po1 = new product_order(1,"First Time Omakase",100,1,2);
         product_order po2 = new product_order(4,"Wagyu Tacos", 50,1,1);
@@ -121,6 +123,9 @@ public class main_lists {
         ArrayList<product_supplier> psupp_array2=new ArrayList<product_supplier>();
         psupp_array2.add(pfs3);
         psupp_array2.add(pfs4);
+        ArrayList<product_supplier> psupp_array3=new ArrayList<product_supplier>();
+        psupp_array3.add(pfs5);
+        psupp_array3.add(pfs6);
         ArrayList<product_menu> pm1_array=new ArrayList<product_menu>();
         pm1_array.add(pfm1);
         pm1_array.add(pfm2);
@@ -199,8 +204,9 @@ public class main_lists {
         tl4.add(t3);
         catering cat1 = new catering("CanRec",1,"Asian",500);
         catering cat2 = new catering("Eataly",2,"Italian",450);
-        supplier sup1 = new supplier(1,psupp_array1);
-        supplier sup2 = new supplier(2,psupp_array2);
+        supplier sup1 = new supplier(1,"Jim",psupp_array1);
+        supplier sup2 = new supplier(2,"Mike",psupp_array2);
+        supplier sup3 = new supplier(3,"Phil",psupp_array3);
         reception_area ra1 = new reception_area("Haven",1,500,null,2000);
         reception_area ra2 = new reception_area("Pantheon",2,200,rl,1500);
         artist a1 = new artist("Tayor Swift",1,800,"pop");
@@ -245,6 +251,7 @@ public class main_lists {
         ArrayList<supplier> suppl = new ArrayList<supplier>();
         suppl.add(sup1);
         suppl.add(sup2);
+        suppl.add(sup3);
         ArrayList<shop> slist = new ArrayList<shop>();
         slist.add(s1);
         slist.add(s2);

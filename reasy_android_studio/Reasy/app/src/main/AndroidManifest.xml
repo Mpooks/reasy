@@ -29,7 +29,8 @@
         </activity>
         <activity
             android:name=".supplier_list_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".table_reservations_page"
             android:exported="false" />
@@ -38,7 +39,8 @@
             android:exported="false" />
         <activity
             android:name=".supplier_products_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".shop_menu_page"
             android:exported="false" />
