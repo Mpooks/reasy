@@ -209,7 +209,7 @@ public class main_lists {
         supplier sup3 = new supplier(3,"Phil",psupp_array3);
         reception_area ra1 = new reception_area("Haven",1,500,null,2000);
         reception_area ra2 = new reception_area("Pantheon",2,200,rl,1500);
-        artist a1 = new artist("Tayor Swift",1,800,"pop");
+        artist a1 = new artist("Taylor Swift",1,800,"pop");
         artist a2 = new artist("Ed Sheeran",2,900,"pop");
         waiter w1 = new waiter("John Green",1,2,wo);
         waiter w2 = new waiter("Jennifer Lawn",2,1,wo);
