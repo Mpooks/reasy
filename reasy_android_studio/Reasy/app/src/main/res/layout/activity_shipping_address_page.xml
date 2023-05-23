@@ -6,4 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".shipping_address_page">
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="134dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/orange_button"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:text="Order"
+        android:textSize="23dp"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.517" />
+
+    <ImageButton
+        android:id="@+id/backb11"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="back"
+        android:onClick="goBack"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="370dp"
+        android:layout_height="302dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/pngwing_com2" />
+
+    <TextView
+        android:id="@+id/logo9"
+        android:layout_width="225dp"
+        android:layout_height="113dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:text="reasy"
+        android:textColor="#ff5c00"
+        android:textFontWeight="1000"
+        android:textSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="374dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="204dp"
+        android:text="Please fill in a shipping address:"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="375dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="284dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

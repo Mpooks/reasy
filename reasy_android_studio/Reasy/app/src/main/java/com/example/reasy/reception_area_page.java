@@ -17,9 +17,6 @@ import java.util.ArrayList;
 
 public class reception_area_page extends AppCompatActivity {
 
-
-
-
     private ArrayList<String> area_name = new ArrayList<String>();
 
     private ArrayList<Integer> area_avaiblt = new ArrayList<Integer>();
@@ -28,6 +25,7 @@ public class reception_area_page extends AppCompatActivity {
 
     private EditText t6;
     private TextView t12;
+    private Button button_arep;
 
     private int id; //for back button
 
@@ -36,6 +34,7 @@ public class reception_area_page extends AppCompatActivity {
 
     // Access the ids list
     ArrayList<Integer> ids = receptionPage.getListIds();
+
 
     public void chooseReceptionArea() {
 
@@ -79,6 +78,15 @@ public class reception_area_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reception_area_page);
+
+        button_arep = (Button)findViewById(R.id.button_arep);
+        button_arep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivy();
+
+            }
+        });
 
 
         // Retrieve the ids list from intent extras
@@ -126,6 +134,11 @@ public class reception_area_page extends AppCompatActivity {
         //Add your data to bundle
         b.putInt("id",id);
         intent.putExtras(b);
+        startActivity(intent);
+    }
+
+    public void openNewActivy(){
+        Intent intent = new Intent(this, cuisine_and_reception_type.class);
         startActivity(intent);
     }
 }

@@ -4,6 +4,137 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".notify_customers_page">
+    tools:context=".customers_time_page"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="-136dp">
+
+    <EditText
+        android:id="@+id/income2"
+        android:layout_width="84dp"
+        android:layout_height="79dp"
+        android:background="@drawable/rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:hint="Balance"
+        android:inputType="numberDecimal|number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.817" />
+
+    <TextView
+        android:id="@+id/logoRecommend"
+        android:layout_width="225dp"
+        android:layout_height="113dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:text="reasy"
+        android:textColor="#ff5c00"
+        android:textFontWeight="1000"
+        android:textSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+
+    <Button
+        android:id="@+id/noButton"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:background="@drawable/orange_button"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:onClick="show"
+        android:text="No"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.882"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <Button
+        android:id="@+id/yesButton"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:background="@drawable/orange_button"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:onClick="show"
+        android:text="Yes"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <TextView
+        android:id="@+id/textViewRecommend"
+        android:layout_width="365dp"
+        android:layout_height="164dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:text="Would you like to notify the customers about the position for an additional cost of 100 euros?"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.246" />
+
+    <ImageButton
+        android:id="@+id/backbRecommend"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="back"
+        android:onClick="goBack"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/imageViewFriends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.627"
+        app:srcCompat="@drawable/friends" />
+
+    <TextView
+        android:id="@+id/textViewBalance"
+        android:layout_width="256dp"
+        android:layout_height="70dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:text="Current Balance :"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.818" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
