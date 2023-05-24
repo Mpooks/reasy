@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.reasy">
+    package="com.example.reasy" >
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -14,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reasy"
         tools:targetApi="31" >
+        <activity
+            android:name=".active_receptions_page"
+            android:exported="false" />
         <activity
             android:name=".cuisine_and_reception_type"
             android:exported="false" />
@@ -68,7 +72,7 @@
         <activity
             android:name=".shipping_address_page"
             android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".address_page"
             android:exported="false"
@@ -159,9 +163,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".available_artists_page"
-            android:exported="false" />
-        <activity
-            android:name=".active_receptions_page"
             android:exported="false" />
         <activity
             android:name=".reception_area_page"
