@@ -33,27 +33,30 @@ public class DBHandler extends SQLiteOpenHelper {
                 + u_name + " VARCHAR(25) NOT NULL,"
                 + u_balance + " DOUBLE NOT NULL)";
         String q1= "CREATE TABLE customer(id INTEGER NOT NULL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE,password VARCHAR(25) NOT NULL, name VARCHAR(25) NOT NULL, balance DOUBLE NOT NULL, points INT NOT NULL, num_of_reservations INT NOT NULL, FOREIGN KEY(id) REFERENCES user(id),FOREIGN KEY(email) REFERENCES user(email),FOREIGN KEY(password) REFERENCES user(password),FOREIGN KEY(name) REFERENCES user(name),FOREIGN KEY(balance) REFERENCES user(balance))";
-        String q2= "CREATE TABLE shop(id INTEGER NOT NULL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE,password VARCHAR(25) NOT NULL, name VARCHAR(25) NOT NULL, balance DOUBLE NOT NULL, address VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, capacity INT NOT NULL, numofrates INT NOT NULL, cuisine_type VARCHAR(25) CHECK( pType IN ('Asian','Italian','Grill') ),income DOUBLE NOT NULL, expenses DOUBLE NOT NULL, goal DOUBLE NOT NULL,rating DOUBLE NOT NULL,phone VARCHAR(25) NOT NULL, FOREIGN KEY(id) REFERENCES user(id),FOREIGN KEY(email) REFERENCES user(email),FOREIGN KEY(password) REFERENCES user(password),FOREIGN KEY(name) REFERENCES user(name),FOREIGN KEY(balance) REFERENCES user(balance))";
-        String q3= "CREATE TABLE artist(id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL,cost DOUBLE NOT NULL, music_genre VARCHAR(25) CHECK( pType IN ('Pop','Rock','Indie') ) NOT NULL)";
-        String q4= "CREATE TABLE waiter(w_id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL,s_id INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
-        String q5= "CREATE TABLE reception_area(id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL,cost DOUBLE NOT NULL,numofguests INT NOT NULL)";
-        String q6= "CREATE TABLE catering(id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL,cost DOUBLE NOT NULL, cuisine_type VARCHAR(25) CHECK( pType IN ('Asian','Italian','Grill') ) NOT NULL)";
-        String q7= "CREATE TABLE supplier(id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL)";
-        String q8= "CREATE TABLE s_table(t_id INTEGER NOT NULL PRIMARY KEY, s_id INT NOT NULL,capacity INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
-        String q9= "CREATE TABLE job_offer(id INTEGER NOT NULL PRIMARY KEY, s_id INT NOT NULL,position VARCHAR(255) NOT NULL, salary DOUBLE NOT NULL, experience DOUBLE, start_date VARCHAR(255) NOT NULL, end_date VARCHAR(255) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
-        String q10= "CREATE TABLE menu(id INTEGER NOT NULL PRIMARY KEY, s_id INT NOT NULL,RATING DOUBLE NOT NULL, numofrates INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
-        String q11= "CREATE TABLE supply(id INTEGER NOT NULL PRIMARY KEY, s_id INT NOT NULL,supplier_id INT NOT NULL, address VARCHAR(255) NOT NULL, sample VARCHAR(25) CHECK( pType IN ('true','false') ) NOT NULL, cost DOUBLE NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(supplier_id) REFERENCES supplier(id))";
-        String q12= "CREATE TABLE c_order(id INTEGER NOT NULL PRIMARY KEY, s_id INT NOT NULL,c_id INT NOT NULL, cost DOUBLE NOT NULL, om CHECK( pType IN ('Online','In person') ) NOT NULL, po CHECK( pType IN ('Online','In person') ) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(c_id) REFERENCES customer(id))";
-        String q13= "CREATE TABLE product(id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL)";
-        String q14= "CREATE TABLE m_product(id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,m_id INT NOT NULL, quantity INT NOT NULL, FOREIGN KEY(m_id) REFERENCES menu(id))";
-        String q15= "CREATE TABLE supplier_product(id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,s_id INT NOT NULL, quantity INT NOT NULL, FOREIGN KEY(s_id) REFERENCES supplier(id))";
-        String q16= "CREATE TABLE o_product(id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,o_id INT NOT NULL, quantity INT NOT NULL, FOREIGN KEY(o_id) REFERENCES c_order(id))";
-        String q17= "CREATE TABLE resrvation(id INTEGER NOT NULL PRIMARY KEY, s_id INT NOT NULL,c_id INT NOT NULL,numofc INT NOT NULL, dateR VARCHAR(255) NOT NULL, time VARCHAR(255) NOT NULL, t_id INT NOT NULL, address VARCHAR(255), requests VARCHAR(255), FOREIGN KEY(s_id) REFERENCES shop(id),FOREIGN KEY(c_id) REFERENCES customer(id),FOREIGN KEY(t_id) REFERENCES s_table(t_id))";
-        String q18= "CREATE TABLE reception(id INTEGER NOT NULL PRIMARY KEY, c_id INT NOT NULL,guests INT NOT NULL, dateR VARCHAR(255) NOT NULL, a_id INT NOT NULL, rad INT NOT NULL, cid INT NOT NULL, FOREIGN KEY(c_id) REFERENCES customer(id),FOREIGN KEY(a_id) REFERENCES artist(id),FOREIGN KEY(rad) REFERENCES reception_area(id),FOREIGN KEY(cid) REFERENCES catering(id))";
-        String q19= "CREATE TABLE calendar(c_id INTEGER NOT NULL PRIMARY KEY, r_id INT NOT NULL PRIMARY KEY, dateC VARCHAR(255) NOT NULL, FOREIGN KEY(c_id) REFERENCES customer(id),FOREIGN KEY(r_id) REFERENCES reception(id))";
-        String q20= "CREATE TABLE n_t(t_id INTEGER NOT NULL PRIMARY KEY, nt_id INTEGER NOT NULL PRIMARY KEY, FOREIGN KEY(t_id) REFERENCES s_table(t_id),FOREIGN KEY(nt_id) REFERENCES s_table(t_id))";
-        String q21= "CREATE TABLE res_waiter(r_id INTEGER NOT NULL PRIMARY KEY, w_id INT NOT NULL PRIMARY KEY, FOREIGN KEY(r_id) REFERENCES reservation(id),FOREIGN KEY(w_id) REFERENCES waiter(w_id))";
-        String q22= "CREATE TABLE wo(id INTEGER NOT NULL PRIMARY KEY, s_day VARCHAR(25) CHECK( pType IN ('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') ) NOT NULL PRIMARY KEY, w_time VARCHAR(25) NOT NULL, FOREIGN KEY(id) REFERENCES shop(id))";
+        String q2= "CREATE TABLE shop(id INTEGER NOT NULL PRIMARY KEY, email VARCHAR(255) NOT NULL UNIQUE,password VARCHAR(25) NOT NULL, name VARCHAR(25) NOT NULL, balance DOUBLE NOT NULL, address VARCHAR(255) NOT NULL, city VARCHAR(255) NOT NULL, capacity INT NOT NULL, numofrates INT NOT NULL, cuisine_type VARCHAR(25) NOT NULL,income DOUBLE NOT NULL, expenses DOUBLE NOT NULL, goal DOUBLE NOT NULL,rating DOUBLE NOT NULL,phone VARCHAR(25) NOT NULL, FOREIGN KEY(id) REFERENCES user(id),FOREIGN KEY(email) REFERENCES user(email),FOREIGN KEY(password) REFERENCES user(password),FOREIGN KEY(name) REFERENCES user(name),FOREIGN KEY(balance) REFERENCES user(balance))";
+        String q3= "CREATE TABLE artist(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL,cost DOUBLE NOT NULL, music_genre VARCHAR(25) NOT NULL)";
+        String q4= "CREATE TABLE waiter(w_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL,s_id INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
+        String q5= "CREATE TABLE reception_area(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL,cost DOUBLE NOT NULL,numofguests INT NOT NULL)";
+        String q6= "CREATE TABLE catering(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL,cost DOUBLE NOT NULL, music_genre VARCHAR(25) NOT NULL)";
+        String q7= "CREATE TABLE supplier(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL)";
+        String q8= "CREATE TABLE s_table(t_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,capacity INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
+        String q9= "CREATE TABLE job_offer(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,position VARCHAR(255) NOT NULL, salary DOUBLE NOT NULL, experience DOUBLE, start_date VARCHAR(255) NOT NULL, end_date VARCHAR(255) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
+        String q10= "CREATE TABLE menu(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,RATING DOUBLE NOT NULL, numofrates INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
+        String q11= "CREATE TABLE supply(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,supplier_id INT NOT NULL, address VARCHAR(255) NOT NULL, sample VARCHAR(25) NOT NULL, cost DOUBLE NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(supplier_id) REFERENCES supplier(id))";
+        String q12= "CREATE TABLE c_order(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,c_id INT NOT NULL, cost DOUBLE NOT NULL, om VARCHAR(25) NOT NULL, pm VARCHAR(25) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(c_id) REFERENCES customer(id))";
+        String q13= "CREATE TABLE product(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL)";
+        String q14= "CREATE TABLE m_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,m_id INT NOT NULL, quantity INT NOT NULL, PRIMARY KEY(id,m_id), FOREIGN KEY(m_id) REFERENCES menu(id))";
+        String q15= "CREATE TABLE supplier_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,s_id INT NOT NULL, quantity INT NOT NULL,PRIMARY KEY(id,s_id), FOREIGN KEY(s_id) REFERENCES supplier(id))";
+        String q16= "CREATE TABLE o_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,o_id INT NOT NULL, quantity INT NOT NULL,PRIMARY KEY(id,o_id), FOREIGN KEY(o_id) REFERENCES c_order(id))";
+        String q17= "CREATE TABLE reservation(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,c_id INT NOT NULL,numofc INT NOT NULL, dateR VARCHAR(255) NOT NULL, time VARCHAR(255) NOT NULL, t_id INT NOT NULL, address VARCHAR(255), requests VARCHAR(255), FOREIGN KEY(s_id) REFERENCES shop(id),FOREIGN KEY(c_id) REFERENCES customer(id),FOREIGN KEY(t_id) REFERENCES s_table(t_id))";
+        String q18= "CREATE TABLE reception(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, c_id INT NOT NULL,guests INT NOT NULL, dateR VARCHAR(255) NOT NULL, a_id INT NOT NULL, rad INT NOT NULL, cid INT NOT NULL, FOREIGN KEY(c_id) REFERENCES customer(id),FOREIGN KEY(a_id) REFERENCES artist(id),FOREIGN KEY(rad) REFERENCES reception_area(id),FOREIGN KEY(cid) REFERENCES catering(id))";
+        String q19= "CREATE TABLE calendar(c_id INTEGER NOT NULL, r_id INT NOT NULL, dateC VARCHAR(255) NOT NULL, PRIMARY KEY(c_id,r_id), FOREIGN KEY(c_id) REFERENCES customer(id),FOREIGN KEY(r_id) REFERENCES reception(id))";
+        String q20= "CREATE TABLE n_t(t_id INTEGER NOT NULL, nt_id INTEGER NOT NULL, PRIMARY KEY(t_id,nt_id), FOREIGN KEY(t_id) REFERENCES s_table(t_id),FOREIGN KEY(nt_id) REFERENCES s_table(t_id))";
+        String q21= "CREATE TABLE res_waiter(r_id INTEGER NOT NULL, w_id INT NOT NULL, PRIMARY KEY(r_id,w_id), FOREIGN KEY(r_id) REFERENCES reservation(id),FOREIGN KEY(w_id) REFERENCES waiter(w_id))";
+        String q22= "CREATE TABLE wo(id INTEGER NOT NULL, s_day VARCHAR(25) NOT NULL, w_time VARCHAR(25) NOT NULL, PRIMARY KEY(id,s_day), FOREIGN KEY(id) REFERENCES shop(id))";
+        String q23= "CREATE TABLE rating(s_id INT NOT NULL, c_id NOT NULL, evaluation DOUBLE NOT NULL, PRIMARY KEY(s_id,c_id), FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(c_id) REFERENCES customer(id))";
+        String q24= "CREATE TABLE supply_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,s_id INT NOT NULL, quantity INT NOT NULL, PRIMARY KEY(id,s_id), FOREIGN KEY(s_id) REFERENCES supply(id))";
+
         db.execSQL(query);
         db.execSQL(q1);
         db.execSQL(q2);
@@ -77,6 +80,8 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(q20);
         db.execSQL(q21);
         db.execSQL(q22);
+        db.execSQL(q23);
+        db.execSQL(q24);
 
         String query1 = "INSERT INTO " + u_TABLE_NAME + " VALUES(2,\"mats@gmail.com\",\"123\",\"Matsuhisa Athens\",1287),(1,\"sal@gmail.com\",\"123\",\"Salumeria\",721.56),(4,\"meze@gmail.com\",\"123\",\"MEZE MEZE\",867),(3,\"pen@gmail.com\",\"123\",\"Peñarrubia Lounge\",987.55),(5,\"josh@gmail.com\",\"123\",\"Josh Payne\",450),(6,\"alex@gmail.com\",\"123\",\"Alex Meyers\",5000),(7,\"kurtis@gmail.com\",\"123\",\"Kurtis Conner\",50),(8,\"danny@gmail.com\",\"123\",\"Danny Gonzalez\",128)";
         String i1 = "INSERT INTO customer VALUES(5,\"josh@gmail.com\",\"123\",\"Josh Payne\",450,25,3),(6,\"alex@gmail.com\",\"123\",\"Alex Meyers\",5000,12,1),(7,\"kurtis@gmail.com\",\"123\",\"Kurtis Conner\",50,134,1),(8,\"danny@gmail.com\",\"123\",\"Danny Gonzalez\",128,0,0)";
@@ -86,11 +91,49 @@ public class DBHandler extends SQLiteOpenHelper {
         String i5= "INSERT INTO reception_area VALUES(1,\"Haven\",2000,500),(2,\"Pantheon\",1500,200)";
         String i6= "INSERT INTO catering VALUES(1,\"CanRec\",500,\"Asian\"),(2,\"Eataly\",450,\"Italian\")";
         String i7= "INSERT INTO supplier VALUES(1,\"Jim\"),(2,\"Mike\"),(3,\"Phil\")";
-        String i8= "";
-
+        String i8= "INSERT INTO s_table VALUES(1,3,2),(2,1,2),(3,4,3),(4,2,4),(5,2,2),(6,3,6);";
+        String i9= "INSERT INTO job_offer VALUES(1,2,\"waiter\",800,2.5,\"2023-05-20\",\"2023-06-06\")";
+        String i10= "INSERT INTO menu VALUES(1,1,4.5,34),(2,2,4.8,340),(3,3,4.5,128),(4,4,4.2,560)";
+        String i11= "INSERT INTO supply VALUES(1,3,1,\"Leoforos Poseidonos 20 Athens\",\"true\",20.5)";
+        String i12= "INSERT INTO c_order VALUES(1,2,5,250,\"Online\",\"Online\")";
+        String i13= "INSERT INTO product VALUES(1,\"First Time Omakase\", 100),(2,\"Special Omakase\", 250),(3,\"Crispy Rice Spicy Salmon\", 35),(4,\"Wagyu Tacos\", 50),(5,\"Benedict\", 8),(6,\"Mmontreal\", 8.5),(7,\"Meze Meze Salad\", 7.8),(8,\"Cheese plateau\", 16),(9,\"Tomatoes\", 0.5125),(10,\"Potatoes\", 0.34),(11,\"Cucumbers\", 0.65),(12,\"Eggplants\", 0.89),(13,\"Carrots\", 0.42),(14,\"Lettuce\", 0.75)";
+        String i14= "INSERT INTO m_product VALUES(1,\"First Time Omakase\", 100,2,23),(2,\"Special Omakase\", 250,2,2),(3,\"Crispy Rice Spicy Salmon\", 35,2,18),(4,\"Wagyu Tacos\", 50,2,7),(5,\"Benedict\", 8,3,16),(6,\"Mmontreal\", 8.5,3,9),(7,\"Meze Meze Salad\", 7.8,4,23),(8,\"Cheese plateau\", 16,1,7)";
+        String i15= "INSERT INTO supplier_product VALUES(9,\"Tomatoes\", 0.5125,1,80),(10,\"Potatoes\", 0.34,1,34),(11,\"Cucumbers\", 0.65,2,23),(12,\"Eggplants\", 0.89,2,34),(13,\"Carrots\", 0.42,3,69),(14,\"Lettuce\", 0.75,3,54)";
+        String i16= "INSERT INTO o_product VALUES(1,\"First Time Omakase\",100,1,2),(4,\"Wagyu Tacos\", 50,1,1)";
+        String i17= "INSERT INTO reservation VALUES(1,1,5,2,\"2023-05-20\",\"20:30\",2,null,null),(2,2,5,4,\"2023-05-19\",\"21:30\",4,null,null),(3,2,5,2,\"2023-05-01\",\"20:30\",5,null,null),(4,3,6,2,\"2023-05-20\",\"22:30\",1,null,null),(5,4,7,3,\"2023-05-01\",\"19:30\",3,null,null)";
+        String i18= "INSERT INTO reception VALUES(1,5,125,\"2023-05-25\",1,1,1)";
+        String i19= "INSERT INTO calendar VALUES(6,1,\"2023-05-25\"),(7,1,\"2023-05-25\")";
+        String i20= "INSERT INTO n_t VALUES(1,6),(6,1),(4,5),(5,4)";
+        String i21= "INSERT INTO res_waiter VALUES(1,2),(2,1),(3,3),(4,4),(5,5)";
+        String i22= "INSERT INTO wo VALUES(1,\"Monday\",\"8:00-18:00\"),(1,\"Tuesday\",\"8:00-21:00\"),(1,\"Wednesday\",\"8:00-21:00\"),(1,\"Thursday\",\"8:00-21:00\"),(1,\"Friday\",\"8:00-21:00\"),(1,\"Saturday\",\"8:00-21:00\"),(1,\"Sunday\",\"closed\"),(2,\"Monday\",\"8:00-18:00\"),(2,\"Tuesday\",\"8:00-21:00\"),(2,\"Wednesday\",\"8:00-21:00\"),(2,\"Thursday\",\"8:00-21:00\"),(2,\"Friday\",\"8:00-21:00\"),(2,\"Saturday\",\"8:00-21:00\"),(2,\"Sunday\",\"closed\"),(3,\"Monday\",\"8:00-18:00\"),(3,\"Tuesday\",\"8:00-21:00\"),(3,\"Wednesday\",\"8:00-21:00\"),(3,\"Thursday\",\"8:00-21:00\"),(3,\"Friday\",\"8:00-21:00\"),(3,\"Saturday\",\"8:00-21:00\"),(3,\"Sunday\",\"closed\"),(4,\"Monday\",\"8:00-18:00\"),(4,\"Tuesday\",\"8:00-21:00\"),(4,\"Wednesday\",\"8:00-21:00\"),(4,\"Thursday\",\"8:00-21:00\"),(4,\"Friday\",\"8:00-21:00\"),(4,\"Saturday\",\"8:00-21:00\"),(4,\"Sunday\",\"closed\")";
+        String i23= "INSERT INTO rating VALUES(2,1,4.3)";
+        String i24= "INSERT INTO supply_product VALUES(9,\"Tomatoes\",0.5125,1,40)";
 
         db.execSQL(query1);
-
+        db.execSQL(i1);
+        db.execSQL(i2);
+        db.execSQL(i3);
+        db.execSQL(i4);
+        db.execSQL(i5);
+        db.execSQL(i6);
+        db.execSQL(i7);
+        db.execSQL(i8);
+        db.execSQL(i9);
+        db.execSQL(i10);
+        db.execSQL(i11);
+        db.execSQL(i12);
+        db.execSQL(i13);
+        db.execSQL(i14);
+        db.execSQL(i15);
+        db.execSQL(i16);
+        db.execSQL(i17);
+        db.execSQL(i18);
+        db.execSQL(i19);
+        db.execSQL(i20);
+        db.execSQL(i21);
+        db.execSQL(i22);
+        db.execSQL(i23);
+        db.execSQL(i24);
     }
 
 
