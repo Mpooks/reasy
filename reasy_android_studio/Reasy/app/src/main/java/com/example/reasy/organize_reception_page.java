@@ -28,6 +28,8 @@ public class organize_reception_page extends AppCompatActivity {
     private Button btn1,btn2;
      EditText t1,t2,t3,t4;
 
+    EditText a2,a3,a4;      //edit text for auto transport
+
      TextView t5;
 
     private int n1,n2,n3,n4, id;
@@ -120,8 +122,53 @@ public class organize_reception_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organize_reception_page);
 
+        a2 = findViewById(R.id.t2);
+        a3 = findViewById(R.id.t3);
+        a4 = findViewById(R.id.t4);
 
 
+        a2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(a2.getText().toString().length()==4){
+                    a3.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+        a3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(a3.getText().toString().length()==2){
+                    a4.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 
 
