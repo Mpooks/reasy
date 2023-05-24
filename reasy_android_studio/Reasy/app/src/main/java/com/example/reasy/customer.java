@@ -85,7 +85,6 @@ public class customer extends user{
     public static ArrayList<customer> getCustomer(Context c){
         try {
             DatabaseManager dbm = new DatabaseManager(c);
-            c.deleteDatabase("reasy_db");
             dbm.open();
             Cursor cursor=dbm.fetchC();
             ArrayList<customer> cl = new ArrayList<>();

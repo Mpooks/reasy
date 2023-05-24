@@ -45,10 +45,27 @@ public class shop extends user{
 
     /*public ArrayList<supply> getSupplyHistory(){
         return supply_history;
-    }
-    public ArrayList<String> getOpeningHours(){
-        return opening_hours;
     }*/
+    public static ArrayList<String> getOpeningHours(Context c, int sid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchOH(sid);
+            ArrayList<String> oh = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    oh.add(cursor.getString(0));
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+            dbm.close();
+            return oh;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public int getCapacity(){
         return capacity;
     }

@@ -20,14 +20,12 @@ public class calendar_page extends AppCompatActivity {
     private ArrayList<String> oh;
     private LinearLayout linearLayout;
     private ArrayList<shop> slist=new ArrayList<>();
-    private main_lists ml;
     private CalendarView calendar;
     private TextView date_view;
     private TextView text3,text4;
     private String dateb,n,d;
     public void chooseDate(){
-    /*    ml= main_lists.createLists();
-        slist = (ArrayList<shop>) ml.getShop_list().clone();
+        slist=shop.getShops(calendar_page.this);
         Bundle bundle = getIntent().getExtras();
         oh= bundle.getStringArrayList("open");
         id= bundle.getInt("id");
@@ -62,19 +60,19 @@ public class calendar_page extends AppCompatActivity {
                 Date d1 = (new GregorianCalendar(year, month, dayOfMonth)).getTime();
                 d= (String) android.text.format.DateFormat.format("EEEE", d1);
                 switch(d){
-                    case "Sunday":val=0;
+                    case "Sunday":val=6;
                     break;
-                    case "Monday":val=1;
+                    case "Monday":val=0;
                     break;
-                    case "Tuesday":val=2;
+                    case "Tuesday":val=1;
                     break;
-                    case "Wednesday":val=3;
+                    case "Wednesday":val=2;
                     break;
-                    case "Thursday":val=4;
+                    case "Thursday":val=3;
                     break;
-                    case "Friday":val=5;
+                    case "Friday":val=4;
                     break;
-                    case "Saturday":val=6;
+                    case "Saturday":val=5;
                     break;
                 }
                 if((oh.get(val).compareTo("closed"))==0){
@@ -116,10 +114,11 @@ public class calendar_page extends AppCompatActivity {
             b.putStringArrayList("open", oh);
             intent.putExtras(b);
             startActivity(intent);
+
         }
         else{
             date_view.setText("This shop is closed for the chosen date");
-        }*/
+        }
     }
     public void goBack(View v){
         Intent intent=new Intent(this,chosen_shop_page.class);

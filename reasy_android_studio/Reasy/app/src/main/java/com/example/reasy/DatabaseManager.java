@@ -64,6 +64,13 @@ public class DatabaseManager {
         }
         return c;
     }
+    public Cursor fetchOH(int sid){
+        Cursor c = db.rawQuery("SELECT w_time FROM wo WHERE id="+sid, null);
+        if(c !=null){
+            c.moveToFirst();
+        }
+        return c;
+    }
     public int update(int id, String email, String password, String name, double balance){
         ContentValues contentValues=new ContentValues();
         contentValues.put(DBHandler.u_email, email);

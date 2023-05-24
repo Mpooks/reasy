@@ -34,7 +34,7 @@ public class chosen_shop_page extends AppCompatActivity {
                 a=s.getAddress();
                 p=s.getPhone();
                 arrayList = s.getShop_m(chosen_shop_page.this,sid);
-                //oh=(ArrayList<String>) s.getOpeningHours();
+                oh=s.getOpeningHours(chosen_shop_page.this,sid);
             }
         }
         linearLayout = findViewById(R.id.linear_layout);

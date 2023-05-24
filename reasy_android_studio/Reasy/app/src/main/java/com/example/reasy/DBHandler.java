@@ -41,7 +41,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String q7= "CREATE TABLE supplier(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL)";
         String q8= "CREATE TABLE s_table(t_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,capacity INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
         String q9= "CREATE TABLE job_offer(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,position VARCHAR(255) NOT NULL, salary DOUBLE NOT NULL, experience DOUBLE, start_date VARCHAR(255) NOT NULL, end_date VARCHAR(255) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
-        String q10= "CREATE TABLE menu(s_id INT NOT NULL PRIMARY KEY,RATING DOUBLE NOT NULL, numofrates INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
+        String q10= "CREATE TABLE menu(s_id INT NOT NULL PRIMARY KEY,rating DOUBLE NOT NULL, numofrates INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
         String q11= "CREATE TABLE supply(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,supplier_id INT NOT NULL, address VARCHAR(255) NOT NULL, sample VARCHAR(25) NOT NULL, cost DOUBLE NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(supplier_id) REFERENCES supplier(id))";
         String q12= "CREATE TABLE c_order(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,c_id INT NOT NULL, cost DOUBLE NOT NULL, om VARCHAR(25) NOT NULL, pm VARCHAR(25) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(c_id) REFERENCES customer(id))";
         String q13= "CREATE TABLE product(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL)";
@@ -53,9 +53,11 @@ public class DBHandler extends SQLiteOpenHelper {
         String q19= "CREATE TABLE calendar(c_id INTEGER NOT NULL, r_id INT NOT NULL, dateC VARCHAR(255) NOT NULL, PRIMARY KEY(c_id,r_id), FOREIGN KEY(c_id) REFERENCES customer(id),FOREIGN KEY(r_id) REFERENCES reception(id))";
         String q20= "CREATE TABLE n_t(t_id INTEGER NOT NULL, nt_id INTEGER NOT NULL, PRIMARY KEY(t_id,nt_id), FOREIGN KEY(t_id) REFERENCES s_table(t_id),FOREIGN KEY(nt_id) REFERENCES s_table(t_id))";
         String q21= "CREATE TABLE res_waiter(r_id INTEGER NOT NULL, w_id INT NOT NULL, PRIMARY KEY(r_id,w_id), FOREIGN KEY(r_id) REFERENCES reservation(id),FOREIGN KEY(w_id) REFERENCES waiter(w_id))";
-        String q22= "CREATE TABLE wo(id INTEGER NOT NULL, s_day VARCHAR(25) NOT NULL, w_time VARCHAR(25) NOT NULL, PRIMARY KEY(id,s_day), FOREIGN KEY(id) REFERENCES shop(id))";
+        String q22= "CREATE TABLE wo(id INTEGER NOT NULL, s_day INTEGER NOT NULL, w_time VARCHAR(25) NOT NULL, PRIMARY KEY(id,s_day), FOREIGN KEY(id) REFERENCES shop(id))";
         String q23= "CREATE TABLE rating(s_id INT NOT NULL, c_id NOT NULL, evaluation DOUBLE NOT NULL, PRIMARY KEY(s_id,c_id), FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(c_id) REFERENCES customer(id))";
         String q24= "CREATE TABLE supply_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,s_id INT NOT NULL, quantity INT NOT NULL, PRIMARY KEY(id,s_id), FOREIGN KEY(s_id) REFERENCES supply(id))";
+        String q25= "CREATE TABLE friend(id INTEGER NOT NULL, f_id INT NOT NULL, PRIMARY KEY(id,f_id), FOREIGN KEY(id) REFERENCES customer(id), FOREIGN KEY(f_id) REFERENCES customer(id))";
+        String q26= "CREATE TABLE notif(sid INT NOT NULL, cid INT NOT NULL, jid INT NOT NULL, PRIMARY KEY(sid,cid,jid),  FOREIGN KEY(sid) REFERENCES shop(id), FOREIGN KEY(cid) REFERENCES customer(id), FOREIGN KEY(jid) REFERENCES job_offer(id))";
 
         db.execSQL(query);
         db.execSQL(q1);
@@ -82,6 +84,8 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(q22);
         db.execSQL(q23);
         db.execSQL(q24);
+        db.execSQL(q25);
+        db.execSQL(q26);
 
         String query1 = "INSERT INTO " + u_TABLE_NAME + " VALUES(2,\"mats@gmail.com\",\"123\",\"Matsuhisa Athens\",1287),(1,\"sal@gmail.com\",\"123\",\"Salumeria\",721.56),(4,\"meze@gmail.com\",\"123\",\"MEZE MEZE\",867),(3,\"pen@gmail.com\",\"123\",\"Peñarrubia Lounge\",987.55),(5,\"josh@gmail.com\",\"123\",\"Josh Payne\",450),(6,\"alex@gmail.com\",\"123\",\"Alex Meyers\",5000),(7,\"kurtis@gmail.com\",\"123\",\"Kurtis Conner\",50),(8,\"danny@gmail.com\",\"123\",\"Danny Gonzalez\",128)";
         String i1 = "INSERT INTO customer VALUES(5,\"josh@gmail.com\",\"123\",\"Josh Payne\",450,25,3),(6,\"alex@gmail.com\",\"123\",\"Alex Meyers\",5000,12,1),(7,\"kurtis@gmail.com\",\"123\",\"Kurtis Conner\",50,134,1),(8,\"danny@gmail.com\",\"123\",\"Danny Gonzalez\",128,0,0)";
@@ -105,9 +109,10 @@ public class DBHandler extends SQLiteOpenHelper {
         String i19= "INSERT INTO calendar VALUES(6,1,\"2023-05-25\"),(7,1,\"2023-05-25\")";
         String i20= "INSERT INTO n_t VALUES(1,6),(6,1),(4,5),(5,4)";
         String i21= "INSERT INTO res_waiter VALUES(1,2),(2,1),(3,3),(4,4),(5,5)";
-        String i22= "INSERT INTO wo VALUES(1,\"Monday\",\"8:00-18:00\"),(1,\"Tuesday\",\"8:00-21:00\"),(1,\"Wednesday\",\"8:00-21:00\"),(1,\"Thursday\",\"8:00-21:00\"),(1,\"Friday\",\"8:00-21:00\"),(1,\"Saturday\",\"8:00-21:00\"),(1,\"Sunday\",\"closed\"),(2,\"Monday\",\"8:00-18:00\"),(2,\"Tuesday\",\"8:00-21:00\"),(2,\"Wednesday\",\"8:00-21:00\"),(2,\"Thursday\",\"8:00-21:00\"),(2,\"Friday\",\"8:00-21:00\"),(2,\"Saturday\",\"8:00-21:00\"),(2,\"Sunday\",\"closed\"),(3,\"Monday\",\"8:00-18:00\"),(3,\"Tuesday\",\"8:00-21:00\"),(3,\"Wednesday\",\"8:00-21:00\"),(3,\"Thursday\",\"8:00-21:00\"),(3,\"Friday\",\"8:00-21:00\"),(3,\"Saturday\",\"8:00-21:00\"),(3,\"Sunday\",\"closed\"),(4,\"Monday\",\"8:00-18:00\"),(4,\"Tuesday\",\"8:00-21:00\"),(4,\"Wednesday\",\"8:00-21:00\"),(4,\"Thursday\",\"8:00-21:00\"),(4,\"Friday\",\"8:00-21:00\"),(4,\"Saturday\",\"8:00-21:00\"),(4,\"Sunday\",\"closed\")";
+        String i22= "INSERT INTO wo VALUES(1,0,\"8:00-18:00\"),(1,1,\"8:00-21:00\"),(1,2,\"8:00-21:00\"),(1,3,\"8:00-21:00\"),(1,4,\"8:00-21:00\"),(1,5,\"8:00-21:00\"),(1,6,\"closed\"),(2,0,\"8:00-18:00\"),(2,1,\"8:00-21:00\"),(2,2,\"8:00-21:00\"),(2,3,\"8:00-21:00\"),(2,4,\"8:00-21:00\"),(2,5,\"8:00-21:00\"),(2,6,\"closed\"),(3,0,\"8:00-18:00\"),(3,1,\"8:00-21:00\"),(3,2,\"8:00-21:00\"),(3,3,\"8:00-21:00\"),(3,4,\"8:00-21:00\"),(3,5,\"8:00-21:00\"),(3,6,\"closed\"),(4,0,\"8:00-18:00\"),(4,1,\"8:00-21:00\"),(4,2,\"8:00-21:00\"),(4,3,\"8:00-21:00\"),(4,4,\"8:00-21:00\"),(4,5,\"8:00-21:00\"),(4,6,\"closed\")";
         String i23= "INSERT INTO rating VALUES(2,1,4.3)";
         String i24= "INSERT INTO supply_product VALUES(9,\"Tomatoes\",0.5125,1,40)";
+        String i25= "INSERT INTO friend VALUES(1,2),(1,3),(2,1),(2,4),(3,1),(4,2)";
 
         db.execSQL(query1);
         db.execSQL(i1);
@@ -134,6 +139,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(i22);
         db.execSQL(i23);
         db.execSQL(i24);
+        db.execSQL(i25);
     }
 
 
