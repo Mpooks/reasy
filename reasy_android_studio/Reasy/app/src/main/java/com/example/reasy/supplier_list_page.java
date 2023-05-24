@@ -33,7 +33,7 @@ public class supplier_list_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier_list_page);
         linearLayout = findViewById(R.id.linear_layout);
-        ml= main_lists.createLists();
+        //ml= main_lists.createLists();
         supp_list = (ArrayList<supplier>) ml.getSupplierList().clone();
         for(supplier s: supp_list){
             Button tv = new Button(this);

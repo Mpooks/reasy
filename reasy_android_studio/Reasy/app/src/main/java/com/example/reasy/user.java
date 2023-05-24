@@ -13,15 +13,12 @@ public class user {
     private int id;
     private double balance;
 
-    private ArrayList<reservation> reservations = new ArrayList<reservation>();
-
-    public user(String email, String password, String name, int id, double balance, ArrayList<reservation> reservations) {
+    public user(String email, String password, String name, int id, double balance) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.id = id;
         this.balance = balance;
-        this.reservations = reservations;
     }
 
     public int getId() {
@@ -43,11 +40,11 @@ public class user {
     public void setBalance(float balance){
         this.balance=balance;
     }
-    public void saveToUser(reservation new_res){
+    /*public void saveToUser(reservation new_res){
         reservations= new ArrayList<>();
         reservations.add(new_res);
-    }
-    public ArrayList<reservation> getReservations(){
+    }*/
+    /*public ArrayList<reservation> getReservations(){
         return reservations;
     }
     public void updateRes(int res_id,int waiter_id){
@@ -57,7 +54,7 @@ public class user {
                reservations.get(i).setWaiterToRes(waiter_id);
            }
         }
-    }
+    }*/
 
     public String getName() {
         return name;
@@ -66,7 +63,7 @@ public class user {
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
-        Cursor cursor=dbm.fetch();
+        Cursor cursor=dbm.fetchU();
         ArrayList<user> userl = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
@@ -75,12 +72,13 @@ public class user {
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getString(3),
-                        cursor.getInt(0),cursor.getDouble(4),null));
+                        cursor.getInt(0),cursor.getDouble(4)));
             } while (cursor.moveToNext());
         }
 
-        cursor.close();
-        return userl;
+            cursor.close();
+            dbm.close();
+            return userl;
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }

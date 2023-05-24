@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class search_page extends AppCompatActivity {
     private ArrayList<shop> slist=new ArrayList<>();
-    private main_lists ml;
     private LinearLayout linearLayout;
     private int id,sid;
 
@@ -27,8 +26,7 @@ public class search_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
         linearLayout = findViewById(R.id.linear_layout);
-        ml= main_lists.createLists();
-        slist = (ArrayList<shop>) ml.getShop_list().clone();
+        slist=shop.getShops(search_page.this);
         for(shop s: slist){
             Button tv = new Button(this);
             tv.setText(s.getName());

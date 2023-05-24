@@ -33,13 +33,36 @@ public class DatabaseManager {
 
         db.insert(DBHandler.u_TABLE_NAME, null, values);
     }
-    public Cursor fetch(){
+    public Cursor fetchU(){
         String [] columns = new String[] {DBHandler.u_id,DBHandler.u_email,DBHandler.u_password, DBHandler.u_name,DBHandler.u_balance};
         Cursor cursor = db.query(DBHandler.u_TABLE_NAME,columns,null,null,null,null,null);
         if(cursor !=null){
             cursor.moveToFirst();
         }
         return cursor;
+    }
+    public Cursor fetchS(){
+        String [] columns = new String[] {"id","email","password","name", "balance","address","city","capacity","numofrates","cuisine_type","income","expenses","goal","rating","phone"};
+        Cursor cursor = db.query("shop",columns,null,null,null,null,null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchC(){
+        String [] columns = new String[] {"id","email","password","name", "balance","points","num_of_reservations"};
+        Cursor cursor = db.query("customer",columns,null,null,null,null,null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchPrM(int sid){
+        Cursor c = db.rawQuery("SELECT id,name,cost,quantity FROM m_product WHERE s_id="+sid, null);
+        if(c !=null){
+            c.moveToFirst();
+        }
+        return c;
     }
     public int update(int id, String email, String password, String name, double balance){
         ContentValues contentValues=new ContentValues();

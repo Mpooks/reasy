@@ -147,15 +147,15 @@ public class order_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_page);
         linearLayout = findViewById(R.id.linear_layout);
-        ml= main_lists.createLists();
+        //ml= main_lists.createLists();
         ul = (ArrayList<user>) ml.getUser_list().clone();
         slist = (ArrayList<shop>) ml.getShop_list().clone();
         cl = (ArrayList<customer>) ml.getCustomer_list().clone();
-        for(user u: ul) {
+       /* for(user u: ul) {
             if(u.getId()==id){
                 rl=u.getReservations();
             }
-        }
+        }*/
         for(reservation r: rl)
         {
             TextView tv = new TextView(this);

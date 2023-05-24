@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class address_page extends AppCompatActivity {
-    private int id,sid,cap,tid,nor,noc,max;
+  /*  private int id,sid,cap,tid,nor,noc,max;
     private ArrayList<String> oh;
     private ArrayList<reservation> rl=new ArrayList<>();
     private ArrayList<table> tl=new ArrayList<>();
@@ -127,5 +127,5 @@ public class address_page extends AppCompatActivity {
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-    }
+    }*/
 }

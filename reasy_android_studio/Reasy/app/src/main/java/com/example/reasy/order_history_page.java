@@ -27,7 +27,7 @@ public class order_history_page extends AppCompatActivity {
     private ArrayList<product_menu> pms=new ArrayList<>();
     private ArrayList<order> oh,foundo=new ArrayList<>();
     public void newOrPrevOrder(View view){
-        for(shop s:slist){
+     /*   for(shop s:slist){
             if(s.getId()==sid){
                 smenu=s.getShop_m();
                 pms=smenu.getProducts();
@@ -39,7 +39,7 @@ public class order_history_page extends AppCompatActivity {
                     }
                 }
             }
-        }
+        }*/
         show();
     }
     public void show(){
@@ -63,7 +63,7 @@ public class order_history_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history_page);
         linearLayout = findViewById(R.id.linear_layout);
-        ml= main_lists.createLists();
+       // ml= main_lists.createLists();
         ul = (ArrayList<user>) ml.getUser_list().clone();
         slist = (ArrayList<shop>) ml.getShop_list().clone();
         cl = (ArrayList<customer>) ml.getCustomer_list().clone();

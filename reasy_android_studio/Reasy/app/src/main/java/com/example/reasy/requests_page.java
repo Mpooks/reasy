@@ -71,12 +71,12 @@ public class requests_page extends AppCompatActivity {
         }
         for(user u: ul){
 
-            if (u.getId() == id) {
+            /*if (u.getId() == id) {
                 u.saveToUser(r);
             }
             if(u.getId() == sid){
                 u.saveToUser(r);
-            }
+            }*/
         }
         for (table t : tl) {
             if (t.getTable_id() == tid) {
@@ -89,7 +89,7 @@ public class requests_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests_page);
-        ml= main_lists.createLists();
+        //ml= main_lists.createLists();
         slist = (ArrayList<shop>) ml.getShop_list().clone();
         cl = (ArrayList<customer>) ml.getCustomer_list().clone();
         rl= (ArrayList<reservation>) ml.getRes_list().clone();
@@ -106,7 +106,7 @@ public class requests_page extends AppCompatActivity {
         for(shop s: slist){
             if(s.getId()==sid){
                 n=s.getName();
-                tl=s.getTables();
+               // tl=s.getTables();
             }
         }
         text3 = findViewById(R.id.sname3);

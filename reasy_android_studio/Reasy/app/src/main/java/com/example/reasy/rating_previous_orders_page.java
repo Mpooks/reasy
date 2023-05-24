@@ -36,7 +36,7 @@ public class rating_previous_orders_page extends AppCompatActivity {
 
         linearLayout = findViewById(R.id.linear_layout);
 
-        ml= main_lists.createLists();
+       // ml= main_lists.createLists();
         ul = (ArrayList<user>) ml.getUser_list().clone();
         slist = (ArrayList<shop>) ml.getShop_list().clone();
         cl = (ArrayList<customer>) ml.getCustomer_list().clone();

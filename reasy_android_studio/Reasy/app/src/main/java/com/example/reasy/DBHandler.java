@@ -41,11 +41,11 @@ public class DBHandler extends SQLiteOpenHelper {
         String q7= "CREATE TABLE supplier(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL)";
         String q8= "CREATE TABLE s_table(t_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,capacity INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
         String q9= "CREATE TABLE job_offer(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,position VARCHAR(255) NOT NULL, salary DOUBLE NOT NULL, experience DOUBLE, start_date VARCHAR(255) NOT NULL, end_date VARCHAR(255) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
-        String q10= "CREATE TABLE menu(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,RATING DOUBLE NOT NULL, numofrates INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
+        String q10= "CREATE TABLE menu(s_id INT NOT NULL PRIMARY KEY,RATING DOUBLE NOT NULL, numofrates INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
         String q11= "CREATE TABLE supply(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,supplier_id INT NOT NULL, address VARCHAR(255) NOT NULL, sample VARCHAR(25) NOT NULL, cost DOUBLE NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(supplier_id) REFERENCES supplier(id))";
         String q12= "CREATE TABLE c_order(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,c_id INT NOT NULL, cost DOUBLE NOT NULL, om VARCHAR(25) NOT NULL, pm VARCHAR(25) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(c_id) REFERENCES customer(id))";
         String q13= "CREATE TABLE product(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL)";
-        String q14= "CREATE TABLE m_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,m_id INT NOT NULL, quantity INT NOT NULL, PRIMARY KEY(id,m_id), FOREIGN KEY(m_id) REFERENCES menu(id))";
+        String q14= "CREATE TABLE m_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,s_id INT NOT NULL, quantity INT NOT NULL, PRIMARY KEY(id,s_id), FOREIGN KEY(s_id) REFERENCES menu(s_id))";
         String q15= "CREATE TABLE supplier_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,s_id INT NOT NULL, quantity INT NOT NULL,PRIMARY KEY(id,s_id), FOREIGN KEY(s_id) REFERENCES supplier(id))";
         String q16= "CREATE TABLE o_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,o_id INT NOT NULL, quantity INT NOT NULL,PRIMARY KEY(id,o_id), FOREIGN KEY(o_id) REFERENCES c_order(id))";
         String q17= "CREATE TABLE reservation(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,c_id INT NOT NULL,numofc INT NOT NULL, dateR VARCHAR(255) NOT NULL, time VARCHAR(255) NOT NULL, t_id INT NOT NULL, address VARCHAR(255), requests VARCHAR(255), FOREIGN KEY(s_id) REFERENCES shop(id),FOREIGN KEY(c_id) REFERENCES customer(id),FOREIGN KEY(t_id) REFERENCES s_table(t_id))";
@@ -93,7 +93,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String i7= "INSERT INTO supplier VALUES(1,\"Jim\"),(2,\"Mike\"),(3,\"Phil\")";
         String i8= "INSERT INTO s_table VALUES(1,3,2),(2,1,2),(3,4,3),(4,2,4),(5,2,2),(6,3,6);";
         String i9= "INSERT INTO job_offer VALUES(1,2,\"waiter\",800,2.5,\"2023-05-20\",\"2023-06-06\")";
-        String i10= "INSERT INTO menu VALUES(1,1,4.5,34),(2,2,4.8,340),(3,3,4.5,128),(4,4,4.2,560)";
+        String i10= "INSERT INTO menu VALUES(1,4.5,34),(2,4.8,340),(3,4.5,128),(4,4.2,560)";
         String i11= "INSERT INTO supply VALUES(1,3,1,\"Leoforos Poseidonos 20 Athens\",\"true\",20.5)";
         String i12= "INSERT INTO c_order VALUES(1,2,5,250,\"Online\",\"Online\")";
         String i13= "INSERT INTO product VALUES(1,\"First Time Omakase\", 100),(2,\"Special Omakase\", 250),(3,\"Crispy Rice Spicy Salmon\", 35),(4,\"Wagyu Tacos\", 50),(5,\"Benedict\", 8),(6,\"Mmontreal\", 8.5),(7,\"Meze Meze Salad\", 7.8),(8,\"Cheese plateau\", 16),(9,\"Tomatoes\", 0.5125),(10,\"Potatoes\", 0.34),(11,\"Cucumbers\", 0.65),(12,\"Eggplants\", 0.89),(13,\"Carrots\", 0.42),(14,\"Lettuce\", 0.75)";

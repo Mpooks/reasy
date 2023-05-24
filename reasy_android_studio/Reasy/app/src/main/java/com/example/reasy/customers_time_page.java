@@ -23,7 +23,7 @@ public class customers_time_page extends AppCompatActivity {
     private String n,dateb,tor;
 
     public void chooseNumAndTime(View view){
-        for(shop s: slist){
+       /* for(shop s: slist){
             if(s.getId()==sid){
                 tablel=s.getTables();
             }
@@ -106,7 +106,7 @@ public class customers_time_page extends AppCompatActivity {
                 }
                 show();
             }
-        }
+        }*/
     }
     public void show(){
         Intent intent = new Intent(this, requests_page.class);
@@ -137,7 +137,7 @@ public class customers_time_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customers_time_page);
-        ml= main_lists.createLists();
+        /*ml= main_lists.createLists();
         slist = (ArrayList<shop>) ml.getShop_list().clone();
         Bundle bundle = getIntent().getExtras();
         oh= bundle.getStringArrayList("open");
@@ -154,5 +154,5 @@ public class customers_time_page extends AppCompatActivity {
         text3.setText(n);
         text4 = (TextView)findViewById(R.id.warning3);
         text5 = (TextView)findViewById(R.id.warning5);
-    }
+    */}
 }

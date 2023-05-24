@@ -26,7 +26,7 @@ public class calendar_page extends AppCompatActivity {
     private TextView text3,text4;
     private String dateb,n,d;
     public void chooseDate(){
-        ml= main_lists.createLists();
+    /*    ml= main_lists.createLists();
         slist = (ArrayList<shop>) ml.getShop_list().clone();
         Bundle bundle = getIntent().getExtras();
         oh= bundle.getStringArrayList("open");
@@ -119,7 +119,7 @@ public class calendar_page extends AppCompatActivity {
         }
         else{
             date_view.setText("This shop is closed for the chosen date");
-        }
+        }*/
     }
     public void goBack(View v){
         Intent intent=new Intent(this,chosen_shop_page.class);

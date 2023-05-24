@@ -18,31 +18,26 @@ public class login_page extends AppCompatActivity {
 
     private TextView t;
     private int idu;
-    private main_lists ml;
     private ArrayList<user> ulist=new ArrayList<>();
     private ArrayList<shop> slist=new ArrayList<>();
     private ArrayList<customer> clist=new ArrayList<>();
     EditText emailt,passt;
-    DatabaseManager dbm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
     }
-    public void GCMain(View v) {
-        ml= main_lists.createLists();
-        int found=0;
-        String a=null;
+    public void GCMain(View v) {int found=0;
         emailt=(EditText)findViewById(R.id.email);
         String email=emailt.getText().toString();
         passt=(EditText)findViewById(R.id.pass);
         String pass=passt.getText().toString();
-        //ulist = (ArrayList<user>) ml.getUser_list().clone();
-        slist = (ArrayList<shop>) ml.getShop_list().clone();
-        clist = (ArrayList<customer>) ml.getCustomer_list().clone();
+
         t = findViewById(R.id.logt);
         ulist=user.getUsers(login_page.this);
+        slist=shop.getShops(login_page.this);
+        clist=customer.getCustomer(login_page.this);
         for(user u: ulist){
             if(((u.getEmail()).compareTo(email)==0)&&((u.getPassword()).compareTo(pass)==0)){
                 idu=u.getId();

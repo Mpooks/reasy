@@ -1,5 +1,11 @@
 package com.example.reasy;
 
+import android.content.Context;
+import android.database.Cursor;
+
+import java.sql.SQLDataException;
+import java.util.ArrayList;
+
 public class product_menu extends product{
     public product_menu(int id, String name, double cost, int shop_id, int available_quantity) {
         super(id,name,cost);
@@ -15,5 +21,24 @@ public class product_menu extends product{
     }
     public void updateQuantity(int q){
         available_quantity=available_quantity-q;
+    }
+    public static ArrayList<product_menu> getMenuPr(Context c, int sid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchPrM(sid);
+            ArrayList<product_menu> pm = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    pm.add(new product_menu(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),sid,cursor.getInt(3)));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            dbm.close();
+            return pm;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

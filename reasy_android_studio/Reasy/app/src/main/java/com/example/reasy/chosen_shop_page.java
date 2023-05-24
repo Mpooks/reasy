@@ -20,14 +20,11 @@ public class chosen_shop_page extends AppCompatActivity {
     private ArrayList<String> oh;
     private TextView text3,text4,text5;
     private LinearLayout linearLayout;
-    private menu m;
     private ArrayList<product_menu> arrayList;
-    private main_lists ml;
     private String n,a,p;
 
     public void makeReservation(){
-        ml= main_lists.createLists();
-        slist = (ArrayList<shop>) ml.getShop_list().clone();
+        slist=shop.getShops(chosen_shop_page.this);
         Bundle bundle = getIntent().getExtras();
         id= bundle.getInt("id");
         sid= bundle.getInt("sid");
@@ -36,9 +33,8 @@ public class chosen_shop_page extends AppCompatActivity {
                 n=s.getName();
                 a=s.getAddress();
                 p=s.getPhone();
-                m = s.getShop_m();
-                arrayList=(ArrayList<product_menu>) m.getProducts().clone();
-                oh=(ArrayList<String>) s.getOpeningHours();
+                arrayList = s.getShop_m(chosen_shop_page.this,sid);
+                //oh=(ArrayList<String>) s.getOpeningHours();
             }
         }
         linearLayout = findViewById(R.id.linear_layout);

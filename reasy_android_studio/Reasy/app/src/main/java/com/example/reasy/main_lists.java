@@ -63,7 +63,7 @@ public class main_lists {
         job_offers.add(jo);
     }
 
-    public static main_lists createLists(){
+    /*public static main_lists createLists(){
         reservation res1 = new reservation(1,5,1,2,"2023-05-20","20:30",2,null,2,null);
         reservation res2 = new reservation(2,5,2,4,"2023-05-19","21:30",4,null,1,null);
         reservation res3 = new reservation(2,5,3,2,"2023-05-01","20:30",5,null,3,null);
@@ -281,6 +281,6 @@ public class main_lists {
         ulist.add(u8);
         main_lists list = new main_lists(slist,clist,ulist,jl,recl,cl,al,suppl,allres);
         return list;
-    }
+    }*/
 
 }

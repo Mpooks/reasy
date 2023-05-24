@@ -37,7 +37,7 @@ public class main_page extends AppCompatActivity {
         b.putInt("id", id);
         intent.putExtras(b);
         startActivity(intent);
-    } //edw prepei na se paei se katasthmata
+    }
 
     public void createRec(View v){
         Intent intent=new Intent(this,organize_reception_page.class);

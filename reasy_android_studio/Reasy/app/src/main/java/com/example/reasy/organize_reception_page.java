@@ -55,7 +55,7 @@ public class organize_reception_page extends AppCompatActivity {
         String input4 = t4.getText().toString();
 
 
-        ml= main_lists.createLists();
+       // ml= main_lists.createLists();
         ral = (ArrayList<reception_area>) ml.getReceptionArea().clone();
 
 
