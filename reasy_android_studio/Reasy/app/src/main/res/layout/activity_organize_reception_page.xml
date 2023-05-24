@@ -145,6 +145,34 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
+
+    <TextView
+        android:id="@+id/firstbckspc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="83dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:text="/"
+        android:textColor="@color/gray"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/t3"
+        app:layout_constraintStart_toEndOf="@+id/t2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/secondbckspc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="83dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:text="/"
+        android:textColor="@color/gray"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/t4"
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toEndOf="@+id/t3"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -165,7 +193,7 @@
     <Button
         android:id="@+id/btn1"
         android:layout_width="254dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="212dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
@@ -181,7 +209,7 @@
     <Button
         android:id="@+id/btn2"
         android:layout_width="179dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
@@ -199,6 +227,7 @@
         android:layout_width="219dp"
         android:layout_height="110dp"
         android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:text="Message"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btn2"
@@ -210,8 +239,8 @@
 
     <ImageView
         android:id="@+id/imageView25"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_width="394dp"
+        android:layout_height="217dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/reception_calendar" />
