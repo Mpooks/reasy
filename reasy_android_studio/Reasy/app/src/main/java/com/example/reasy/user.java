@@ -44,10 +44,8 @@ public class user {
         reservations= new ArrayList<>();
         reservations.add(new_res);
     }*/
-    /*public ArrayList<reservation> getReservations(){
-        return reservations;
-    }
-    public void updateRes(int res_id,int waiter_id){
+
+    /*public void updateRes(int res_id,int waiter_id){
         for(int i=0;i<reservations.size();i++){
            int j= (reservations.get(i)).getReservation_id();
            if(res_id==j){

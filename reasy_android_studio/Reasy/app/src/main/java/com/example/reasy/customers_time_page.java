@@ -17,17 +17,11 @@ public class customers_time_page extends AppCompatActivity {
     private ArrayList<reservation> r;
     private ArrayList<table> tablel;
     private ArrayList<shop> slist=new ArrayList<>();
-    private main_lists ml;
     private TextView text3,text4,text5;
     private EditText p,t;
     private String n,dateb,tor;
 
     public void chooseNumAndTime(View view){
-       /* for(shop s: slist){
-            if(s.getId()==sid){
-                tablel=s.getTables();
-            }
-        }
         p = findViewById(R.id.editTextNumber);
         t = findViewById(R.id.editTextTime);
         if(p.getText().toString().length()==0){
@@ -80,7 +74,7 @@ public class customers_time_page extends AppCompatActivity {
             tor=t.getText().toString();
             for(table ta: tablel){
                 if(ta.getCapacity()>=g){
-                    r=ta.getReservations();
+                    r=ta.getReservations(customers_time_page.this,ta.getTable_id());
                     for(reservation tr: r){
                         String time_r=tr.getTime(dateb);
                         if(time_r.compareTo(t.getText().toString())==0){
@@ -106,7 +100,7 @@ public class customers_time_page extends AppCompatActivity {
                 }
                 show();
             }
-        }*/
+        }
     }
     public void show(){
         Intent intent = new Intent(this, requests_page.class);
@@ -137,8 +131,7 @@ public class customers_time_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customers_time_page);
-        /*ml= main_lists.createLists();
-        slist = (ArrayList<shop>) ml.getShop_list().clone();
+        slist=shop.getShops(customers_time_page.this);
         Bundle bundle = getIntent().getExtras();
         oh= bundle.getStringArrayList("open");
         id= bundle.getInt("id");
@@ -148,11 +141,13 @@ public class customers_time_page extends AppCompatActivity {
         for(shop s: slist){
             if(s.getId()==sid){
                 n=s.getName();
+                tablel=s.getTables(customers_time_page.this,sid);
+
             }
         }
         text3 = findViewById(R.id.sname2);
         text3.setText(n);
         text4 = (TextView)findViewById(R.id.warning3);
         text5 = (TextView)findViewById(R.id.warning5);
-    */}
+    }
 }

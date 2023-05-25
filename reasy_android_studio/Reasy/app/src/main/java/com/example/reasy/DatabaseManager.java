@@ -71,6 +71,37 @@ public class DatabaseManager {
         }
         return c;
     }
+    public Cursor fetchTables(int sid){
+        Cursor c = db.rawQuery("SELECT t_id,capacity FROM s_table WHERE s_id="+sid, null);
+        if(c !=null){
+            c.moveToFirst();
+        }
+        return c;
+    }
+    public Cursor fetchRes(int tid){
+        Cursor c = db.rawQuery("SELECT * FROM reservation WHERE t_id="+tid, null);
+        if(c !=null){
+            c.moveToFirst();
+        }
+        return c;
+    }
+    public void insertRes(int s_id, int c_id, int numofc, String dateR, String time, int t_id, String address, String requests){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("s_id", s_id);
+        contentValues.put("c_id", c_id);
+        contentValues.put("numofc", numofc);
+        contentValues.put("dateR", dateR);
+        contentValues.put("time", time);
+        contentValues.put("t_id", t_id);
+        contentValues.put("address", address);
+        contentValues.put("requests", requests);
+        db.insert("reservation", null, contentValues);
+    }
+    public void updateCRes(int cid){
+        String up = "UPDATE customer SET num_of_reservations = num_of_reservations+1 WHERE id = "+ cid;
+        db.execSQL(up);
+    }
+
     public int update(int id, String email, String password, String name, double balance){
         ContentValues contentValues=new ContentValues();
         contentValues.put(DBHandler.u_email, email);

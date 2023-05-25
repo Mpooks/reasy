@@ -69,9 +69,26 @@ public class shop extends user{
     public int getCapacity(){
         return capacity;
     }
-    /*public ArrayList<table> getTables(){
-        return table_list;
-    }*/
+    public static ArrayList<table> getTables(Context c, int sid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchTables(sid);
+            ArrayList<table> tl = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    tl.add(new table(cursor.getInt(0),cursor.getInt(1),sid));
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+            dbm.close();
+            return tl;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public String getAddress(){
         return address;
     }

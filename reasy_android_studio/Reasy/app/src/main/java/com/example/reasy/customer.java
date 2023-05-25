@@ -54,8 +54,16 @@ public class customer extends user{
     public int getNumOfReservations(){
         return num_of_reservations;
     }
-    public void updateNumOfReservations(){
+    public void updateNumOfReservations(Context c,int cid){
         num_of_reservations++;
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            dbm.updateCRes(cid);
+            dbm.open();
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void updateReception(int new_num, int rec_id){
         for(int i=0;i<receptions.size();i++){
