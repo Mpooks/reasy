@@ -16,12 +16,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class order_page extends AppCompatActivity {
     private int id,sid,res_id,found=0,foundm=0,foundinlist=0,max,founds=0;
     private String sname,om;
-    private main_lists ml;
     private order fo;
     private LinearLayout linearLayout;
     private ArrayList<user> ul=new ArrayList<user>();
@@ -82,8 +82,8 @@ public class order_page extends AppCompatActivity {
             if(om.compareTo("Online")==0){
                 for(customer c: cl){
                     if(c.getId()==id){
-                        oh=c.getOrderHistory();
-                        if(!(c.getOrderHistory()==null)) {
+                        oh=c.getOrderHistory(order_page.this,id,sid);
+                        if(!(oh.isEmpty())) {
                             for (order p : oh) {
                                 if(p.getShop_id()==sid) {
                                     orders.add(p.getOrder_id());
@@ -107,27 +107,15 @@ public class order_page extends AppCompatActivity {
         }
     }
     public void create(){
-        for(customer c: cl){
-            if(!(c.getOrderHistory()==null)) {
-                for (order o : c.getOrderHistory()) {
-                    oh.add(o);
-                }
-            }
+        DatabaseManager dbm = new DatabaseManager(order_page.this);
+        try {
+            dbm.open();
+            dbm.insertOrder(sid,id,0,"In person","In person");
+            dbm.close();
+            popupMessage();
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
         }
-        max = oh.get(0).getOrder_id();
-        for (order o: oh) {
-            if (o.getOrder_id() > max) {
-                max = o.getOrder_id();
-            }
-        }
-        max++;
-        fo=new order(id,max,sid,0,"In person","In person",null);
-        for(customer c: cl){
-            if(c.getId()==id){
-                c.addToOrderHistory(fo);
-            }
-        }
-        popupMessage();
     }
     public void show(){
         Intent intent=new Intent(this,order_history_page.class);
@@ -147,15 +135,14 @@ public class order_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_page);
         linearLayout = findViewById(R.id.linear_layout);
-        //ml= main_lists.createLists();
-        ul = (ArrayList<user>) ml.getUser_list().clone();
-        slist = (ArrayList<shop>) ml.getShop_list().clone();
-        cl = (ArrayList<customer>) ml.getCustomer_list().clone();
-       /* for(user u: ul) {
-            if(u.getId()==id){
-                rl=u.getReservations();
+        ul=user.getUsers(order_page.this);
+        slist=shop.getShops(order_page.this);
+        cl=customer.getCustomer(order_page.this);
+        for(customer c: cl) {
+            if(c.getId()==id){
+                rl=c.getReservations(order_page.this,id);
             }
-        }*/
+        }
         for(reservation r: rl)
         {
             TextView tv = new TextView(this);
@@ -201,8 +188,12 @@ public class order_page extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                finishAffinity();
-                System.exit(0);
+                Intent intent=new Intent(order_page.this,main_page.class);
+                Bundle b = new Bundle();
+                //Add your data to bundle
+                b.putInt("id", id);
+                intent.putExtras(b);
+                startActivity(intent);
             }
         });
         AlertDialog alertDialog = alertDialogBuilder.create();

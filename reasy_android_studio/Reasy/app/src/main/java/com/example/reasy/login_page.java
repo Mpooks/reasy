@@ -28,7 +28,8 @@ public class login_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
     }
-    public void GCMain(View v) {int found=0;
+    public void GCMain(View v) {
+        int found=0;
         emailt=(EditText)findViewById(R.id.email);
         String email=emailt.getText().toString();
         passt=(EditText)findViewById(R.id.pass);

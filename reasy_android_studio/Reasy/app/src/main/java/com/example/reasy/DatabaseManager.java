@@ -85,6 +85,20 @@ public class DatabaseManager {
         }
         return c;
     }
+    public Cursor fetchCustRes(int cid){
+        Cursor c = db.rawQuery("SELECT * FROM reservation WHERE c_id="+cid, null);
+        if(c !=null){
+            c.moveToFirst();
+        }
+        return c;
+    }
+    public Cursor fetchOrder(int cid,int sid){
+        Cursor c = db.rawQuery("SELECT * FROM c_order WHERE c_id="+cid+" AND s_id="+sid, null);
+        if(c !=null){
+            c.moveToFirst();
+        }
+        return c;
+    }
     public void insertRes(int s_id, int c_id, int numofc, String dateR, String time, int t_id, String address, String requests){
         ContentValues contentValues = new ContentValues();
         contentValues.put("s_id", s_id);
@@ -96,6 +110,15 @@ public class DatabaseManager {
         contentValues.put("address", address);
         contentValues.put("requests", requests);
         db.insert("reservation", null, contentValues);
+    }
+    public void insertOrder(int s_id, int c_id, double cost, String om, String pm){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("s_id", s_id);
+        contentValues.put("c_id", c_id);
+        contentValues.put("cost", cost);
+        contentValues.put("om", om);
+        contentValues.put("pm", pm);
+        db.insert("c_order", null, contentValues);
     }
     public void updateCRes(int cid){
         String up = "UPDATE customer SET num_of_reservations = num_of_reservations+1 WHERE id = "+ cid;

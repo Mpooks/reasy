@@ -16,8 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class order_history_page extends AppCompatActivity {
-    private int id,sid,oid;
-    private main_lists ml;
+   /* private int id,sid,oid;
     private menu smenu;
     private LinearLayout linearLayout;
     private ArrayList<user> ul=new ArrayList<user>();
@@ -27,9 +26,9 @@ public class order_history_page extends AppCompatActivity {
     private ArrayList<product_menu> pms=new ArrayList<>();
     private ArrayList<order> oh,foundo=new ArrayList<>();
     public void newOrPrevOrder(View view){
-     /*   for(shop s:slist){
+        for(shop s:slist){
             if(s.getId()==sid){
-                smenu=s.getShop_m();
+                smenu=();
                 pms=smenu.getProducts();
                 if(pms.isEmpty()) {
                 prods.add(0);
@@ -39,7 +38,7 @@ public class order_history_page extends AppCompatActivity {
                     }
                 }
             }
-        }*/
+        }
         show();
     }
     public void show(){
@@ -63,10 +62,9 @@ public class order_history_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history_page);
         linearLayout = findViewById(R.id.linear_layout);
-       // ml= main_lists.createLists();
-        ul = (ArrayList<user>) ml.getUser_list().clone();
-        slist = (ArrayList<shop>) ml.getShop_list().clone();
-        cl = (ArrayList<customer>) ml.getCustomer_list().clone();
+        ul=user.getUsers(order_history_page.this);
+        slist=shop.getShops(order_history_page.this);
+        cl=customer.getCustomer(order_history_page.this);
         if(orders.contains(0)){
             TextView tv = new TextView(this);
             tv.setText("You have no previous orders.");
@@ -90,7 +88,7 @@ public class order_history_page extends AppCompatActivity {
         else{
                 for(customer c: cl){
                     if(c.getId()==id){
-                        oh=c.getOrderHistory();
+                        oh=c.getOrderHistory(order_history_page.this,id,sid);
                     }
                 }
             for(int i: orders){
@@ -163,5 +161,5 @@ public class order_history_page extends AppCompatActivity {
         b.putInt("id",id);
         intent.putExtras(b);
         startActivity(intent);
-    }
+    }*/
 }

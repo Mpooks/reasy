@@ -32,10 +32,10 @@ public class rating_form_page extends AppCompatActivity {
     private shop chosens;
     private customer cu;
     private String n,a,p;
-    public rating_form_page() {
+    /*public rating_form_page() {
 
     }
-    public void chooseShopAndFillRating(){
+   /* public void chooseShopAndFillRating(){
        // ml= main_lists.createLists();
         slist = (ArrayList<shop>) ml.getShop_list().clone();
         clist = (ArrayList<customer>) ml.getCustomer_list().clone();
@@ -52,12 +52,12 @@ public class rating_form_page extends AppCompatActivity {
                 rate=s.getRating();
                 arrayList=(ArrayList<product_menu>) m.getProducts().clone();
                 oh=(ArrayList<String>) s.getOpeningHours();
-                chosens=s;*/
+                chosens=s;
             }
 
         }
 
-        for (customer c : clist) {
+        /*for (customer c : clist) {
             if (c.getId() == id) {
                 cn = c.getPoints();
                 ratingh = (ArrayList<rating>) c.getRatingHistory().clone();
@@ -135,5 +135,5 @@ public class rating_form_page extends AppCompatActivity {
         b.putInt("id",id);
         intent.putExtras(b);
         startActivity(intent);
-    }
+    }*/
 }

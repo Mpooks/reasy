@@ -26,7 +26,7 @@ public class rating_previous_orders_page extends AppCompatActivity {
     private LinearLayout linearLayout;
     private main_lists ml;
     private ArrayList<order> oh,foundo=new ArrayList<>();
-    public rating_previous_orders_page() {
+    /*public rating_previous_orders_page() {
     }
 
     public void rateMenu(){
@@ -181,5 +181,5 @@ public class rating_previous_orders_page extends AppCompatActivity {
         b.putInt("sid",sid);
         intent.putExtras(b);
         startActivity(intent);
-    }
+    }*/
 }
