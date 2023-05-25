@@ -39,7 +39,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String q5= "CREATE TABLE reception_area(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL,cost DOUBLE NOT NULL,numofguests INT NOT NULL)";
         String q6= "CREATE TABLE catering(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL,cost DOUBLE NOT NULL, music_genre VARCHAR(25) NOT NULL)";
         String q7= "CREATE TABLE supplier(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL)";
-        String q8= "CREATE TABLE s_table(t_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,capacity INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
+        String q8= "CREATE TABLE s_table(t_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, capacity INT NOT NULL,s_id INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
         String q9= "CREATE TABLE job_offer(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,position VARCHAR(255) NOT NULL, salary DOUBLE NOT NULL, experience DOUBLE, start_date VARCHAR(255) NOT NULL, end_date VARCHAR(255) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
         String q10= "CREATE TABLE menu(s_id INT NOT NULL PRIMARY KEY,rating DOUBLE NOT NULL, numofrates INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
         String q11= "CREATE TABLE supply(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,supplier_id INT NOT NULL, address VARCHAR(255) NOT NULL, sample VARCHAR(25) NOT NULL, cost DOUBLE NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(supplier_id) REFERENCES supplier(id))";
@@ -87,15 +87,15 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(q25);
         db.execSQL(q26);
 
-        String query1 = "INSERT INTO " + u_TABLE_NAME + " VALUES(2,\"mats@gmail.com\",\"123\",\"Matsuhisa Athens\",1287),(1,\"sal@gmail.com\",\"123\",\"Salumeria\",721.56),(4,\"meze@gmail.com\",\"123\",\"MEZE MEZE\",867),(3,\"pen@gmail.com\",\"123\",\"Peñarrubia Lounge\",987.55),(5,\"josh@gmail.com\",\"123\",\"Josh Payne\",450),(6,\"alex@gmail.com\",\"123\",\"Alex Meyers\",5000),(7,\"kurtis@gmail.com\",\"123\",\"Kurtis Conner\",50),(8,\"danny@gmail.com\",\"123\",\"Danny Gonzalez\",128)";
+        String query1 = "INSERT INTO " + u_TABLE_NAME + " VALUES(2,\"mats@gmail.com\",\"123\",\"Matsuhisa Athens\",1287),(1,\"sal@gmail.com\",\"123\",\"Salumeria\",721.56),(4,\"meze@gmail.com\",\"123\",\"MEZE MEZE\",867),(3,\"pen@gmail.com\",\"123\",\"Penarrubia Lounge\",987.55),(5,\"josh@gmail.com\",\"123\",\"Josh Payne\",450),(6,\"alex@gmail.com\",\"123\",\"Alex Meyers\",5000),(7,\"kurtis@gmail.com\",\"123\",\"Kurtis Conner\",50),(8,\"danny@gmail.com\",\"123\",\"Danny Gonzalez\",128)";
         String i1 = "INSERT INTO customer VALUES(5,\"josh@gmail.com\",\"123\",\"Josh Payne\",450,25,3),(6,\"alex@gmail.com\",\"123\",\"Alex Meyers\",5000,12,1),(7,\"kurtis@gmail.com\",\"123\",\"Kurtis Conner\",50,134,1),(8,\"danny@gmail.com\",\"123\",\"Danny Gonzalez\",128,0,0)";
-        String i2= "INSERT INTO shop VALUES(2,\"mats@gmail.com\",\"123\",\"Matsuhisa Athens\",1287,\"40, Apollonos street, Vouliagmeni 166 71\",\"Athens\",6,820,\"Asian\",7000,4500,2200,4.3,\"2108960510\"),(1,\"sal@gmail.com\",\"123\",\"Salumeria\",721.56,\"Pantanassis 27\",\"Patras\",2,1700,\"Grill\",6000,3500,2000,4.6,\"2610225930\"),(4,\"meze@gmail.com\",\"123\",\"MEZE MEZE\",867,\"Kudonion, Aigaleo\",\"Athens\",3,851,\"Grill\",5500,2500,3000,4.5,\"2105908829\"),(3,\"pen@gmail.com\",\"123\",\"Peñarrubia Lounge\",987.55,\"Leoforos Poseidonos 20\",\"Athens\",8,12000,\"Bar\",4500,2000,3000,4.1,\"2109850118\")";
+        String i2= "INSERT INTO shop VALUES(2,\"mats@gmail.com\",\"123\",\"Matsuhisa Athens\",1287,\"40, Apollonos street, Vouliagmeni 166 71\",\"Athens\",6,820,\"Asian\",7000,4500,2200,4.3,\"2108960510\"),(1,\"sal@gmail.com\",\"123\",\"Salumeria\",721.56,\"Pantanassis 27\",\"Patras\",2,1700,\"Grill\",6000,3500,2000,4.6,\"2610225930\"),(4,\"meze@gmail.com\",\"123\",\"MEZE MEZE\",867,\"Kudonion, Aigaleo\",\"Athens\",3,851,\"Grill\",5500,2500,3000,4.5,\"2105908829\"),(3,\"pen@gmail.com\",\"123\",\"Penarrubia Lounge\",987.55,\"Leoforos Poseidonos 20\",\"Athens\",8,12000,\"Bar\",4500,2000,3000,4.1,\"2109850118\")";
         String i3= "INSERT INTO artist VALUES(1,\"Taylor Swift\",800,\"pop\"),(2,\"Ed Sheeran\",900,\"pop\")";
         String i4= "INSERT INTO waiter VALUES(1,\"John Green\",2),(2,\"Jennifer Lawn\",1),(3,\"Anastasia Pond\",2),(4,\"Drake Lorden\",3),(5,\"Paul Mann\",4)";
         String i5= "INSERT INTO reception_area VALUES(1,\"Haven\",2000,500),(2,\"Pantheon\",1500,200)";
         String i6= "INSERT INTO catering VALUES(1,\"CanRec\",500,\"Asian\"),(2,\"Eataly\",450,\"Italian\")";
         String i7= "INSERT INTO supplier VALUES(1,\"Jim\"),(2,\"Mike\"),(3,\"Phil\")";
-        String i8= "INSERT INTO s_table VALUES(1,3,2),(2,1,2),(3,4,3),(4,2,4),(5,2,2),(6,3,6);";
+        String i8= "INSERT INTO s_table VALUES(1,3,2),(2,1,2),(3,4,3),(4,2,4),(5,2,2),(6,3,1);";
         String i9= "INSERT INTO job_offer VALUES(1,2,\"waiter\",800,2.5,\"2023-05-20\",\"2023-06-06\")";
         String i10= "INSERT INTO menu VALUES(1,4.5,34),(2,4.8,340),(3,4.5,128),(4,4.2,560)";
         String i11= "INSERT INTO supply VALUES(1,3,1,\"Leoforos Poseidonos 20 Athens\",\"true\",20.5)";
@@ -104,7 +104,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String i14= "INSERT INTO m_product VALUES(1,\"First Time Omakase\", 100,2,23),(2,\"Special Omakase\", 250,2,2),(3,\"Crispy Rice Spicy Salmon\", 35,2,18),(4,\"Wagyu Tacos\", 50,2,7),(5,\"Benedict\", 8,3,16),(6,\"Mmontreal\", 8.5,3,9),(7,\"Meze Meze Salad\", 7.8,4,23),(8,\"Cheese plateau\", 16,1,7)";
         String i15= "INSERT INTO supplier_product VALUES(9,\"Tomatoes\", 0.5125,1,80),(10,\"Potatoes\", 0.34,1,34),(11,\"Cucumbers\", 0.65,2,23),(12,\"Eggplants\", 0.89,2,34),(13,\"Carrots\", 0.42,3,69),(14,\"Lettuce\", 0.75,3,54)";
         String i16= "INSERT INTO o_product VALUES(1,\"First Time Omakase\",100,1,2),(4,\"Wagyu Tacos\", 50,1,1)";
-        String i17= "INSERT INTO reservation VALUES(1,1,5,2,\"2023-05-20\",\"20:30\",2,null,null),(2,2,5,4,\"2023-05-19\",\"21:30\",4,null,null),(3,2,5,2,\"2023-05-01\",\"20:30\",5,null,null),(4,3,6,2,\"2023-05-20\",\"22:30\",1,null,null),(5,4,7,3,\"2023-05-01\",\"19:30\",3,null,null)";
+        String i17= "INSERT INTO reservation VALUES(1,1,5,2,\"2023-05-20\",\"20:30\",2,null,null),(2,2,5,4,\"2023-05-19\",\"21:30\",4,null,null),(3,1,5,2,\"2023-05-01\",\"20:30\",3,null,null),(4,3,6,2,\"2023-05-20\",\"22:30\",1,null,null),(5,4,7,3,\"2023-05-01\",\"19:30\",3,null,null)";
         String i18= "INSERT INTO reception VALUES(1,5,125,\"2023-05-25\",1,1,1)";
         String i19= "INSERT INTO calendar VALUES(6,1,\"2023-05-25\"),(7,1,\"2023-05-25\")";
         String i20= "INSERT INTO n_t VALUES(1,6),(6,1),(4,5),(5,4)";
