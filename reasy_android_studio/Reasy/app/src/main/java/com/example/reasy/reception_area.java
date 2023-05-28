@@ -10,16 +10,12 @@ public class reception_area {
     private String name;
     private int reception_area_id;
     private  int num_of_guests;
-    private static ArrayList<reception> receptions = new ArrayList<reception>();
-
-
     private double cost;
 
-    public reception_area(String name, int reception_area_id, int num_of_guests, ArrayList<reception> receptions, double cost) {
+    public reception_area(String name, int reception_area_id, int num_of_guests, double cost) {
         this.name = name;
         this.reception_area_id = reception_area_id;
         this.num_of_guests = num_of_guests;
-        this.receptions = receptions;
         this.cost = cost;
     }
 
@@ -40,10 +36,6 @@ public class reception_area {
         }
 
 
-    }
-    
-    public void addtoReceptionArea(reception new_r) {
-        receptions.add(new_r);
     }
 
     public String getName() {
