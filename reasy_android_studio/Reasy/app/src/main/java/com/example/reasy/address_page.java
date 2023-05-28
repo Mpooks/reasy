@@ -21,7 +21,7 @@ public class address_page extends AppCompatActivity {
     private ArrayList<customer> cl=new ArrayList<>();
     private ArrayList<user> ul=new ArrayList<>();
     private ArrayList<shop> slist=new ArrayList<>();
-    private TextView text3,text4;
+    private TextView text3,text4,p,b;
     private EditText s,c;
     private String n,dateb,req,tor,str,ccity,scity;
     public void fillAddress(View view){
@@ -44,13 +44,12 @@ public class address_page extends AppCompatActivity {
         try {
             dbm.open();
             dbm.insertRes(sid, id, noc, dateb, tor, tid, str, req);
-            dbm.close();
-            popupMessage();
             for(customer c: cl) {
                 if (c.getId() == id) {
                     c.updateNumOfReservations(address_page.this,id);
                 }
             }
+            popupMessage();
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }
@@ -60,6 +59,7 @@ public class address_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address_page);
         slist=shop.getShops(address_page.this);
+        cl=customer.getCustomer(address_page.this);
         ul= user.getUsers(address_page.this);
         Bundle bundle = getIntent().getExtras();
         oh= bundle.getStringArrayList("open");
@@ -77,6 +77,16 @@ public class address_page extends AppCompatActivity {
                 scity=s.getCity();
             }
         }
+        for(customer c: cl) {
+            if (c.getId() == id) {
+                c.updateNumOfReservations(address_page.this,id);
+                p = findViewById(R.id.textView27);
+                p.setText(String.valueOf(c.getPoints())+"pts");
+                b = findViewById(R.id.textView28);
+                b.setText(String.valueOf(c.getBalance())+"\u20AC");
+            }
+        }
+
         text3 = findViewById(R.id.name);
         text3.setText(n);
         text4 = findViewById(R.id.name2);

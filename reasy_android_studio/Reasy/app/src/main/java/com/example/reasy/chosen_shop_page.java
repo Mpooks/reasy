@@ -17,8 +17,9 @@ import java.util.ArrayList;
 public class chosen_shop_page extends AppCompatActivity {
     private int id,sid;
     private ArrayList<shop> slist=new ArrayList<>();
+    private ArrayList<customer> cl=new ArrayList<>();
     private ArrayList<String> oh;
-    private TextView text3,text4,text5;
+    private TextView text3,text4,text5,po,b;
     private LinearLayout linearLayout;
     private ArrayList<product_menu> arrayList;
     private String n,a,p;
@@ -35,6 +36,15 @@ public class chosen_shop_page extends AppCompatActivity {
                 p=s.getPhone();
                 arrayList = s.getShop_m(chosen_shop_page.this,sid);
                 oh=s.getOpeningHours(chosen_shop_page.this,sid);
+            }
+        }
+        cl=customer.getCustomer(chosen_shop_page.this);
+        for(customer c: cl) {
+            if (c.getId() == id) {
+                po = findViewById(R.id.textView23);
+                po.setText(String.valueOf(c.getPoints())+"pts");
+                b = findViewById(R.id.textView24);
+                b.setText(String.valueOf(c.getBalance())+"\u20AC");
             }
         }
         linearLayout = findViewById(R.id.linear_layout);

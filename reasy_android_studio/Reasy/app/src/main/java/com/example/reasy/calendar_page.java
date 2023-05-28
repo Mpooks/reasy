@@ -20,8 +20,9 @@ public class calendar_page extends AppCompatActivity {
     private ArrayList<String> oh;
     private LinearLayout linearLayout;
     private ArrayList<shop> slist=new ArrayList<>();
+    private ArrayList<customer> cl=new ArrayList<>();
     private CalendarView calendar;
-    private TextView date_view;
+    private TextView date_view,p,b;
     private TextView text3,text4;
     private String dateb,n,d;
     public void chooseDate(){
@@ -34,6 +35,15 @@ public class calendar_page extends AppCompatActivity {
             if(s.getId()==sid){
                 cap=s.getCapacity();
                 n=s.getName();
+            }
+        }
+        cl=customer.getCustomer(calendar_page.this);
+        for(customer c: cl) {
+            if (c.getId() == id) {
+                p = findViewById(R.id.textView21);
+                p.setText(String.valueOf(c.getPoints())+"pts");
+                b = findViewById(R.id.textView22);
+                b.setText(String.valueOf(c.getBalance())+"\u20AC");
             }
         }
         linearLayout = findViewById(R.id.linear_layout);
@@ -60,19 +70,19 @@ public class calendar_page extends AppCompatActivity {
                 Date d1 = (new GregorianCalendar(year, month, dayOfMonth)).getTime();
                 d= (String) android.text.format.DateFormat.format("EEEE", d1);
                 switch(d){
-                    case "Sunday":val=6;
+                    case "Sunday":val=0;
                     break;
-                    case "Monday":val=0;
+                    case "Monday":val=1;
                     break;
-                    case "Tuesday":val=1;
+                    case "Tuesday":val=2;
                     break;
-                    case "Wednesday":val=2;
+                    case "Wednesday":val=3;
                     break;
-                    case "Thursday":val=3;
+                    case "Thursday":val=4;
                     break;
-                    case "Friday":val=4;
+                    case "Friday":val=5;
                     break;
-                    case "Saturday":val=5;
+                    case "Saturday":val=6;
                     break;
                 }
                 if((oh.get(val).compareTo("closed"))==0){
@@ -95,7 +105,7 @@ public class calendar_page extends AppCompatActivity {
         if(changed==0) {
             Calendar calendar = Calendar.getInstance();
             int day = calendar.get(Calendar.DAY_OF_WEEK);
-            if((oh.get(day).compareTo("closed"))==0){
+            if((oh.get(day-1).compareTo("closed"))==0){
                 found=1;
             }
             else{

@@ -12,12 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class customers_time_page extends AppCompatActivity {
-    private int id,sid,cap,g,foundp=0,foundt=0,c,tid;
+    private int id,sid,cap,g,foundp=0,foundt=0,c,tid,notav=0;
     private ArrayList<String> oh;
     private ArrayList<reservation> r;
-    private ArrayList<table> tablel;
+    private ArrayList<table> tablel,available_t=new ArrayList<>();
     private ArrayList<shop> slist=new ArrayList<>();
-    private TextView text3,text4,text5;
+    private ArrayList<customer> cl=new ArrayList<>();
+    private TextView text3,text4,text5,po,b;
     private EditText p,t;
     private String n,dateb,tor;
 
@@ -57,6 +58,10 @@ public class customers_time_page extends AppCompatActivity {
                 text4.setText("Invalid format.");
             } else {
                 if (((Integer.valueOf(string1) <= 23) && (Integer.valueOf(string1) >= 0)) && ((Integer.valueOf(string2) <= 59) && (Integer.valueOf(string2) >= 0))) {
+                    if(string2.length()<2){
+                        string2="0".concat(string2);
+                        tor=string1+":"+string2;
+                    }
                     foundt = 0;
                     text4.setText("");
                 } else {
@@ -77,22 +82,22 @@ public class customers_time_page extends AppCompatActivity {
                     r=ta.getReservations(customers_time_page.this,ta.getTable_id());
                     for(reservation tr: r){
                         String time_r=tr.getTime(dateb);
-                        if(time_r.compareTo(t.getText().toString())==0){
-                            tablel.remove(ta);
+                        if((time_r.compareTo(tor)==0)){
+                            notav=1;
                         }
                     }
-                }
-                else{
-                    tablel.remove(ta);
+                    if(r.isEmpty()||notav==0){
+                        available_t.add(ta);
+                    }
                 }
             }
-            if(tablel.isEmpty()){
+            if(available_t.isEmpty()){
                 text4.setText("There are no available tables for your choice.");
             }
             else{
-                c=tablel.get(0).getCapacity();
-                tid=tablel.get(0).getTable_id();
-                for(table ta: tablel){
+                c=available_t.get(0).getCapacity();
+                tid=available_t.get(0).getTable_id();
+                for(table ta: available_t){
                     if (ta.getCapacity() < c) {
                         c = ta.getCapacity();
                         tid=ta.getTable_id();
@@ -100,6 +105,7 @@ public class customers_time_page extends AppCompatActivity {
                 }
                 show();
             }
+            notav=0;
         }
     }
     public void show(){
@@ -132,6 +138,7 @@ public class customers_time_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customers_time_page);
         slist=shop.getShops(customers_time_page.this);
+        cl=customer.getCustomer(customers_time_page.this);
         Bundle bundle = getIntent().getExtras();
         oh= bundle.getStringArrayList("open");
         id= bundle.getInt("id");
@@ -143,6 +150,14 @@ public class customers_time_page extends AppCompatActivity {
                 n=s.getName();
                 tablel=s.getTables(customers_time_page.this,sid);
 
+            }
+        }
+        for(customer c: cl) {
+            if (c.getId() == id) {
+                po = findViewById(R.id.textView25);
+                po.setText(String.valueOf(c.getPoints())+"pts");
+                b = findViewById(R.id.textView26);
+                b.setText(String.valueOf(c.getBalance())+"\u20AC");
             }
         }
         text3 = findViewById(R.id.sname2);

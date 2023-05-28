@@ -17,10 +17,11 @@ public class requests_page extends AppCompatActivity {
     private int id,sid,cap,tid,nor,noc,max;
     private ArrayList<String> oh;
     private ArrayList<table> tl=new ArrayList<>();
+    private ArrayList<reservation> r=new ArrayList<>();
     private ArrayList<customer> cl=new ArrayList<>();
     private ArrayList<user> ul=new ArrayList<>();
     private ArrayList<shop> slist=new ArrayList<>();
-    private TextView text3,text4;
+    private TextView text3,text4,p,b;
     private EditText det;
     private String n,dateb,req,tor;
     public void fillRequests(View view){
@@ -35,7 +36,7 @@ public class requests_page extends AppCompatActivity {
         show();
     }
     public void show(){
-        if(nor%3==0){
+        if(nor%3==0 && nor!=0){
             Intent intent = new Intent(this, address_page.class);
             Bundle b = new Bundle();
             //Add your data to bundle
@@ -60,13 +61,12 @@ public class requests_page extends AppCompatActivity {
         try {
             dbm.open();
             dbm.insertRes(sid, id, noc, dateb, tor, tid, null, req);
-            dbm.close();
-            popupMessage();
             for(customer c: cl) {
                 if (c.getId() == id) {
                     c.updateNumOfReservations(requests_page.this,id);
                 }
             }
+            popupMessage();
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }
@@ -75,6 +75,7 @@ public class requests_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests_page);
+        cl=customer.getCustomer(requests_page.this);
         slist=shop.getShops(requests_page.this);
         ul= user.getUsers(requests_page.this);
         Bundle bundle = getIntent().getExtras();
@@ -90,6 +91,14 @@ public class requests_page extends AppCompatActivity {
             if(s.getId()==sid){
                 n=s.getName();
                 tl=s.getTables(requests_page.this,sid);
+            }
+        }
+        for(customer c: cl) {
+            if (c.getId() == id) {
+                p = findViewById(R.id.textView31);
+                p.setText(String.valueOf(c.getPoints())+"pts");
+                b = findViewById(R.id.textView32);
+                b.setText(String.valueOf(c.getBalance())+"\u20AC");
             }
         }
         text3 = findViewById(R.id.sname3);

@@ -120,9 +120,10 @@ public class DatabaseManager {
         contentValues.put("pm", pm);
         db.insert("c_order", null, contentValues);
     }
-    public void updateCRes(int cid){
-        String up = "UPDATE customer SET num_of_reservations = num_of_reservations+1 WHERE id = "+ cid;
-        db.execSQL(up);
+    public void updateCRes(int cid, int num){
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("num_of_reservations", num);
+        db.update("customer",contentValues,"id="+cid,null);
     }
 
     public int update(int id, String email, String password, String name, double balance){

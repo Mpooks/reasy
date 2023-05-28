@@ -30,8 +30,8 @@ public class customer extends user{
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
-            dbm.updateCRes(cid);
-            dbm.open();
+            dbm.updateCRes(cid,num_of_reservations);
+            dbm.close();
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }
