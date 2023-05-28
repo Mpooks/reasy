@@ -39,7 +39,7 @@ public class shop extends user{
 
     public static ArrayList<product_menu> getShop_m(Context c,int sid) {
         ArrayList<product_menu> pm = new ArrayList<>();
-        pm = product_menu.getMenuPr(c,sid);
+        pm = menu.getMenu(c,sid);
         return pm;
     }
 

@@ -84,7 +84,7 @@
         app:layout_constraintVertical_bias="0.706" />
 
     <Button
-        android:id="@+id/loginButton3"
+        android:id="@+id/pay"
         android:layout_width="138dp"
         android:layout_height="41dp"
         android:background="@drawable/orange_button"
@@ -120,7 +120,7 @@
         app:layout_constraintVertical_bias="0.768" />
 
     <Button
-        android:id="@+id/loginButton4"
+        android:id="@+id/add"
         android:layout_width="138dp"
         android:layout_height="41dp"
         android:background="@drawable/orange_button"
@@ -181,12 +181,12 @@
         app:srcCompat="@drawable/food" />
 
     <ScrollView
-        android:layout_width="404dp"
-        android:layout_height="200dp"
+        android:layout_width="411dp"
+        android:layout_height="184dp"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.546">

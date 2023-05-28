@@ -31,9 +31,23 @@ public class product_menu extends product{
 
             if (cursor.moveToFirst()) {
                 do {
-                    pm.add(new product_menu(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),sid,cursor.getInt(3)));
+                    pm.add(new product_menu(cursor.getInt(0),cursor.getString(1),cursor.getDouble(2),sid,cursor.getInt(3)));
                 } while (cursor.moveToNext());
             }
+            cursor.close();
+            dbm.close();
+            return pm;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static product_menu getMPrD(Context c, int id,int sid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchMPrD(id);
+            product_menu pm=new product_menu(id,cursor.getString(1),cursor.getDouble(2),sid,cursor.getInt(3));
+
             cursor.close();
             dbm.close();
             return pm;

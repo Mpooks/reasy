@@ -64,6 +64,13 @@ public class DatabaseManager {
         }
         return c;
     }
+    public Cursor fetchMPrD(int id){
+        Cursor c = db.rawQuery("SELECT id,name,cost,quantity FROM m_product WHERE id="+id, null);
+        if(c !=null){
+            c.moveToFirst();
+        }
+        return c;
+    }
     public Cursor fetchOH(int sid){
         Cursor c = db.rawQuery("SELECT w_time FROM wo WHERE id="+sid, null);
         if(c !=null){
@@ -94,6 +101,13 @@ public class DatabaseManager {
     }
     public Cursor fetchOrder(int cid,int sid){
         Cursor c = db.rawQuery("SELECT * FROM c_order WHERE c_id="+cid+" AND s_id="+sid, null);
+        if(c !=null){
+            c.moveToFirst();
+        }
+        return c;
+    }
+    public Cursor fetchOrderD(int id){
+        Cursor c = db.rawQuery("SELECT * FROM c_order WHERE id="+id, null);
         if(c !=null){
             c.moveToFirst();
         }

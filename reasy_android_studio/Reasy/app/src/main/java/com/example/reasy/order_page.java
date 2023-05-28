@@ -20,7 +20,7 @@ import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class order_page extends AppCompatActivity {
-    private int id,sid,res_id,found=0,foundm=0,foundinlist=0,max,founds=0;
+    private int id,sid,res_id,found=0,foundm=0,foundinlist=0;
     private String sname,om;
     private order fo;
     private LinearLayout linearLayout;
@@ -85,13 +85,7 @@ public class order_page extends AppCompatActivity {
                         oh=c.getOrderHistory(order_page.this,id,sid);
                         if(!(oh.isEmpty())) {
                             for (order p : oh) {
-                                if(p.getShop_id()==sid) {
                                     orders.add(p.getOrder_id());
-                                    founds=1;
-                                }
-                            }
-                            if(founds==0){
-                                orders.add(0);
                             }
                         }
                         else{

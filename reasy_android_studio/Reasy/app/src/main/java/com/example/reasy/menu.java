@@ -1,5 +1,7 @@
 package com.example.reasy;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 public class menu {
@@ -21,5 +23,10 @@ public class menu {
         double r=num_of_rates*rating;
         num_of_rates++;
         rating=(rating+new_r)/num_of_rates;
+    }
+    public static ArrayList<product_menu> getMenu(Context c, int sid) {
+        ArrayList<product_menu> pm = new ArrayList<>();
+        pm = product_menu.getMenuPr(c,sid);
+        return pm;
     }
 }

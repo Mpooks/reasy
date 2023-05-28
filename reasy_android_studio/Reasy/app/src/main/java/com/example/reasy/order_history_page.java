@@ -16,8 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class order_history_page extends AppCompatActivity {
-   /* private int id,sid,oid;
-    private menu smenu;
+    private int id,sid,oid;
+    private ArrayList<product_menu> arrayList=new ArrayList<>();
     private LinearLayout linearLayout;
     private ArrayList<user> ul=new ArrayList<user>();
     private ArrayList<shop> slist=new ArrayList<>();
@@ -26,18 +26,13 @@ public class order_history_page extends AppCompatActivity {
     private ArrayList<product_menu> pms=new ArrayList<>();
     private ArrayList<order> oh,foundo=new ArrayList<>();
     public void newOrPrevOrder(View view){
-        for(shop s:slist){
-            if(s.getId()==sid){
-                smenu=();
-                pms=smenu.getProducts();
-                if(pms.isEmpty()) {
-                prods.add(0);
-                }else {
-                    for (product_menu pm : pms) {
-                        prods.add(pm.getId());
-                    }
-                }
+        for(shop s:slist) {
+            if (s.getId() == sid) {
+                arrayList = s.getShop_m(order_history_page.this, sid);
             }
+        }
+        for (int i = 0; i < arrayList.size(); i++) {
+            prods.add(arrayList.get(i).getId());
         }
         show();
     }
@@ -86,17 +81,8 @@ public class order_history_page extends AppCompatActivity {
             linearLayout.addView(tv);
         }
         else{
-                for(customer c: cl){
-                    if(c.getId()==id){
-                        oh=c.getOrderHistory(order_history_page.this,id,sid);
-                    }
-                }
             for(int i: orders){
-                for(order o:oh){
-                    if(o.getOrder_id()==i){
-                        foundo.add(o);
-                    }
-                }
+                    foundo.add(order.getOrderD(order_history_page.this,i));
             }
             TextView b = new TextView(this);
             b.setText("You can select one of your previous orders: ");
@@ -118,12 +104,7 @@ public class order_history_page extends AppCompatActivity {
             linearLayout.addView(b);
             for(order o: foundo){
                 TextView tv = new TextView(this);
-                tv.setText("");
-                for(product_order po: o.getProducts())
-                {
-                    tv.setText(String.valueOf(tv.getText())+po.getName()+ "    "+ po.getPrice()+"\nQuantity: "+po.getQuantity()+"\n");
-                }
-                tv.setText(String.valueOf(tv.getText())+"Total cost: "+o.getCost()+"\n\n");
+                tv.setText("Order Id: "+o.getOrder_id()+ "    Cost: "+ o.getCost());
                 tv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -141,9 +122,9 @@ public class order_history_page extends AppCompatActivity {
                     }
                 });
                 tv.setTextSize(18);
-                tv.setHeight(300);
+                tv.setHeight(192);
                 tv.setWidth(966);
-                tv.setPadding(30, 20, 30, 20);
+                tv.setPadding(30, 90, 30, 90);
                 tv.setId(o.getOrder_id());
                 tv.setGravity(Gravity.CENTER);
                 tv.setBackgroundResource(R.drawable.menu_item);
@@ -161,5 +142,5 @@ public class order_history_page extends AppCompatActivity {
         b.putInt("id",id);
         intent.putExtras(b);
         startActivity(intent);
-    }*/
+    }
 }

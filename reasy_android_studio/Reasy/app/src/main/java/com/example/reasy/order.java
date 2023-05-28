@@ -54,4 +54,17 @@ public class order {
             throw new RuntimeException(e);
         }
     }
+    public static order getOrderD(Context c, int id){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchOrderD(id);
+            order o=new order(cursor.getInt(2),cursor.getInt(0),cursor.getInt(1),cursor.getDouble(3),cursor.getString(4),cursor.getString(5));
+            cursor.close();
+            dbm.open();
+            return o;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
