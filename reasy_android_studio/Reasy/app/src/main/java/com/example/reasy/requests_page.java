@@ -14,7 +14,7 @@ import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class requests_page extends AppCompatActivity {
-    private int id,sid,cap,tid,nor,noc,max;
+    private int id,sid,cap,tid,nor,noc,ret;
     private ArrayList<String> oh;
     private ArrayList<table> tl=new ArrayList<>();
     private ArrayList<reservation> r=new ArrayList<>();
@@ -27,12 +27,7 @@ public class requests_page extends AppCompatActivity {
     public void fillRequests(View view){
         det = findViewById(R.id.details);
         req=String.valueOf(det.getText());
-        cl = customer.getCustomer(requests_page.this);
-        for(customer c: cl) {
-            if (c.getId() == id) {
-                nor = c.getNumOfReservations();
-            }
-        }
+        nor = customer.getNumOfReservations(requests_page.this,id);
         show();
     }
     public void show(){
@@ -49,28 +44,23 @@ public class requests_page extends AppCompatActivity {
             b.putInt("noc",noc);
             b.putString("tor",tor);
             b.putString("req",req);
+            b.putInt("nor",nor);
             intent.putExtras(b);
             startActivity(intent);
         }
         else {
-            create();
-        }
-    }
-    public void create(){
-        DatabaseManager dbm = new DatabaseManager(requests_page.this);
-        try {
-            dbm.open();
-            dbm.insertRes(sid, id, noc, dateb, tor, tid, null, req);
-            for(customer c: cl) {
-                if (c.getId() == id) {
-                    c.updateNumOfReservations(requests_page.this,id);
-                }
+            DatabaseManager dbm = new DatabaseManager(requests_page.this);
+            try {
+                dbm.open();
+                dbm.insertRes(sid, id, noc, dateb, tor, tid, null, req);
+                ret=customer.updateNumOfReservations(requests_page.this,id,nor);
+                popupMessage();
+            } catch (SQLDataException e) {
+                throw new RuntimeException(e);
             }
-            popupMessage();
-        } catch (SQLDataException e) {
-            throw new RuntimeException(e);
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

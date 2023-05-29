@@ -14,7 +14,7 @@ import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class address_page extends AppCompatActivity {
-     private int id,sid,cap,tid,nor,noc,max;
+     private int id,sid,cap,tid,nor,noc,ret;
     private ArrayList<String> oh;
     private ArrayList<reservation> rl=new ArrayList<>();
     private ArrayList<table> tl=new ArrayList<>();
@@ -33,25 +33,18 @@ public class address_page extends AppCompatActivity {
             text4.setText("You have to fill the address.");
         }
         else if(scity.compareToIgnoreCase(ccity)==0) {
-            create();
+            DatabaseManager dbm = new DatabaseManager(address_page.this);
+            try {
+                dbm.open();
+                dbm.insertRes(sid, id, noc, dateb, tor, tid, str, req);
+                ret=customer.updateNumOfReservations(address_page.this,id,nor);
+                popupMessage();
+            } catch (SQLDataException e) {
+                throw new RuntimeException(e);
+            }
         }
         else{
             text4.setText("The address must be in the same city.");
-        }
-    }
-    public void create(){
-        DatabaseManager dbm = new DatabaseManager(address_page.this);
-        try {
-            dbm.open();
-            dbm.insertRes(sid, id, noc, dateb, tor, tid, str, req);
-            for(customer c: cl) {
-                if (c.getId() == id) {
-                    c.updateNumOfReservations(address_page.this,id);
-                }
-            }
-            popupMessage();
-        } catch (SQLDataException e) {
-            throw new RuntimeException(e);
         }
     }
     @Override
@@ -71,15 +64,15 @@ public class address_page extends AppCompatActivity {
         noc=bundle.getInt("noc");
         tor=bundle.getString("tor");
         req=bundle.getString("req");
+        nor=bundle.getInt("nor");
         for(shop s: slist){
             if(s.getId()==sid){
                 n=s.getName();
-                scity=s.getCity();
             }
         }
+        scity=shop.getCity(address_page.this,sid);
         for(customer c: cl) {
             if (c.getId() == id) {
-                c.updateNumOfReservations(address_page.this,id);
                 p = findViewById(R.id.textView27);
                 p.setText(String.valueOf(c.getPoints())+"pts");
                 b = findViewById(R.id.textView28);

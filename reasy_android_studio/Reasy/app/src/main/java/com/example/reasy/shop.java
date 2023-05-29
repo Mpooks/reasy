@@ -92,8 +92,18 @@ public class shop extends user{
     public String getAddress(){
         return address;
     }
-    public String getCity(){
-        return city;
+    public static String getCity(Context c,int sid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            String ad;
+            Cursor cursor=dbm.fetchA(sid);
+            ad=cursor.getString(0);
+            dbm.close();
+            return ad;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
     }
     public double[] getInOutGoal(){
         double[] res=new double[3];

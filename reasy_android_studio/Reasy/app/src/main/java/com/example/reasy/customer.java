@@ -22,16 +22,28 @@ public class customer extends user{
     public void addPointsROrder(int p, order o){
         points=points+p;
     }
-    public int getNumOfReservations(){
-        return num_of_reservations;
-    }
-    public void updateNumOfReservations(Context c,int cid){
-        num_of_reservations++;
+    public static int getNumOfReservations(Context c,int id){
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
-            dbm.updateCRes(cid,num_of_reservations);
+            int num;
+            Cursor cursor=dbm.fetchNumRes(id);
+            num=cursor.getInt(0);
             dbm.close();
+            return num;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static int updateNumOfReservations(Context c,int cid,int nor){
+        int num_of_reservations=nor+1;
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            int ret;
+            ret=dbm.updateCRes(cid,num_of_reservations);
+            dbm.close();
+            return ret;
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }

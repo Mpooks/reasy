@@ -36,7 +36,7 @@ public class supplier_products_page extends AppCompatActivity {
     }
 
     public void chooseSupplier() {
-       // ml = main_lists.createLists();
+      /* // ml = main_lists.createLists();
         supp_list = (ArrayList<supplier>) ml.getSupplierList().clone();
         Bundle bundle = getIntent().getExtras();
         id = bundle.getInt("id");
@@ -100,5 +100,5 @@ public class supplier_products_page extends AppCompatActivity {
         b2.putInt("id", id);
         intent2.putExtras(b2);
         startActivity(intent2);
-    }
+    */}
 }

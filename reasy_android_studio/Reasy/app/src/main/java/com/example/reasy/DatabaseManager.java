@@ -58,60 +58,74 @@ public class DatabaseManager {
         return cursor;
     }
     public Cursor fetchPrM(int sid){
-        Cursor c = db.rawQuery("SELECT id,name,cost,quantity FROM m_product WHERE s_id="+sid, null);
-        if(c !=null){
-            c.moveToFirst();
+        Cursor cursor = db.rawQuery("SELECT id,name,cost,quantity FROM m_product WHERE s_id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
         }
-        return c;
+        return cursor;
+    }
+    public Cursor fetchNumRes(int id){
+        Cursor cursor = db.rawQuery("SELECT num_of_reservations FROM customer WHERE id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchA(int sid){
+        Cursor cursor = db.rawQuery("SELECT city FROM shop WHERE id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
     }
     public Cursor fetchMPrD(int id){
-        Cursor c = db.rawQuery("SELECT id,name,cost,quantity FROM m_product WHERE id="+id, null);
-        if(c !=null){
-            c.moveToFirst();
+        Cursor cursor = db.rawQuery("SELECT id,name,cost,quantity FROM m_product WHERE id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
         }
-        return c;
+        return cursor;
     }
     public Cursor fetchOH(int sid){
-        Cursor c = db.rawQuery("SELECT w_time FROM wo WHERE id="+sid, null);
-        if(c !=null){
-            c.moveToFirst();
+        Cursor cursor = db.rawQuery("SELECT w_time FROM wo WHERE id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
         }
-        return c;
+        return cursor;
     }
     public Cursor fetchTables(int sid){
-        Cursor c = db.rawQuery("SELECT t_id,capacity FROM s_table WHERE s_id="+sid, null);
-        if(c !=null){
-            c.moveToFirst();
+        Cursor cursor = db.rawQuery("SELECT t_id,capacity FROM s_table WHERE s_id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
         }
-        return c;
+        return cursor;
     }
     public Cursor fetchRes(int tid){
-        Cursor c = db.rawQuery("SELECT * FROM reservation WHERE t_id="+tid, null);
-        if(c !=null){
-            c.moveToFirst();
+        Cursor cursor = db.rawQuery("SELECT * FROM reservation WHERE t_id="+tid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
         }
-        return c;
+        return cursor;
     }
     public Cursor fetchCustRes(int cid){
-        Cursor c = db.rawQuery("SELECT * FROM reservation WHERE c_id="+cid, null);
-        if(c !=null){
-            c.moveToFirst();
+        Cursor cursor = db.rawQuery("SELECT * FROM reservation WHERE c_id="+cid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
         }
-        return c;
+        return cursor;
     }
     public Cursor fetchOrder(int cid,int sid){
-        Cursor c = db.rawQuery("SELECT * FROM c_order WHERE c_id="+cid+" AND s_id="+sid, null);
-        if(c !=null){
-            c.moveToFirst();
+        Cursor cursor = db.rawQuery("SELECT * FROM c_order WHERE c_id="+cid+" AND s_id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
         }
-        return c;
+        return cursor;
     }
     public Cursor fetchOrderD(int id){
-        Cursor c = db.rawQuery("SELECT * FROM c_order WHERE id="+id, null);
-        if(c !=null){
-            c.moveToFirst();
+        Cursor cursor = db.rawQuery("SELECT * FROM c_order WHERE id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
         }
-        return c;
+        return cursor;
     }
     public void insertRes(int s_id, int c_id, int numofc, String dateR, String time, int t_id, String address, String requests){
         ContentValues contentValues = new ContentValues();
@@ -134,10 +148,11 @@ public class DatabaseManager {
         contentValues.put("pm", pm);
         db.insert("c_order", null, contentValues);
     }
-    public void updateCRes(int cid, int num){
+    public int updateCRes(int cid, int num){
         ContentValues contentValues=new ContentValues();
         contentValues.put("num_of_reservations", num);
-        db.update("customer",contentValues,"id="+cid,null);
+        int ret=db.update("customer",contentValues,"id="+cid,null);
+        return ret;
     }
 
     public int update(int id, String email, String password, String name, double balance){

@@ -26,17 +26,10 @@ public class calendar_page extends AppCompatActivity {
     private TextView text3,text4;
     private String dateb,n,d;
     public void chooseDate(){
-        slist=shop.getShops(calendar_page.this);
         Bundle bundle = getIntent().getExtras();
         oh= bundle.getStringArrayList("open");
         id= bundle.getInt("id");
         sid= bundle.getInt("sid");
-        for(shop s: slist){
-            if(s.getId()==sid){
-                cap=s.getCapacity();
-                n=s.getName();
-            }
-        }
         cl=customer.getCustomer(calendar_page.this);
         for(customer c: cl) {
             if (c.getId() == id) {
@@ -114,6 +107,13 @@ public class calendar_page extends AppCompatActivity {
             }
         }
         if(found==0) {
+            slist=shop.getShops(calendar_page.this);
+            for(shop s: slist){
+                if(s.getId()==sid){
+                    cap=s.getCapacity();
+                    n=s.getName();
+                }
+            }
             Intent intent = new Intent(this, customers_time_page.class);
             Bundle b = new Bundle();
             //Add your data to bundle
