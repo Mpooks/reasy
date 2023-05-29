@@ -80,37 +80,32 @@ public class order_page extends AppCompatActivity {
         }
         if(found==0 && foundm==0){
             if(om.compareTo("Online")==0){
-                for(customer c: cl){
-                    if(c.getId()==id){
-                        oh=c.getOrderHistory(order_page.this,id,sid);
-                        if(!(oh.isEmpty())) {
-                            for (order p : oh) {
-                                    orders.add(p.getOrder_id());
-                            }
-                        }
-                        else{
-                            orders.add(0);
-                        }
+                oh=customer.getOrderHistory(order_page.this,id,sid);
+                if(!(oh.isEmpty())) {
+                    for (order p : oh) {
+                        orders.add(p.getOrder_id());
                     }
                 }
+                else{
+                    orders.add(0);
+                }
+
                 show();
             }
             else{
-                create();
+                DatabaseManager dbm = new DatabaseManager(order_page.this);
+                try {
+                    dbm.open();
+                    dbm.insertOrder(sid,id,0,"In person","In person");
+                    dbm.close();
+                    popupMessage();
+                } catch (SQLDataException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
-    public void create(){
-        DatabaseManager dbm = new DatabaseManager(order_page.this);
-        try {
-            dbm.open();
-            dbm.insertOrder(sid,id,0,"In person","In person");
-            dbm.close();
-            popupMessage();
-        } catch (SQLDataException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
     public void show(){
         Intent intent=new Intent(this,order_history_page.class);
         //Create the bundle

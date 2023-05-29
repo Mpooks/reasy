@@ -26,11 +26,7 @@ public class order_history_page extends AppCompatActivity {
     private ArrayList<product_menu> pms=new ArrayList<>();
     private ArrayList<order> oh,foundo=new ArrayList<>();
     public void newOrPrevOrder(View view){
-        for(shop s:slist) {
-            if (s.getId() == sid) {
-                arrayList = s.getShop_m(order_history_page.this, sid);
-            }
-        }
+        arrayList =menu.getMenu(order_history_page.this,sid);
         for (int i = 0; i < arrayList.size(); i++) {
             prods.add(arrayList.get(i).getId());
         }
