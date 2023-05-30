@@ -1,7 +1,7 @@
 package com.example.reasy;
 
 public class reception {
-    public reception(int guest_number, int reception_id, int customer_id, String date, int artist_id, int reception_area_id, int catering_id) {
+    public reception(int reception_id, int customer_id,int guest_number, String date, int artist_id, int reception_area_id, int catering_id) {
         this.guest_number = guest_number;
         this.reception_id = reception_id;
         this.customer_id = customer_id;
@@ -18,9 +18,6 @@ public class reception {
     private int artist_id;
     private int reception_area_id;
     private int catering_id;
-
-    //reception newReception = new reception(100,2,3,"2025-02-28",4,5,6);
-
 
     public void changeReception(int new_number)   {
         guest_number=new_number;

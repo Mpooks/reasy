@@ -134,6 +134,27 @@ public class DatabaseManager {
         }
         return cursor;
     }
+    public Cursor fetchRA(){
+        Cursor cursor = db.rawQuery("SELECT * FROM reception_area", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchRAfromID(int rid){
+        Cursor cursor = db.rawQuery("SELECT cost FROM reception_area WHERE id="+rid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchRec(int rid,String d){
+        Cursor cursor = db.rawQuery("SELECT * FROM reception WHERE rad="+rid+" AND dateR='"+d+"'", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
     public Cursor fetchPrO(int id){
         Cursor cursor = db.rawQuery("SELECT * FROM o_product WHERE o_id="+id, null);
         if(cursor !=null){
@@ -170,6 +191,16 @@ public class DatabaseManager {
         contentValues.put("res_id", res_id);
         db.insert("c_order", null, contentValues);
     }
+    public void insertR(int id, int g, String date, int car, int ca,int cc){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("c_id", id);
+        contentValues.put("guests", g);
+        contentValues.put("dateR", date);
+        contentValues.put("a_id", ca);
+        contentValues.put("rad", car);
+        contentValues.put("cid", cc);
+        db.insert("reception", null, contentValues);
+    }
     public void insertPrO(int id, String name, double cost, int o_id, int quantity){
         ContentValues contentValues = new ContentValues();
         contentValues.put("id", id);
@@ -195,7 +226,33 @@ public class DatabaseManager {
         int ret=db.update("customer",contentValues,"id="+cid,null);
         return ret;
     }
-
+    public Cursor fetchCat(){
+        Cursor cursor = db.rawQuery("SELECT * FROM catering", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }public Cursor fetchA(){
+        Cursor cursor = db.rawQuery("SELECT * FROM artist", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchCatC(int id){
+        Cursor cursor = db.rawQuery("SELECT cost FROM catering WHERE id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchAC(int id){
+        Cursor cursor = db.rawQuery("SELECT cost FROM artist WHERE id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
     public int update(int id, String email, String password, String name, double balance){
         ContentValues contentValues=new ContentValues();
         contentValues.put(DBHandler.u_email, email);

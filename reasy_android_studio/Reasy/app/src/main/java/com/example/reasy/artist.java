@@ -7,7 +7,7 @@ public class artist {
     private double cost;
     private String music_genre;
 
-    public artist(String name, int artist_id, double cost, String music_genre) {
+    public artist(int artist_id, String name, double cost, String music_genre) {
         this.name = name;
         this.artist_id = artist_id;
         this.cost = cost;
@@ -16,5 +16,13 @@ public class artist {
 
     public int getArtist() {
         return artist_id;
+    }
+
+    public String getMusicGenre() {
+        return music_genre;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -7,7 +7,38 @@
     tools:context=".organize_reception_page">
 
     <TextView
-        android:id="@+id/textView53"
+        android:id="@+id/textViewc11"
+        android:layout_width="404dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:text="Choose date and number of guests:"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347" />
+
+    <EditText
+        android:id="@+id/editTextNumber2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.412" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:background="@drawable/point"
@@ -16,13 +47,13 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.992" />
+        app:layout_constraintVertical_bias="0.975" />
 
     <TextView
-        android:id="@+id/textView52"
+        android:id="@+id/textView2"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:background="@drawable/balance"
@@ -31,19 +62,55 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.992" />
+        app:layout_constraintVertical_bias="0.975" />
+
+    <TextView
+        android:id="@+id/warning2"
+        android:layout_width="241dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.918" />
+
+    <Button
+        android:id="@+id/bookb4"
+        android:layout_width="138dp"
+        android:layout_height="41dp"
+        android:background="@drawable/orange_button"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:onClick="chooseDateAndPeople"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
     <ImageButton
-        android:id="@+id/backb34"
+        android:id="@+id/backb17"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
         android:contentDescription="back"
         android:onClick="goBack"
         android:scaleType="fitXY"
+        android:translationZ="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
@@ -52,198 +119,26 @@
         app:layout_constraintVertical_bias="0.071"
         app:srcCompat="@drawable/back" />
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="418dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="32dp"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:gravity="center"
-        android:text="Choose how many people you want to invite:"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/t1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/t3"
-        android:layout_width="80dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/edit_text"
-        android:ems="10"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:hint="month"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:nextFocusForward="@+id/t4"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/btn1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/t1"
-        android:layout_width="122dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="168dp"
-        android:background="@drawable/edit_text"
-        android:ems="10"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:hint="Enter people"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        app:flow_horizontalAlign="center"
-        app:layout_constraintBottom_toTopOf="@+id/t3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/t4"
-        android:layout_width="80dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/edit_text"
-        android:ems="10"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:hint="day"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/btn1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/t2"
-        android:layout_width="80dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/edit_text"
-        android:ems="10"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:hint="year"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:nextFocusForward="@+id/t3"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/btn1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-
-    <TextView
-        android:id="@+id/firstbckspc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="83dp"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:text="/"
-        android:textColor="@color/gray"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/t3"
-        app:layout_constraintStart_toEndOf="@+id/t2"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/secondbckspc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="83dp"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:text="/"
-        android:textColor="@color/gray"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/t4"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toEndOf="@+id/t3"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="120dp"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:text="Choose the date for the reception:"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/t3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/t1"
-        app:layout_constraintVertical_bias="0.533" />
-
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="254dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="212dp"
-        android:background="@drawable/orange_button"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:onClick="chooseDateAndPeople"
-        android:text="Search for reception areas"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="179dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/orange_button"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:text="Go to next page "
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/t5"
-        android:layout_width="219dp"
-        android:layout_height="110dp"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:text="Message"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn1"
-        app:layout_constraintVertical_bias="0.64" />
-
     <ImageView
         android:id="@+id/imageView25"
-        android:layout_width="394dp"
-        android:layout_height="217dp"
+        android:layout_width="431dp"
+        android:layout_height="238dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/reception_calendar" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/reception_photo" />
 
-
+    <CalendarView
+        android:id="@+id/calendar3"
+        android:layout_width="378dp"
+        android:layout_height="302dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.769"></CalendarView>
 </androidx.constraintlayout.widget.ConstraintLayout>

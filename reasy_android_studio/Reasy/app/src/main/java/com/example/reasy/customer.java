@@ -70,7 +70,7 @@ public class customer extends user{
             }
 
             cursor.close();
-            dbm.open();
+            dbm.close();
             return cl;
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
@@ -90,7 +90,7 @@ public class customer extends user{
             }
 
             cursor.close();
-            dbm.open();
+            dbm.close();
             return rl;
         } catch (SQLDataException e) {
             throw new RuntimeException(e);

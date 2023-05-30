@@ -1,8 +1,11 @@
 package com.example.reasy;
 
+import android.content.Context;
+import android.database.Cursor;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class reception_area {
@@ -19,23 +22,37 @@ public class reception_area {
         this.cost = cost;
     }
 
-    public String getAvailability(int n,String d) {
-        int found = 0;
-        if(n<=100){
-            if(d.equals("2023-05-23")){
-                if(found==0) {
-                    return "You are able to book a reception";
-                }else {
-                    return "Rest booked";
+    public int getAvailability(Context c, int n, String d,int rid,int num) {
+        int av=0;
+        if(num>=n){
+            try {
+                DatabaseManager dbm = new DatabaseManager(c);
+                dbm.open();
+                Cursor cursor=dbm.fetchRec(rid,d);
+                ArrayList<reception> cl = new ArrayList<>();
+
+                if (cursor.moveToFirst()) {
+                    do {
+                        cl.add(new reception(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getString(3),cursor.getInt(4),cursor.getInt(5),cursor.getInt(6)));
+                    } while (cursor.moveToNext());
                 }
-            }else{
-                return "Date not valid";
+
+                cursor.close();
+                dbm.close();
+                if(cl.isEmpty()){
+                    av=1;
+                }
+                else{
+                    av=0;
+                }
+            } catch (SQLDataException e) {
+                throw new RuntimeException(e);
             }
-        }else{
-            return "People not valid";
         }
-
-
+        else{
+            av=0;
+        }
+        return av;
     }
 
     public String getName() {
@@ -48,5 +65,9 @@ public class reception_area {
 
     public int getReception_area_id() {
         return reception_area_id;
+    }
+
+    public double getCost() {
+        return cost;
     }
 }
