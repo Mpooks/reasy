@@ -36,7 +36,7 @@ public class calendar_page extends AppCompatActivity {
                 p = findViewById(R.id.textView21);
                 p.setText(String.valueOf(c.getPoints())+"pts");
                 b = findViewById(R.id.textView22);
-                b.setText(String.valueOf(c.getBalance())+"\u20AC");
+                b.setText(String.valueOf(user.getBalance(calendar_page.this,id))+"\u20AC");
             }
         }
         linearLayout = findViewById(R.id.linear_layout);

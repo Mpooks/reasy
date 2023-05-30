@@ -16,11 +16,12 @@ public class product_menu extends product{
     private int shop_id;
     private int available_quantity;
 
-    public int get_Quantity(){
+    public int getQuantity(){
         return available_quantity;
     }
-    public void updateQuantity(int q){
+    public int updateQuantity(int q){
         available_quantity=available_quantity-q;
+        return available_quantity;
     }
     public static ArrayList<product_menu> getMenuPr(Context c, int sid){
         try {

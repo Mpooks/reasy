@@ -43,7 +43,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String q9= "CREATE TABLE job_offer(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,position VARCHAR(255) NOT NULL, salary DOUBLE NOT NULL, experience DOUBLE, start_date VARCHAR(255) NOT NULL, end_date VARCHAR(255) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
         String q10= "CREATE TABLE menu(s_id INT NOT NULL PRIMARY KEY,rating DOUBLE NOT NULL, numofrates INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id))";
         String q11= "CREATE TABLE supply(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,supplier_id INT NOT NULL, address VARCHAR(255) NOT NULL, sample VARCHAR(25) NOT NULL, cost DOUBLE NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(supplier_id) REFERENCES supplier(id))";
-        String q12= "CREATE TABLE c_order(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,c_id INT NOT NULL, cost DOUBLE NOT NULL, om VARCHAR(25) NOT NULL, pm VARCHAR(25) NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(c_id) REFERENCES customer(id))";
+        String q12= "CREATE TABLE c_order(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, s_id INT NOT NULL,c_id INT NOT NULL, cost DOUBLE NOT NULL, om VARCHAR(25) NOT NULL, pm VARCHAR(25) NOT NULL,res_id INT NOT NULL, FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(c_id) REFERENCES customer(id),FOREIGN KEY(res_id) REFERENCES reservation(id))";
         String q13= "CREATE TABLE product(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL)";
         String q14= "CREATE TABLE m_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,s_id INT NOT NULL, quantity INT NOT NULL, PRIMARY KEY(id,s_id), FOREIGN KEY(s_id) REFERENCES menu(s_id))";
         String q15= "CREATE TABLE supplier_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,s_id INT NOT NULL, quantity INT NOT NULL,PRIMARY KEY(id,s_id), FOREIGN KEY(s_id) REFERENCES supplier(id))";
@@ -71,12 +71,12 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(q9);
         db.execSQL(q10);
         db.execSQL(q11);
+        db.execSQL(q17);
         db.execSQL(q12);
         db.execSQL(q13);
         db.execSQL(q14);
         db.execSQL(q15);
         db.execSQL(q16);
-        db.execSQL(q17);
         db.execSQL(q18);
         db.execSQL(q19);
         db.execSQL(q20);
@@ -99,7 +99,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String i9= "INSERT INTO job_offer VALUES(1,2,\"waiter\",800,2.5,\"2023-05-20\",\"2023-06-06\")";
         String i10= "INSERT INTO menu VALUES(1,4.5,34),(2,4.8,340),(3,4.5,128),(4,4.2,560)";
         String i11= "INSERT INTO supply VALUES(1,3,1,\"Leoforos Poseidonos 20 Athens\",\"true\",20.5)";
-        String i12= "INSERT INTO c_order VALUES(1,2,5,250,\"Online\",\"Online\")";
+        String i12= "INSERT INTO c_order VALUES(1,2,5,250,\"Online\",\"Online\",2)";
         String i13= "INSERT INTO product VALUES(1,\"First Time Omakase\", 100),(2,\"Special Omakase\", 250),(3,\"Crispy Rice Spicy Salmon\", 35),(4,\"Wagyu Tacos\", 50),(5,\"Benedict\", 8),(6,\"Mmontreal\", 8.5),(7,\"Meze Meze Salad\", 7.8),(8,\"Cheese plateau\", 16),(9,\"Tomatoes\", 0.5125),(10,\"Potatoes\", 0.34),(11,\"Cucumbers\", 0.65),(12,\"Eggplants\", 0.89),(13,\"Carrots\", 0.42),(14,\"Lettuce\", 0.75)";
         String i14= "INSERT INTO m_product VALUES(1,\"First Time Omakase\", 100,2,23),(2,\"Special Omakase\", 250,2,2),(3,\"Crispy Rice Spicy Salmon\", 35,2,18),(4,\"Wagyu Tacos\", 50,2,7),(5,\"Benedict\", 8,3,16),(6,\"Mmontreal\", 8.5,3,9),(7,\"Meze Meze Salad\", 7.8,4,23),(8,\"Cheese plateau\", 16,1,7)";
         String i15= "INSERT INTO supplier_product VALUES(9,\"Tomatoes\", 0.5125,1,80),(10,\"Potatoes\", 0.34,1,34),(11,\"Cucumbers\", 0.65,2,23),(12,\"Eggplants\", 0.89,2,34),(13,\"Carrots\", 0.42,3,69),(14,\"Lettuce\", 0.75,3,54)";
@@ -126,12 +126,12 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(i9);
         db.execSQL(i10);
         db.execSQL(i11);
+        db.execSQL(i17);
         db.execSQL(i12);
         db.execSQL(i13);
         db.execSQL(i14);
         db.execSQL(i15);
         db.execSQL(i16);
-        db.execSQL(i17);
         db.execSQL(i18);
         db.execSQL(i19);
         db.execSQL(i20);

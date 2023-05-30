@@ -17,10 +17,12 @@
         tools:targetApi="31" >
         <activity
             android:name=".active_receptions_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".cuisine_and_reception_type"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".search_page"
             android:exported="true"
@@ -69,7 +71,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".shop_budget_jo_duration_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".shipping_address_page"
             android:exported="false"
@@ -80,7 +83,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".set_salary_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".sample_request_page"
             android:exported="false"
@@ -91,16 +95,20 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".rejection_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".recommend_shop_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".rating_previous_orders_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".rating_form_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".organize_reception_page"
             android:exported="true"
@@ -116,30 +124,36 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".notify_customers_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".neighbouring_tables_page"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".music_genre_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".main_page"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".job_offer_form_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".invitation_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".friend_list_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".final_order_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".customers_time_page"
             android:exported="false"
@@ -150,10 +164,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".change_people_number_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".catering_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".calendar_page"
             android:exported="false"
@@ -164,7 +180,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".available_artists_page"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".reception_area_page"
             android:exported="false"

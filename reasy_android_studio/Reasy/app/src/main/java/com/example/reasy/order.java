@@ -13,14 +13,16 @@ public class order {
     private double cost;
     private String order_method;
     private String payment_method;
+    private int res_id;
 
-    public order(int customer_id, int order_id, int shop_id, double cost, String order_method, String payment_method) {
+    public order(int customer_id, int order_id, int shop_id, double cost, String order_method, String payment_method,int res_id) {
         this.customer_id = customer_id;
         this.order_id = order_id;
         this.shop_id = shop_id;
         this.cost = cost;
         this.order_method = order_method;
         this.payment_method = payment_method;
+        this.res_id=res_id;
     }
 
     public int getOrder_id() {
@@ -43,7 +45,7 @@ public class order {
 
             if (cursor.moveToFirst()) {
                 do {
-                    o.add(new order(cursor.getInt(2),cursor.getInt(0),cursor.getInt(1),cursor.getDouble(3),cursor.getString(4),cursor.getString(5)));
+                    o.add(new order(cursor.getInt(2),cursor.getInt(0),cursor.getInt(1),cursor.getDouble(3),cursor.getString(4),cursor.getString(5),cursor.getInt(6)));
                 } while (cursor.moveToNext());
             }
 
@@ -54,17 +56,41 @@ public class order {
             throw new RuntimeException(e);
         }
     }
-    public static order getOrderD(Context c, int id){
+    public static order getOrderID(Context c, int id){
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
-            Cursor cursor=dbm.fetchOrderD(id);
-            order o=new order(cursor.getInt(2),cursor.getInt(0),cursor.getInt(1),cursor.getDouble(3),cursor.getString(4),cursor.getString(5));
+            Cursor cursor=dbm.fetchOrderID(id);
+            order o=new order(cursor.getInt(2),cursor.getInt(0),cursor.getInt(1),cursor.getDouble(3),cursor.getString(4),cursor.getString(5),cursor.getInt(6));
             cursor.close();
             dbm.open();
             return o;
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }
+    }
+    public static ArrayList<order> getOrderD(Context c, int id){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+                Cursor cursor=dbm.fetchOrderD(id);
+            ArrayList<order> o = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    o.add(new order(cursor.getInt(2),cursor.getInt(0),cursor.getInt(1),cursor.getDouble(3),cursor.getString(4),cursor.getString(5),cursor.getInt(6)));
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+            dbm.open();
+            return o;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getRes_id() {
+        return res_id;
     }
 }

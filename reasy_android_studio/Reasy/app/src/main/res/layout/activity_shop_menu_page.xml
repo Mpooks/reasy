@@ -7,6 +7,21 @@
     tools:context=".shop_menu_page">
 
     <TextView
+        android:id="@+id/textView60"
+        android:layout_width="404dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.648" />
+
+    <TextView
         android:id="@+id/textView38"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -181,15 +196,15 @@
         app:srcCompat="@drawable/food" />
 
     <ScrollView
-        android:layout_width="411dp"
-        android:layout_height="184dp"
+        android:layout_width="414dp"
+        android:layout_height="158dp"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546">
+        app:layout_constraintVertical_bias="0.506">
 
         <LinearLayout
             android:id="@+id/linear_layout"

@@ -44,7 +44,7 @@ public class chosen_shop_page extends AppCompatActivity {
                 po = findViewById(R.id.textView23);
                 po.setText(String.valueOf(c.getPoints())+"pts");
                 b = findViewById(R.id.textView24);
-                b.setText(String.valueOf(c.getBalance())+"\u20AC");
+                b.setText(String.valueOf(user.getBalance(chosen_shop_page.this,id))+"\u20AC");
             }
         }
         linearLayout = findViewById(R.id.linear_layout);

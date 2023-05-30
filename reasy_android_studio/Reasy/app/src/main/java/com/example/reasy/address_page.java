@@ -76,7 +76,7 @@ public class address_page extends AppCompatActivity {
                 p = findViewById(R.id.textView27);
                 p.setText(String.valueOf(c.getPoints())+"pts");
                 b = findViewById(R.id.textView28);
-                b.setText(String.valueOf(c.getBalance())+"\u20AC");
+                b.setText(String.valueOf(user.getBalance(address_page.this,id))+"\u20AC");
             }
         }
 

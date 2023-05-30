@@ -27,12 +27,12 @@ public class order_page extends AppCompatActivity {
     private ArrayList<user> ul=new ArrayList<user>();
     private ArrayList<shop> slist=new ArrayList<>();
     private ArrayList<customer> cl=new ArrayList<>();
-    private ArrayList<order> oh=new ArrayList<>();
+    private ArrayList<order> oh=new ArrayList<>(),nro=new ArrayList<>();
     private ArrayList<Integer> orders=new ArrayList<>();
-    private ArrayList<reservation> rl=new ArrayList<reservation>();
+    private ArrayList<reservation> resl=new ArrayList<reservation>(),rl=new ArrayList<reservation>();
     private CheckBox oc,ipc;
     private EditText rd;
-    private  TextView text5,text4;
+    private  TextView text5,text4,po,b;
     public void createOrder(View view){
         foundinlist=0;
         rd=findViewById(R.id.rid);
@@ -96,7 +96,7 @@ public class order_page extends AppCompatActivity {
                 DatabaseManager dbm = new DatabaseManager(order_page.this);
                 try {
                     dbm.open();
-                    dbm.insertOrder(sid,id,0,"In person","In person");
+                    dbm.insertOrder(sid,id,0,"In person","In person",res_id);
                     dbm.close();
                     popupMessage();
                 } catch (SQLDataException e) {
@@ -113,6 +113,7 @@ public class order_page extends AppCompatActivity {
         //Add your data to bundle
         b.putInt("sid",sid);
         b.putInt("id",id);
+        b.putInt("res_id",res_id);
         b.putIntegerArrayList("orders",orders);
         intent.putExtras(b);
         startActivity(intent);
@@ -129,8 +130,25 @@ public class order_page extends AppCompatActivity {
         cl=customer.getCustomer(order_page.this);
         for(customer c: cl) {
             if(c.getId()==id){
-                rl=c.getReservations(order_page.this,id);
+                resl=c.getReservations(order_page.this,id);
+                po = findViewById(R.id.textView36);
+                po.setText(String.valueOf(c.getPoints())+"pts");
+                b = findViewById(R.id.textView35);
+                b.setText(String.valueOf(user.getBalance(order_page.this,id))+"\u20AC");
             }
+        }
+        nro=order.getOrderD(order_page.this,id);
+        int foundr=0;
+        for(reservation r: resl){
+            for(order o: nro){
+                if(o.getRes_id()==r.getReservation_id()){
+                    foundr=1;
+                }
+            }
+            if(foundr==0){
+                rl.add(r);
+            }
+            foundr=0;
         }
         for(reservation r: rl)
         {

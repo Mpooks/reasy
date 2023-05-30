@@ -25,7 +25,7 @@ public class user {
         return id;
     }
 
-    public double getBalance(){
+    public double getBalanceC(){
         return balance;
     }
 
@@ -37,9 +37,6 @@ public class user {
         return password;
     }
 
-    public void setBalance(float balance){
-        this.balance=balance;
-    }
     /*public void saveToUser(reservation new_res){
         reservations= new ArrayList<>();
         reservations.add(new_res);
@@ -77,6 +74,29 @@ public class user {
             cursor.close();
             dbm.close();
             return userl;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static double getBalance(Context c,int id){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchB(id);
+            double b;
+            b=cursor.getDouble(0);
+            dbm.close();
+            return b;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void setBalance(Context c,int id,double cost){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            dbm.updateB(id,cost);
+            dbm.close();
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }

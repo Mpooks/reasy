@@ -157,7 +157,7 @@ public class customers_time_page extends AppCompatActivity {
                 po = findViewById(R.id.textView25);
                 po.setText(String.valueOf(c.getPoints())+"pts");
                 b = findViewById(R.id.textView26);
-                b.setText(String.valueOf(c.getBalance())+"\u20AC");
+                b.setText(String.valueOf(user.getBalance(customers_time_page.this,id))+"\u20AC");
             }
         }
         text3 = findViewById(R.id.sname2);

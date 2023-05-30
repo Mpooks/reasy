@@ -121,7 +121,28 @@ public class DatabaseManager {
         return cursor;
     }
     public Cursor fetchOrderD(int id){
-        Cursor cursor = db.rawQuery("SELECT * FROM c_order WHERE id="+id, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM c_order WHERE c_id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchOrderID(int id){
+        Cursor cursor = db.rawQuery("SELECT * FROM c_order WHERE res_id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchPrO(int id){
+        Cursor cursor = db.rawQuery("SELECT * FROM o_product WHERE o_id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchB(int id){
+        Cursor cursor = db.rawQuery("SELECT balance FROM user WHERE id="+id, null);
         if(cursor !=null){
             cursor.moveToFirst();
         }
@@ -139,14 +160,34 @@ public class DatabaseManager {
         contentValues.put("requests", requests);
         db.insert("reservation", null, contentValues);
     }
-    public void insertOrder(int s_id, int c_id, double cost, String om, String pm){
+    public void insertOrder(int s_id, int c_id, double cost, String om, String pm,int res_id){
         ContentValues contentValues = new ContentValues();
         contentValues.put("s_id", s_id);
         contentValues.put("c_id", c_id);
         contentValues.put("cost", cost);
         contentValues.put("om", om);
         contentValues.put("pm", pm);
+        contentValues.put("res_id", res_id);
         db.insert("c_order", null, contentValues);
+    }
+    public void insertPrO(int id, String name, double cost, int o_id, int quantity){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id", id);
+        contentValues.put("name", name);
+        contentValues.put("cost", cost);
+        contentValues.put("o_id", o_id);
+        contentValues.put("quantity", quantity);
+        db.insert("o_product", null, contentValues);
+    }
+    public void updatePrMQ(int id, int q){
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("quantity", q);
+        int ret=db.update("m_product",contentValues,"id="+id,null);
+    }
+    public void updateB(int id, double q){
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("balance", q);
+        int ret=db.update("user",contentValues,"id="+id,null);
     }
     public int updateCRes(int cid, int num){
         ContentValues contentValues=new ContentValues();

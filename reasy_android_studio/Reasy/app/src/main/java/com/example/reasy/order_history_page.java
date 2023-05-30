@@ -16,20 +16,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class order_history_page extends AppCompatActivity {
-    private int id,sid,oid;
+    private int id,sid,oid,res_id;
     private ArrayList<product_menu> arrayList=new ArrayList<>();
     private LinearLayout linearLayout;
     private ArrayList<user> ul=new ArrayList<user>();
     private ArrayList<shop> slist=new ArrayList<>();
     private ArrayList<customer> cl=new ArrayList<>();
-    private ArrayList<Integer> orders,prods=new ArrayList<>();
-    private ArrayList<product_menu> pms=new ArrayList<>();
+    private product_menu pr_m;
+    private ArrayList<Integer> orders,opr=new ArrayList<>(),oq=new ArrayList<>(),mpr=new ArrayList<>(),mq=new ArrayList<>();
+    private ArrayList<Integer> prods=new ArrayList<>();
+    private ArrayList<product_order> pro=new ArrayList<>();
     private ArrayList<order> oh,foundo=new ArrayList<>();
+    private TextView po,b;
     public void newOrPrevOrder(View view){
-        arrayList =menu.getMenu(order_history_page.this,sid);
-        for (int i = 0; i < arrayList.size(); i++) {
-            prods.add(arrayList.get(i).getId());
-        }
         show();
     }
     public void show(){
@@ -39,6 +38,7 @@ public class order_history_page extends AppCompatActivity {
         //Add your data to bundle
         b.putInt("sid",sid);
         b.putInt("id",id);
+        b.putInt("res_id",res_id);
         b.putIntegerArrayList("orders",orders);
         b.putIntegerArrayList("prods",prods);
         intent.putExtras(b);
@@ -49,6 +49,7 @@ public class order_history_page extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         id= bundle.getInt("id");
         sid= bundle.getInt("sid");
+        res_id= bundle.getInt("res_id");
         orders= bundle.getIntegerArrayList("orders");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history_page);
@@ -56,6 +57,18 @@ public class order_history_page extends AppCompatActivity {
         ul=user.getUsers(order_history_page.this);
         slist=shop.getShops(order_history_page.this);
         cl=customer.getCustomer(order_history_page.this);
+        for(customer c: cl) {
+            if (c.getId() == id) {
+                po = findViewById(R.id.textView30);
+                po.setText(String.valueOf(c.getPoints())+"pts");
+                b = findViewById(R.id.textView29);
+                b.setText(String.valueOf(user.getBalance(order_history_page.this,id))+"\u20AC");
+            }
+        }
+        arrayList =menu.getMenu(order_history_page.this,sid);
+        for (int i = 0; i < arrayList.size(); i++) {
+            prods.add(arrayList.get(i).getId());
+        }
         if(orders.contains(0)){
             TextView tv = new TextView(this);
             tv.setText("You have no previous orders.");
@@ -77,9 +90,7 @@ public class order_history_page extends AppCompatActivity {
             linearLayout.addView(tv);
         }
         else{
-            for(int i: orders){
-                    foundo.add(order.getOrderD(order_history_page.this,i));
-            }
+            foundo=order.getOrder(order_history_page.this,id,sid);
             TextView b = new TextView(this);
             b.setText("You can select one of your previous orders: ");
             b.setTextSize(18);
@@ -101,18 +112,38 @@ public class order_history_page extends AppCompatActivity {
             for(order o: foundo){
                 TextView tv = new TextView(this);
                 tv.setText("Order Id: "+o.getOrder_id()+ "    Cost: "+ o.getCost());
+                tv.setId(o.getOrder_id());
                 tv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        oid=o.getOrder_id();
+                        pro=product_order.getOrderD(order_history_page.this,oid);
+                        for(product_order p:pro){
+                            opr.add(p.getId());
+                            oq.add(p.getQuantity());
+                            mpr.add(p.getId());
+                            for (product_menu pm : arrayList) {
+                                if (pm.getId() == p.getId()) {
+                                    arrayList.set(arrayList.indexOf(pm), new product_menu(p.getId(), p.getName(), p.getPrice(), sid, pm.updateQuantity(p.getQuantity())));
+                                }
+                            }
+                            pr_m = product_menu.getMPrD(order_history_page.this, p.getId(), sid);
+                            mq.add(pr_m.updateQuantity(p.getQuantity()));
+                        }
                         Intent intent=new Intent(order_history_page.this,final_order_page.class);
-                        oid=tv.getId();
+
                         //Create the bundle
                         Bundle b = new Bundle();
                         //Add your data to bundle
                         b.putInt("sid",sid);
                         b.putInt("id",id);
                         b.putIntegerArrayList("orders",orders);
+                        b.putIntegerArrayList("prods",prods);
                         b.putInt("oid",oid);
+                        b.putIntegerArrayList("mpr",mpr);
+                        b.putIntegerArrayList("mq",mq);
+                        b.putIntegerArrayList("opr",opr);
+                        b.putIntegerArrayList("oq",oq);
                         intent.putExtras(b);
                         startActivity(intent);
                     }
@@ -121,7 +152,6 @@ public class order_history_page extends AppCompatActivity {
                 tv.setHeight(192);
                 tv.setWidth(966);
                 tv.setPadding(30, 90, 30, 90);
-                tv.setId(o.getOrder_id());
                 tv.setGravity(Gravity.CENTER);
                 tv.setBackgroundResource(R.drawable.menu_item);
                 tv.setTypeface(typeface);
