@@ -8,8 +8,10 @@ public class job_offer {
     private double experience;
     private String start_date;
     private String end_date;
+    private int id;
 
-    public job_offer(int shop_id, String position, double salary, double experience, String start_date, String end_date) {
+    public job_offer(int id, int shop_id, String position, double salary, double experience, String start_date, String end_date) {
+        this.id=id;
         this.shop_id = shop_id;
         this.position = position;
         this.salary = salary;

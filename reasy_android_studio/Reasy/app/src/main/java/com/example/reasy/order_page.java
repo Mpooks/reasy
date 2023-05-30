@@ -2,6 +2,7 @@ package com.example.reasy;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -128,8 +129,10 @@ public class order_page extends AppCompatActivity {
         ul=user.getUsers(order_page.this);
         slist=shop.getShops(order_page.this);
         cl=customer.getCustomer(order_page.this);
+        resl.clear();
+        rl.clear();
         for(customer c: cl) {
-            if(c.getId()==id){
+                if(c.getId()==id){
                 resl=c.getReservations(order_page.this,id);
                 po = findViewById(R.id.textView36);
                 po.setText(String.valueOf(c.getPoints())+"pts");
@@ -150,23 +153,16 @@ public class order_page extends AppCompatActivity {
             }
             foundr=0;
         }
-        for(reservation r: rl)
-        {
+        if(rl.isEmpty()){
             TextView tv = new TextView(this);
-            sid=r.getShop_id();
-            for(shop s: slist){
-                if(s.getId()==sid){
-                    sname=s.getName();
-                }
-            }
-            tv.setText("Reservation id: "+r.getReservation_id()+"\nShop: "+sname);
+            tv.setText("You have already ordered for all your reservations.");
             tv.setTextSize(18);
             tv.setHeight(192);
             tv.setWidth(966);
             tv.setPadding(30, 90, 30, 90);
-            tv.setId(r.getReservation_id());
             tv.setGravity(Gravity.CENTER);
-            tv.setBackgroundResource(R.drawable.menu_item);
+            tv.setBackgroundResource(R.drawable.pt);
+            tv.setTextColor(Color.parseColor("#000000"));
             Typeface typeface = getResources().getFont(R.font.seoulhangang_cbl_regular);
             tv.setTypeface(typeface);
 
@@ -176,6 +172,33 @@ public class order_page extends AppCompatActivity {
             tv.setLayoutParams(lp);
 
             linearLayout.addView(tv);
+        }else {
+            for (reservation r : rl) {
+                TextView tv = new TextView(this);
+                sid = r.getShop_id();
+                for (shop s : slist) {
+                    if (s.getId() == sid) {
+                        sname = s.getName();
+                    }
+                }
+                tv.setText("Reservation id: " + r.getReservation_id() + "\nShop: " + sname);
+                tv.setTextSize(18);
+                tv.setHeight(192);
+                tv.setWidth(966);
+                tv.setPadding(30, 90, 30, 90);
+                tv.setId(r.getReservation_id());
+                tv.setGravity(Gravity.CENTER);
+                tv.setBackgroundResource(R.drawable.menu_item);
+                Typeface typeface = getResources().getFont(R.font.seoulhangang_cbl_regular);
+                tv.setTypeface(typeface);
+
+
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(20, 0, 20, 30);
+                tv.setLayoutParams(lp);
+
+                linearLayout.addView(tv);
+            }
         }
         text5 = (TextView)findViewById(R.id.name3);
         text4 = (TextView)findViewById(R.id.name4);

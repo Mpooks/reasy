@@ -93,4 +93,11 @@ public class order {
     public int getRes_id() {
         return res_id;
     }
+
+    public String getOrder_method() {
+        return order_method;
+    }
+    public String getPayment_method() {
+        return payment_method;
+    }
 }

@@ -79,17 +79,17 @@ public class final_order_page extends AppCompatActivity {
                 }
             }
             else{
+                for(product_menu r: arrayList){
+                    tc=tc+r.getPrice()*oq.get(mpr.indexOf(r.getId()));
+                }
                 DatabaseManager dbm = new DatabaseManager(final_order_page.this);
                 try {
                     dbm.open();
-                    for(product_menu r: arrayList){
-                        tc=tc+r.getPrice()*oq.get(mpr.indexOf(r.getId()));
-                    }
-                    dbm.insertOrder(sid,id,tc,"Online","In person",res_id);
-                    or=order.getOrderID(final_order_page.this,res_id);
-                    for(product_menu r: arrayList) {
-                        dbm.insertPrO(r.getId(),r.getName(),r.getPrice(),or.getOrder_id(),oq.get(mpr.indexOf(r.getId())));
-                        dbm.updatePrMQ(r.getId(),mq.get(mpr.indexOf(r.getId())));
+                    dbm.insertOrder(sid, id, tc, "Online", "In person", res_id);
+                    or = order.getOrderID(final_order_page.this, res_id);
+                    for (product_menu r : arrayList) {
+                        dbm.insertPrO(r.getId(), r.getName(), r.getPrice(), or.getOrder_id(), oq.get(mpr.indexOf(r.getId())));
+                        dbm.updatePrMQ(r.getId(), mq.get(mpr.indexOf(r.getId())));
                     }
                     dbm.close();
                     popupMessage();

@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class order_history_page extends AppCompatActivity {
-    private int id,sid,oid,res_id;
+    private int id,sid,oid,res_id,inp=0;
     private ArrayList<product_menu> arrayList=new ArrayList<>();
     private LinearLayout linearLayout;
     private ArrayList<user> ul=new ArrayList<user>();
@@ -26,7 +26,7 @@ public class order_history_page extends AppCompatActivity {
     private ArrayList<Integer> orders,opr=new ArrayList<>(),oq=new ArrayList<>(),mpr=new ArrayList<>(),mq=new ArrayList<>();
     private ArrayList<Integer> prods=new ArrayList<>();
     private ArrayList<product_order> pro=new ArrayList<>();
-    private ArrayList<order> oh,foundo=new ArrayList<>();
+    private ArrayList<order> oh=new ArrayList<>(),foundo=new ArrayList<>();
     private TextView po,b;
     public void newOrPrevOrder(View view){
         show();
@@ -91,70 +91,100 @@ public class order_history_page extends AppCompatActivity {
         }
         else{
             foundo=order.getOrder(order_history_page.this,id,sid);
-            TextView b = new TextView(this);
-            b.setText("You can select one of your previous orders: ");
-            b.setTextSize(18);
-            b.setHeight(192);
-            b.setWidth(966);
-            b.setPadding(30, 90, 30, 90);
-            b.setGravity(Gravity.CENTER);
-            b.setBackgroundResource(R.drawable.pt);
-            b.setTextColor(Color.parseColor("#000000"));
+
             Typeface typeface = getResources().getFont(R.font.seoulhangang_cbl_regular);
-            b.setTypeface(typeface);
+
 
 
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(20, 0, 20, 30);
-            b.setLayoutParams(lp);
 
-            linearLayout.addView(b);
-            for(order o: foundo){
-                TextView tv = new TextView(this);
-                tv.setText("Order Id: "+o.getOrder_id()+ "    Cost: "+ o.getCost());
-                tv.setId(o.getOrder_id());
-                tv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        oid=o.getOrder_id();
-                        pro=product_order.getOrderD(order_history_page.this,oid);
-                        for(product_order p:pro){
-                            opr.add(p.getId());
-                            oq.add(p.getQuantity());
-                            mpr.add(p.getId());
-                            for (product_menu pm : arrayList) {
-                                if (pm.getId() == p.getId()) {
-                                    arrayList.set(arrayList.indexOf(pm), new product_menu(p.getId(), p.getName(), p.getPrice(), sid, pm.updateQuantity(p.getQuantity())));
+            for(order o:foundo){
+                if(o.getOrder_method().compareTo("Online")==0 && o.getPayment_method().compareTo("Online")==0){
+                    oh.add(o);
+                }
+            }
+            if(oh.isEmpty()){
+                inp=1;
+            }
+            if(inp==0) {
+                TextView b = new TextView(this);
+                b.setText("You can select one of your previous orders: ");
+                b.setTextSize(18);
+                b.setHeight(192);
+                b.setWidth(966);
+                b.setPadding(30, 90, 30, 90);
+                b.setGravity(Gravity.CENTER);
+                b.setBackgroundResource(R.drawable.pt);
+                b.setTextColor(Color.parseColor("#000000"));
+                b.setTypeface(typeface);
+                lp.setMargins(20, 0, 20, 30);
+                b.setLayoutParams(lp);
+
+                linearLayout.addView(b);
+                for (order o : oh) {
+                    TextView tv = new TextView(this);
+                    tv.setText("Order Id: " + o.getOrder_id() + "    Cost: " + o.getCost());
+                    tv.setId(o.getOrder_id());
+                    tv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            oid = o.getOrder_id();
+                            pro = product_order.getOrderD(order_history_page.this, oid);
+                            for (product_order p : pro) {
+                                opr.add(p.getId());
+                                oq.add(p.getQuantity());
+                                mpr.add(p.getId());
+                                for (product_menu pm : arrayList) {
+                                    if (pm.getId() == p.getId()) {
+                                        arrayList.set(arrayList.indexOf(pm), new product_menu(p.getId(), p.getName(), p.getPrice(), sid, pm.updateQuantity(p.getQuantity())));
+                                    }
                                 }
+                                pr_m = product_menu.getMPrD(order_history_page.this, p.getId(), sid);
+                                mq.add(pr_m.updateQuantity(p.getQuantity()));
                             }
-                            pr_m = product_menu.getMPrD(order_history_page.this, p.getId(), sid);
-                            mq.add(pr_m.updateQuantity(p.getQuantity()));
-                        }
-                        Intent intent=new Intent(order_history_page.this,final_order_page.class);
+                            Intent intent = new Intent(order_history_page.this, final_order_page.class);
 
-                        //Create the bundle
-                        Bundle b = new Bundle();
-                        //Add your data to bundle
-                        b.putInt("sid",sid);
-                        b.putInt("id",id);
-                        b.putIntegerArrayList("orders",orders);
-                        b.putIntegerArrayList("prods",prods);
-                        b.putInt("oid",oid);
-                        b.putIntegerArrayList("mpr",mpr);
-                        b.putIntegerArrayList("mq",mq);
-                        b.putIntegerArrayList("opr",opr);
-                        b.putIntegerArrayList("oq",oq);
-                        intent.putExtras(b);
-                        startActivity(intent);
-                    }
-                });
+                            //Create the bundle
+                            Bundle b = new Bundle();
+                            //Add your data to bundle
+                            b.putInt("sid", sid);
+                            b.putInt("id", id);
+                            b.putIntegerArrayList("orders", orders);
+                            b.putIntegerArrayList("prods", prods);
+                            b.putInt("res_id", res_id);
+                            b.putInt("oid", oid);
+                            b.putIntegerArrayList("mpr", mpr);
+                            b.putIntegerArrayList("mq", mq);
+                            b.putIntegerArrayList("opr", opr);
+                            b.putIntegerArrayList("oq", oq);
+                            intent.putExtras(b);
+                            startActivity(intent);
+                        }
+                    });
+                    tv.setTextSize(18);
+                    tv.setHeight(192);
+                    tv.setWidth(966);
+                    tv.setPadding(30, 90, 30, 90);
+                    tv.setGravity(Gravity.CENTER);
+                    tv.setBackgroundResource(R.drawable.menu_item);
+                    tv.setTypeface(typeface);
+                    tv.setLayoutParams(lp);
+
+                    linearLayout.addView(tv);
+                }
+            }
+            else{
+                TextView tv = new TextView(this);
+                tv.setText("You have no previous online orders.");
                 tv.setTextSize(18);
                 tv.setHeight(192);
                 tv.setWidth(966);
                 tv.setPadding(30, 90, 30, 90);
                 tv.setGravity(Gravity.CENTER);
-                tv.setBackgroundResource(R.drawable.menu_item);
+                tv.setBackgroundResource(R.drawable.pt);
+                tv.setTextColor(Color.parseColor("#000000"));
                 tv.setTypeface(typeface);
+                lp.setMargins(20, 0, 20, 30);
                 tv.setLayoutParams(lp);
 
                 linearLayout.addView(tv);
