@@ -38,6 +38,8 @@ public class active_receptions_page extends AppCompatActivity {
         //Add your data to bundle
         b.putInt("id",id);
         b.putIntegerArrayList("fid",fid);
+        b.putIntegerArrayList("recid",recid);
+        b.putStringArrayList("recd",recd);
         b.putInt("rid",i);
         intent.putExtras(b);
         startActivity(intent);

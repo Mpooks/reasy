@@ -142,6 +142,13 @@ public class DatabaseManager {
         }
         return cursor;
     }
+    public Cursor fetchCN(int id){
+        Cursor cursor = db.rawQuery("SELECT name FROM customer WHERE id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
     public Cursor fetchFL(int id){
         Cursor cursor = db.rawQuery("SELECT f_id FROM friend WHERE id="+id, null);
         if(cursor !=null){
