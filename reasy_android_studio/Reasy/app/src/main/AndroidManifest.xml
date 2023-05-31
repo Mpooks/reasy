@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.reasy" >
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -16,9 +15,13 @@
         android:theme="@style/Theme.Reasy"
         tools:targetApi="31" >
         <activity
-            android:name=".reception_options_page"
+            android:name=".friend_list_page"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".reception_options_page"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".additional_reception_info_page"
             android:exported="false"
@@ -144,10 +147,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".invitation_page"
-            android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".friend_list_page"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
