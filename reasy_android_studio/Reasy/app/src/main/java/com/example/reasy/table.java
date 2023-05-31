@@ -28,7 +28,7 @@ public class table {
         return table_id;
     }
 
-    public static ArrayList<reservation> getReservations(Context c, int tid){
+    public static ArrayList<reservation> getReservations(Context c, int tid,String dateb, String tor){
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
@@ -43,7 +43,14 @@ public class table {
 
             cursor.close();
             dbm.close();
-            return r;
+            ArrayList<reservation> notav=new ArrayList<>();
+            for(reservation res:r){
+                String time_r=res.getTime(dateb);
+                if((time_r.compareTo(tor)==0)){
+                    notav.add(res);
+                }
+            }
+            return notav;
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }

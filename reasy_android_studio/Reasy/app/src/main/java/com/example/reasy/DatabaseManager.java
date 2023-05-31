@@ -92,8 +92,8 @@ public class DatabaseManager {
         }
         return cursor;
     }
-    public Cursor fetchTables(int sid){
-        Cursor cursor = db.rawQuery("SELECT t_id,capacity FROM s_table WHERE s_id="+sid, null);
+    public Cursor fetchTables(int sid,int cap){
+        Cursor cursor = db.rawQuery("SELECT t_id,capacity FROM s_table WHERE s_id="+sid+" AND capacity>="+cap, null);
         if(cursor !=null){
             cursor.moveToFirst();
         }

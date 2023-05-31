@@ -14,7 +14,7 @@ import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class requests_page extends AppCompatActivity {
-    private int id,sid,cap,tid,nor,noc,ret;
+    private int id,sid,tid,nor,noc,ret;
     private ArrayList<String> oh;
     private ArrayList<table> tl=new ArrayList<>();
     private ArrayList<reservation> r=new ArrayList<>();
@@ -23,7 +23,7 @@ public class requests_page extends AppCompatActivity {
     private ArrayList<shop> slist=new ArrayList<>();
     private TextView text3,text4,p,b;
     private EditText det;
-    private String n,dateb,req,tor;
+    private String n,dateb,req,tor,scity;
     public void fillRequests(View view){
         det = findViewById(R.id.details);
         req=String.valueOf(det.getText());
@@ -32,12 +32,12 @@ public class requests_page extends AppCompatActivity {
     }
     public void show(){
         if(nor%3==0 && nor!=0){
+            scity=shop.getCity(requests_page.this,sid);
             Intent intent = new Intent(this, address_page.class);
             Bundle b = new Bundle();
             //Add your data to bundle
             b.putInt("id", id);
             b.putInt("sid", sid);
-            b.putInt("cap", cap);
             b.putString("date", dateb);
             b.putStringArrayList("open", oh);
             b.putInt("tid",tid);
@@ -45,22 +45,16 @@ public class requests_page extends AppCompatActivity {
             b.putString("tor",tor);
             b.putString("req",req);
             b.putInt("nor",nor);
+            b.putString("scity",scity);
             intent.putExtras(b);
             startActivity(intent);
         }
         else {
-            DatabaseManager dbm = new DatabaseManager(requests_page.this);
-            try {
-                dbm.open();
-                dbm.insertRes(sid, id, noc, dateb, tor, tid, null, req);
+                reservation.createRes(requests_page.this,sid, id, noc, dateb, tor, tid, null, req);
                 ret=customer.updateNumOfReservations(requests_page.this,id,nor);
                 popupMessage();
-            } catch (SQLDataException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +67,12 @@ public class requests_page extends AppCompatActivity {
         id= bundle.getInt("id");
         sid= bundle.getInt("sid");
         dateb= bundle.getString("date");
-        cap= bundle.getInt("cap");
         tid= bundle.getInt("tid");
         noc=bundle.getInt("noc");
         tor=bundle.getString("tor");
         for(shop s: slist){
             if(s.getId()==sid){
                 n=s.getName();
-                tl=s.getTables(requests_page.this,sid);
             }
         }
         for(customer c: cl) {
@@ -102,7 +94,6 @@ public class requests_page extends AppCompatActivity {
         //Add your data to bundle
         b.putInt("id", id);
         b.putInt("sid", sid);
-        b.putInt("cap", cap);
         b.putString("date", dateb);
         b.putStringArrayList("open", oh);
         intent.putExtras(b);
