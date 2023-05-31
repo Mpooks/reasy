@@ -69,11 +69,11 @@ public class shop extends user{
     public int getCapacity(){
         return capacity;
     }
-    public static ArrayList<table> getTables(Context c, int sid){
+    public static ArrayList<table> getTables(Context c, int sid,int cap, String date, String time){
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
-            Cursor cursor=dbm.fetchTables(sid);
+            Cursor cursor=dbm.fetchTables(sid,cap);
             ArrayList<table> tl = new ArrayList<>();
 
             if (cursor.moveToFirst()) {
@@ -84,7 +84,20 @@ public class shop extends user{
 
             cursor.close();
             dbm.close();
-            return tl;
+            if(tl.isEmpty()){
+                return tl;
+            }
+            else{
+                ArrayList<table> tl1 = new ArrayList<>();
+                for(table t: tl){
+                    ArrayList<reservation> r=new ArrayList<>();
+                    r=t.getReservations(c,t.getTable_id(),date,time);
+                    if(r.isEmpty()){
+                        tl1.add(t);
+                    }
+                }
+                return tl1;
+            }
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }

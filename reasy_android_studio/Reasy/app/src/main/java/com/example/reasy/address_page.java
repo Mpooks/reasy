@@ -14,7 +14,7 @@ import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class address_page extends AppCompatActivity {
-     private int id,sid,cap,tid,nor,noc,ret;
+     private int id,sid,tid,nor,noc,ret;
     private ArrayList<String> oh;
     private ArrayList<reservation> rl=new ArrayList<>();
     private ArrayList<table> tl=new ArrayList<>();
@@ -33,15 +33,9 @@ public class address_page extends AppCompatActivity {
             text4.setText("You have to fill the address.");
         }
         else if(scity.compareToIgnoreCase(ccity)==0) {
-            DatabaseManager dbm = new DatabaseManager(address_page.this);
-            try {
-                dbm.open();
-                dbm.insertRes(sid, id, noc, dateb, tor, tid, str, req);
-                ret=customer.updateNumOfReservations(address_page.this,id,nor);
-                popupMessage();
-            } catch (SQLDataException e) {
-                throw new RuntimeException(e);
-            }
+            reservation.createRes(address_page.this,sid, id, noc, dateb, tor, tid, str, req);
+            ret=customer.updateNumOfReservations(address_page.this,id,nor);
+            popupMessage();
         }
         else{
             text4.setText("The address must be in the same city.");
@@ -59,18 +53,17 @@ public class address_page extends AppCompatActivity {
         id= bundle.getInt("id");
         sid= bundle.getInt("sid");
         dateb= bundle.getString("date");
-        cap= bundle.getInt("cap");
         tid= bundle.getInt("tid");
         noc=bundle.getInt("noc");
         tor=bundle.getString("tor");
         req=bundle.getString("req");
         nor=bundle.getInt("nor");
+        scity=bundle.getString("scity");
         for(shop s: slist){
             if(s.getId()==sid){
                 n=s.getName();
             }
         }
-        scity=shop.getCity(address_page.this,sid);
         for(customer c: cl) {
             if (c.getId() == id) {
                 p = findViewById(R.id.textView27);
@@ -90,7 +83,6 @@ public class address_page extends AppCompatActivity {
         //Add your data to bundle
         b.putInt("id", id);
         b.putInt("sid", sid);
-        b.putInt("cap", cap);
         b.putString("date", dateb);
         b.putStringArrayList("open", oh);
         b.putInt("tid",tid);

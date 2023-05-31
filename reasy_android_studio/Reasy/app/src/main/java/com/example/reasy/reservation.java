@@ -1,5 +1,9 @@
 package com.example.reasy;
 
+import android.content.Context;
+
+import java.sql.SQLDataException;
+
 public class reservation {
     private int shop_id;
     private int customer_id;
@@ -30,6 +34,16 @@ public class reservation {
         }
         else{
             return el;
+        }
+    }
+    public static void createRes(Context c, int sid, int id, int noc, String dateb, String tor, int tid, String address, String req){
+        DatabaseManager dbm = new DatabaseManager(c);
+        try {
+            dbm.open();
+            dbm.insertRes(sid, id, noc, dateb, tor, tid, address, req);
+            dbm.close();
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
         }
     }
     /*public int getWaiter(){

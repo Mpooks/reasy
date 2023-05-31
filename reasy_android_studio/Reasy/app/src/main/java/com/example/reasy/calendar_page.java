@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class calendar_page extends AppCompatActivity {
-    private int id,sid,cap,val,found=0,changed=0;
+    private int id,sid,val,found=0,changed=0;
     private ArrayList<String> oh;
     private LinearLayout linearLayout;
     private ArrayList<shop> slist=new ArrayList<>();
@@ -110,7 +110,6 @@ public class calendar_page extends AppCompatActivity {
             slist=shop.getShops(calendar_page.this);
             for(shop s: slist){
                 if(s.getId()==sid){
-                    cap=s.getCapacity();
                     n=s.getName();
                 }
             }
@@ -119,7 +118,6 @@ public class calendar_page extends AppCompatActivity {
             //Add your data to bundle
             b.putInt("id", id);
             b.putInt("sid", sid);
-            b.putInt("cap", cap);
             b.putString("date", dateb);
             b.putStringArrayList("open", oh);
             intent.putExtras(b);
