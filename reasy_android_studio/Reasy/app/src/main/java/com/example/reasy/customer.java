@@ -101,4 +101,44 @@ public class customer extends user{
         o = order.getOrder(c,cid,sid);
         return o;
     }
+    public static ArrayList<reception> getReceptions(Context c,int cid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchCustRec(cid);
+            ArrayList<reception> rl = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    rl.add(new reception(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getString(3),cursor.getInt(4),cursor.getInt(5),cursor.getInt(6)));
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+            dbm.close();
+            return rl;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static ArrayList<Integer> getFriendList(Context c,int cid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchFL(cid);
+            ArrayList<Integer> rl = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    rl.add(cursor.getInt(0));
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+            dbm.close();
+            return rl;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

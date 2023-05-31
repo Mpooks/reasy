@@ -113,6 +113,14 @@ public class DatabaseManager {
         }
         return cursor;
     }
+    public Cursor fetchCustRec(int cid){
+        Cursor cursor = db.rawQuery("SELECT * FROM reception WHERE c_id="+cid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
     public Cursor fetchOrder(int cid,int sid){
         Cursor cursor = db.rawQuery("SELECT * FROM c_order WHERE c_id="+cid+" AND s_id="+sid, null);
         if(cursor !=null){
@@ -122,6 +130,20 @@ public class DatabaseManager {
     }
     public Cursor fetchOrderD(int id){
         Cursor cursor = db.rawQuery("SELECT * FROM c_order WHERE c_id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchInv(int id){
+        Cursor cursor = db.rawQuery("SELECT * FROM invitation WHERE rid="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchFL(int id){
+        Cursor cursor = db.rawQuery("SELECT f_id FROM friend WHERE id="+id, null);
         if(cursor !=null){
             cursor.moveToFirst();
         }

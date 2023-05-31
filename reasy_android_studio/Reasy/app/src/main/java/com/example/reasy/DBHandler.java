@@ -58,6 +58,8 @@ public class DBHandler extends SQLiteOpenHelper {
         String q24= "CREATE TABLE supply_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,s_id INT NOT NULL, quantity INT NOT NULL, PRIMARY KEY(id,s_id), FOREIGN KEY(s_id) REFERENCES supply(id))";
         String q25= "CREATE TABLE friend(id INTEGER NOT NULL, f_id INT NOT NULL, PRIMARY KEY(id,f_id), FOREIGN KEY(id) REFERENCES customer(id), FOREIGN KEY(f_id) REFERENCES customer(id))";
         String q26= "CREATE TABLE notif(sid INT NOT NULL, cid INT NOT NULL, jid INT NOT NULL, PRIMARY KEY(sid,cid,jid),  FOREIGN KEY(sid) REFERENCES shop(id), FOREIGN KEY(cid) REFERENCES customer(id), FOREIGN KEY(jid) REFERENCES job_offer(id))";
+        String q27= "CREATE TABLE invitation(rid INT NOT NULL, cid INT NOT NULL, dateR VARCHAR(255) NOT NULL, PRIMARY KEY(rid,cid),  FOREIGN KEY(rid) REFERENCES reception(id), FOREIGN KEY(cid) REFERENCES customer(id))";
+        String q28= "CREATE TABLE rated_o(oid INT NOT NULL,evaluation DOUBLE NOT NULL, PRIMARY KEY(oid),  FOREIGN KEY(oid) REFERENCES c_order(id))";
 
         db.execSQL(query);
         db.execSQL(q1);
@@ -86,6 +88,8 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(q24);
         db.execSQL(q25);
         db.execSQL(q26);
+        db.execSQL(q27);
+        db.execSQL(q28);
 
         String query1 = "INSERT INTO " + u_TABLE_NAME + " VALUES(2,\"mats@gmail.com\",\"123\",\"Matsuhisa Athens\",1287),(1,\"sal@gmail.com\",\"123\",\"Salumeria\",721.56),(4,\"meze@gmail.com\",\"123\",\"MEZE MEZE\",867),(3,\"pen@gmail.com\",\"123\",\"Penarrubia Lounge\",987.55),(5,\"josh@gmail.com\",\"123\",\"Josh Payne\",10000),(6,\"alex@gmail.com\",\"123\",\"Alex Meyers\",2000),(7,\"kurtis@gmail.com\",\"123\",\"Kurtis Conner\",50),(8,\"danny@gmail.com\",\"123\",\"Danny Gonzalez\",128)";
         String i1 = "INSERT INTO customer VALUES(5,\"josh@gmail.com\",\"123\",\"Josh Payne\",10000,25,3),(6,\"alex@gmail.com\",\"123\",\"Alex Meyers\",2000,12,1),(7,\"kurtis@gmail.com\",\"123\",\"Kurtis Conner\",50,134,1),(8,\"danny@gmail.com\",\"123\",\"Danny Gonzalez\",128,0,0)";
@@ -112,7 +116,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String i22= "INSERT INTO wo VALUES(1,0,\"8:00-18:00\"),(1,1,\"8:00-21:00\"),(1,2,\"8:00-21:00\"),(1,3,\"8:00-21:00\"),(1,4,\"8:00-21:00\"),(1,5,\"8:00-21:00\"),(1,6,\"closed\"),(2,0,\"8:00-18:00\"),(2,1,\"8:00-21:00\"),(2,2,\"8:00-21:00\"),(2,3,\"8:00-21:00\"),(2,4,\"8:00-21:00\"),(2,5,\"8:00-21:00\"),(2,6,\"closed\"),(3,0,\"8:00-18:00\"),(3,1,\"8:00-21:00\"),(3,2,\"8:00-21:00\"),(3,3,\"8:00-21:00\"),(3,4,\"8:00-21:00\"),(3,5,\"8:00-21:00\"),(3,6,\"closed\"),(4,0,\"8:00-18:00\"),(4,1,\"8:00-21:00\"),(4,2,\"8:00-21:00\"),(4,3,\"8:00-21:00\"),(4,4,\"8:00-21:00\"),(4,5,\"8:00-21:00\"),(4,6,\"closed\")";
         String i23= "INSERT INTO rating VALUES(2,1,4.3)";
         String i24= "INSERT INTO supply_product VALUES(9,\"Tomatoes\",0.5125,1,40)";
-        String i25= "INSERT INTO friend VALUES(1,2),(1,3),(2,1),(2,4),(3,1),(4,2)";
+        String i25= "INSERT INTO friend VALUES(6,7),(6,5),(7,5),(8,5),(7,6),(5,6),(5,7),(5,8)";
 
         db.execSQL(query1);
         db.execSQL(i1);

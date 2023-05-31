@@ -6,14 +6,36 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class main_page extends AppCompatActivity {
     private int id;
+    private ArrayList<Integer> recid=new ArrayList<>();
+    private ArrayList<String> recd=new ArrayList<>();
+
+    private ArrayList<reception> rec=new ArrayList<>();
+
 
     public void createInvitation(View v){
+        rec=customer.getReceptions(main_page.this,id);
+        for(reception r:rec){
+            if(r.getInv(main_page.this,r.getReception_id())==1){
+                recid.add(r.getReception_id());
+                recd.add(r.getDate());
+            }
+        }
+        show();
+    }
+    public void show(){
         Intent intent=new Intent(this,active_receptions_page.class);
+        Bundle b = new Bundle();
+        //Add your data to bundle
+        b.putInt("id", id);
+        b.putIntegerArrayList("recid", recid);
+        b.putStringArrayList("recd", recd);
+        intent.putExtras(b);
         startActivity(intent);
     }
-    public void show(){}
     public void rate(View v){
         Intent intent=new Intent(this,shop_list_page.class);
         Bundle b = new Bundle();

@@ -1,5 +1,11 @@
 package com.example.reasy;
 
+import android.content.Context;
+import android.database.Cursor;
+
+import java.sql.SQLDataException;
+import java.util.ArrayList;
+
 public class reception {
     public reception(int reception_id, int customer_id,int guest_number, String date, int artist_id, int reception_area_id, int catering_id) {
         this.guest_number = guest_number;
@@ -29,6 +35,33 @@ public class reception {
 
     public String getDate() {
         return date;
+    }
+    public int getInv(Context c, int rid) {
+        int av=0;
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchInv(rid);
+            ArrayList<invitation> cl = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    cl.add(new invitation(cursor.getInt(0),cursor.getInt(1),cursor.getString(2)));
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+            dbm.close();
+            if(cl.isEmpty()){
+                av=1;
+            }
+            else{
+                av=0;
+            }
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+        return av;
     }
 
 }
