@@ -49,6 +49,13 @@ public class DatabaseManager {
         }
         return cursor;
     }
+    public Cursor fetchR(int sid){
+        Cursor cursor = db.rawQuery("SELECT rating,numofrates FROM shop WHERE id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
     public Cursor fetchC(){
         String [] columns = new String[] {"id","email","password","name", "balance","points","num_of_reservations"};
         Cursor cursor = db.query("customer",columns,null,null,null,null,null);
@@ -254,6 +261,12 @@ public class DatabaseManager {
         contentValues.put("num_of_reservations", num);
         int ret=db.update("customer",contentValues,"id="+cid,null);
         return ret;
+    }
+    public void updateR(int sid,double nrat, int n){
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("numofrates", n);
+        contentValues.put("rating", nrat);
+        int ret=db.update("shop",contentValues,"id="+sid,null);
     }
     public Cursor fetchCat(){
         Cursor cursor = db.rawQuery("SELECT * FROM catering", null);

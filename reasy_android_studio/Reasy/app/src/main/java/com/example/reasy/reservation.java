@@ -1,8 +1,10 @@
 package com.example.reasy;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import java.sql.SQLDataException;
+import java.util.ArrayList;
 
 public class reservation {
     private int shop_id;
@@ -58,5 +60,25 @@ public class reservation {
 
     public int getShop_id() {
         return shop_id;
+    }
+    public static ArrayList<reservation> getReservation(Context c,int cid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchCustRes(cid);
+            ArrayList<reservation> r = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    r.add(new reservation(cursor.getInt(1),cursor.getInt(2),cursor.getInt(0),cursor.getInt(3),cursor.getString(4),cursor.getString(5),cursor.getInt(6),cursor.getString(7),cursor.getString(8)));
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+            dbm.close();
+            return r;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

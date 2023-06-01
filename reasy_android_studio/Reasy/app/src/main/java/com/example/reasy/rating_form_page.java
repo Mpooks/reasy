@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -25,87 +26,20 @@ public class rating_form_page extends AppCompatActivity {
     private ArrayList<rating> ratingh;
     private ArrayList<String> oh;
     private TextView text3,text4,text5,text6,text7,text8;
+    private ArrayList<Integer> sl=new ArrayList<>();
     private LinearLayout linearLayout;
     private menu m;
     private ArrayList<product_menu> arrayList;
-    private main_lists ml;
-    private shop chosens;
     private customer cu;
     private String n,a,p;
-    /*public rating_form_page() {
+    private EditText cs;
+    RatingBar ratingBar;
+    Button br;
+    public rating_form_page() {
 
     }
-   /* public void chooseShopAndFillRating(){
-       // ml= main_lists.createLists();
-        slist = (ArrayList<shop>) ml.getShop_list().clone();
-        clist = (ArrayList<customer>) ml.getCustomer_list().clone();
-        Bundle bundle = getIntent().getExtras();
-        id= bundle.getInt("id");
-        sid= bundle.getInt("sid");
-        for(shop s: slist){
-            if(s.getId()==sid){
-               /* n=s.getName();
-                a=s.getAddress();
-                p=s.getPhone();
-                m = s.getShop_m();
-                numofr=s.getNumofrates();
-                rate=s.getRating();
-                arrayList=(ArrayList<product_menu>) m.getProducts().clone();
-                oh=(ArrayList<String>) s.getOpeningHours();
-                chosens=s;
-            }
+   public void chooseShopAndFillRating(){
 
-        }
-
-        /*for (customer c : clist) {
-            if (c.getId() == id) {
-                cn = c.getPoints();
-                ratingh = (ArrayList<rating>) c.getRatingHistory().clone();
-                cu = c;
-            }
-        }
-
-        linearLayout = findViewById(R.id.linear_layout);
-        text3 = findViewById(R.id.textView3);
-        text3.setText(n);
-        text4 = findViewById(R.id.textView4);
-        text4.setText("Address: "+a);
-        text5 = findViewById(R.id.textView5);
-        text5.setText("Telephone: "+p);
-        text6 = findViewById(R.id.rateg);
-        text6.setText(rate+ " ("+numofr+")");
-        text7 = findViewById(R.id.textView7);
-        text8 = findViewById(R.id.textView13);
-        text8.setText(cn+"pts");
-        RatingBar ratingBar;
-        Button btSubmit;
-
-        ratingBar = findViewById(R.id.ratingBar);
-        btSubmit = findViewById(R.id.rate);
-
-
-
-        btSubmit.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                double a = (double)ratingBar.getRating();
-                chosens.changeRating(a);
-                rate = chosens.getRating();
-                rate = Math.round(rate*10.0)/10.0;
-                numofr=chosens.getNumofrates();
-                text6.setText(rate+ " ("+numofr+")");
-                if(ratingh.isEmpty()==true){
-                    cu.addPointsRShop(50);
-                    text7.setText("You got 50 points!");
-                    rated = 1;
-                }
-                if(ratingh.isEmpty()==false){
-                    text7.setText("You got 0 points!");
-                    rated = 1;
-                }
-            }
-
-        });
     }
     public void show(View v){
         if(rated == 0){
@@ -125,7 +59,36 @@ public class rating_form_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_form_page);
-        chooseShopAndFillRating();
+        Bundle bundle = getIntent().getExtras();
+        id= bundle.getInt("id");
+        sl=bundle.getIntegerArrayList("sl");
+        linearLayout = findViewById(R.id.linear_layout);
+
+
+        br=findViewById(R.id.rate2);
+        ratingBar = findViewById(R.id.ratingBar);
+        cs = findViewById(R.id.shopidt);
+        sid=Integer.parseInt(cs.getText().toString());
+
+
+        br.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                double a = (double)ratingBar.getRating();
+                shop.changeRating(rating_form_page.this,sid,a);
+                /*text6.setText(rate+ " ("+numofr+")");
+                if(ratingh.isEmpty()==true){
+                    cu.addPointsRShop(50);
+                    text7.setText("You got 50 points!");
+                    rated = 1;
+                }
+                if(ratingh.isEmpty()==false){
+                    text7.setText("You got 0 points!");
+                    rated = 1;
+                }*/
+            }
+
+        });
     }
 
     public void goBack(View v){
@@ -135,5 +98,5 @@ public class rating_form_page extends AppCompatActivity {
         b.putInt("id",id);
         intent.putExtras(b);
         startActivity(intent);
-    }*/
+    }
 }

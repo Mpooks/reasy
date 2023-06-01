@@ -26,23 +26,10 @@ public class shop_list_page extends AppCompatActivity {
 
     public void showPrevReservations(){
         linearLayout = findViewById(R.id.linear_layout);
-        //ml= main_lists.createLists();
-        ul = (ArrayList<user>) ml.getUser_list().clone();
-        slist = (ArrayList<shop>) ml.getShop_list().clone();
-        for(user u: ul) {
-            if(u.getId()==id){
-              // rl=u.getReservations();
-            }
-        }
+
         for(reservation r: rl)
         {
             Button b = new Button(this);
-            sid=r.getShop_id();
-            for(shop s: slist){
-                if(s.getId()==sid){
-                    sname=s.getName();
-                }
-            }
 
             b.setText("Reservation id: "+r.getReservation_id()+"\nShop: "+sname);
             b.setTextSize(18);

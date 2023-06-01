@@ -78,6 +78,17 @@ public class user {
             throw new RuntimeException(e);
         }
     }
+    public static ArrayList<Integer> getReservationsC(Context c,int id){
+            ArrayList<reservation> r = new ArrayList<>();
+            r=reservation.getReservation(c,id);
+            ArrayList<Integer> s=new ArrayList<>();
+            for(reservation res:r){
+                if(!(s.contains(res.getShop_id()))){
+                    s.add(res.getShop_id());
+                }
+            }
+            return s;
+    }
     public static double getBalance(Context c,int id){
         try {
             DatabaseManager dbm = new DatabaseManager(c);

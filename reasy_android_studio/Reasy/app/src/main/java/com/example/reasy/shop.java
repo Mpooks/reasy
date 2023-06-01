@@ -128,11 +128,22 @@ public class shop extends user{
     /*public void addToSupplyHistory(supply newsupply){
         supply_history.add(newsupply);
     }*/
-    public void changeRating(double newr){
-        double r=numofrates*rating;
-        numofrates++;
-        //rating= Double.parseDouble(df.format((r+newr)/numofrates));
-        rating = (r+newr)/numofrates;
+    public static void changeRating(Context c, int sid, double newr){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchR(sid);
+            int n;
+            double r,nrat;
+            n=cursor.getInt(1);
+            r=cursor.getDouble(0);
+            double pr_r=n*r;
+            n=n+1;
+            nrat=(pr_r+newr)/n;
+            dbm.updateR(sid,nrat,n);
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public int getNumofrates() {

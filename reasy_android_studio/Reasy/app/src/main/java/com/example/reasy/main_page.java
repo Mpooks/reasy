@@ -37,10 +37,13 @@ public class main_page extends AppCompatActivity {
         startActivity(intent);
     }
     public void rate(View v){
-        Intent intent=new Intent(this,shop_list_page.class);
+        ArrayList<Integer> sl=new ArrayList<>();
+        sl=user.getReservationsC(main_page.this,id);
+        Intent intent=new Intent(this,rating_form_page.class);
         Bundle b = new Bundle();
         //Add your data to bundle
         b.putInt("id", id);
+        b.putIntegerArrayList("sl",sl);
         intent.putExtras(b);
         startActivity(intent);
     }
