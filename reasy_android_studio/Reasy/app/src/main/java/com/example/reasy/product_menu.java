@@ -56,4 +56,16 @@ public class product_menu extends product{
             throw new RuntimeException(e);
         }
     }
+    public static void createPM(Context c, ArrayList<product_menu> arrayList, ArrayList<Integer> mq, ArrayList<Integer> mpr) {
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            for (product_menu r : arrayList) {
+                dbm.updatePrMQ(r.getId(), mq.get(mpr.indexOf(r.getId())));
+            }
+            dbm.close();
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

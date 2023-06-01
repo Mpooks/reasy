@@ -52,51 +52,20 @@ public class final_order_page extends AppCompatActivity {
             }
         }
         if(foundm==0){
+            for(product_menu r: arrayList){
+                tc=tc+r.getPrice()*oq.get(mpr.indexOf(r.getId()));
+            }
             if(pm.compareTo("Online")==0){
                 bal=user.getBalance(final_order_page.this,id);
-                for(product_menu r: arrayList){
-                    tc=tc+r.getPrice()*oq.get(mpr.indexOf(r.getId()));
-                }
                 if(bal>=tc) {
-                    DatabaseManager dbm = new DatabaseManager(final_order_page.this);
-                    try {
-                        dbm.open();
-                        user.setBalance(final_order_page.this,id,bal-tc);
-                        dbm.insertOrder(sid, id, tc, "Online", "Online", res_id);
-                        or = order.getOrderID(final_order_page.this, res_id);
-                        for (product_menu r : arrayList) {
-                            dbm.insertPrO(r.getId(), r.getName(), r.getPrice(), or.getOrder_id(), oq.get(mpr.indexOf(r.getId())));
-                            dbm.updatePrMQ(r.getId(), mq.get(mpr.indexOf(r.getId())));
-                        }
-                        dbm.close();
-                        popupMessage();
-                    } catch (SQLDataException e) {
-                        throw new RuntimeException(e);
-                    }
+                    user.setBalance(final_order_page.this,id,bal-tc);
                 }
                else{
                     show(v);
                 }
             }
-            else{
-                for(product_menu r: arrayList){
-                    tc=tc+r.getPrice()*oq.get(mpr.indexOf(r.getId()));
-                }
-                DatabaseManager dbm = new DatabaseManager(final_order_page.this);
-                try {
-                    dbm.open();
-                    dbm.insertOrder(sid, id, tc, "Online", "In person", res_id);
-                    or = order.getOrderID(final_order_page.this, res_id);
-                    for (product_menu r : arrayList) {
-                        dbm.insertPrO(r.getId(), r.getName(), r.getPrice(), or.getOrder_id(), oq.get(mpr.indexOf(r.getId())));
-                        dbm.updatePrMQ(r.getId(), mq.get(mpr.indexOf(r.getId())));
-                    }
-                    dbm.close();
-                    popupMessage();
-                } catch (SQLDataException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+            order.createO(final_order_page.this,pm,"Online",tc,sid,id,res_id,arrayList,oq,mq,mpr);
+            popupMessage();
         }
     }
     public void show(View v){

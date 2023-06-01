@@ -157,7 +157,7 @@ public class DatabaseManager {
         return cursor;
     }
     public Cursor fetchOrderID(int id){
-        Cursor cursor = db.rawQuery("SELECT * FROM c_order WHERE res_id="+id, null);
+        Cursor cursor = db.rawQuery("SELECT id FROM c_order WHERE res_id="+id, null);
         if(cursor !=null){
             cursor.moveToFirst();
         }

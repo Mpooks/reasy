@@ -56,12 +56,12 @@ public class order {
             throw new RuntimeException(e);
         }
     }
-    public static order getOrderID(Context c, int id){
+    public static int getOrderID(Context c, int id){
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
             Cursor cursor=dbm.fetchOrderID(id);
-            order o=new order(cursor.getInt(2),cursor.getInt(0),cursor.getInt(1),cursor.getDouble(3),cursor.getString(4),cursor.getString(5),cursor.getInt(6));
+            int o= cursor.getInt(0);
             cursor.close();
             dbm.open();
             return o;
@@ -99,5 +99,18 @@ public class order {
     }
     public String getPayment_method() {
         return payment_method;
+    }
+    public static void createO(Context c, String pm, String om, double tc, int sid, int id, int resid, ArrayList<product_menu> arrayList, ArrayList<Integer> oq, ArrayList<Integer> mq, ArrayList<Integer> mpr) {
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            dbm.insertOrder(sid, id, tc, om, pm, resid);
+            int o = order.getOrderID(c, resid);
+            dbm.close();
+            product_order.createPO(c,arrayList,o,oq,mpr);
+            product_menu.createPM(c,arrayList,mq,mpr);
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

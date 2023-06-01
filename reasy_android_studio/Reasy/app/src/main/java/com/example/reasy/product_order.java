@@ -39,4 +39,16 @@ public class product_order extends product{
             throw new RuntimeException(e);
         }
     }
+    public static void createPO(Context c, ArrayList<product_menu> arrayList, int oid, ArrayList<Integer> oq, ArrayList<Integer> mpr) {
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            for (product_menu r : arrayList) {
+                dbm.insertPrO(r.getId(), r.getName(), r.getPrice(), oid, oq.get(mpr.indexOf(r.getId())));
+            }
+            dbm.close();
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
