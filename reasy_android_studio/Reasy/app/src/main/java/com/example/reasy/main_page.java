@@ -39,6 +39,9 @@ public class main_page extends AppCompatActivity {
     public void rate(View v){
         ArrayList<Integer> sl=new ArrayList<>();
         sl=user.getReservationsC(main_page.this,id);
+        showRF(sl);
+    }
+    public void showRF(ArrayList<Integer> sl){
         Intent intent=new Intent(this,rating_form_page.class);
         Bundle b = new Bundle();
         //Add your data to bundle

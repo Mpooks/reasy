@@ -92,6 +92,13 @@ public class DatabaseManager {
         }
         return cursor;
     }
+    public Cursor fetchRO(int cid,int sid){
+        Cursor cursor = db.rawQuery("SELECT * FROM rating WHERE c_id="+cid+" AND s_id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
     public Cursor fetchOH(int sid){
         Cursor cursor = db.rawQuery("SELECT w_time FROM wo WHERE id="+sid, null);
         if(cursor !=null){
@@ -255,6 +262,10 @@ public class DatabaseManager {
         ContentValues contentValues=new ContentValues();
         contentValues.put("balance", q);
         int ret=db.update("user",contentValues,"id="+id,null);
+    }
+    public void updateP(int id){
+        String strSQL = "UPDATE customer SET points = points+50 WHERE id = "+ id;
+        db.execSQL(strSQL);
     }
     public int updateCRes(int cid, int num){
         ContentValues contentValues=new ContentValues();

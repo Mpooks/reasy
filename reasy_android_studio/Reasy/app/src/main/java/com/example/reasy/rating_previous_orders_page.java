@@ -26,7 +26,7 @@ public class rating_previous_orders_page extends AppCompatActivity {
     private LinearLayout linearLayout;
     private main_lists ml;
     private ArrayList<order> oh,foundo=new ArrayList<>();
-    /*public rating_previous_orders_page() {
+    public rating_previous_orders_page() {
     }
 
     public void rateMenu(){
@@ -170,7 +170,41 @@ public class rating_previous_orders_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_previous_orders_page);
-        rateMenu();
+        Bundle bundle = getIntent().getExtras();
+        id= bundle.getInt("id");
+        sl=bundle.getIntegerArrayList("sl");
+        linearLayout = findViewById(R.id.linear_layout);
+        ratingBar = findViewById(R.id.ratingBar);
+        cs = findViewById(R.id.shopidt);
+        t7=findViewById(R.id.name7);
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        Typeface typeface = getResources().getFont(R.font.seoulhangang_cbl_regular);
+
+        slist=shop.getShops(rating_form_page.this);
+
+        for(int i:sl) {
+            for (shop s : slist) {
+                if (i == s.getId()) {
+                    TextView tv = new TextView(this);
+                    tv.setText(i+". "+s.getName());
+                    tv.setTextSize(18);
+                    tv.setHeight(192);
+                    tv.setWidth(966);
+                    tv.setPadding(30, 90, 30, 90);
+                    tv.setId(s.getId());
+                    tv.setGravity(Gravity.CENTER);
+                    tv.setBackgroundResource(R.drawable.menu_item);
+                    tv.setTypeface(typeface);
+
+
+                    lp.setMargins(20, 0, 20, 30);
+                    tv.setLayoutParams(lp);
+
+                    linearLayout.addView(tv);
+                }
+            }
+        }
     }
 
     public void goBack(View v){
@@ -181,5 +215,5 @@ public class rating_previous_orders_page extends AppCompatActivity {
         b.putInt("sid",sid);
         intent.putExtras(b);
         startActivity(intent);
-    }*/
+    }
 }
