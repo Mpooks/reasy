@@ -9,6 +9,21 @@
     tools:layout_editor_absoluteY="94dp">
 
     <TextView
+        android:id="@+id/jo"
+        android:layout_width="404dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.554" />
+
+    <TextView
         android:id="@+id/textView34"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -61,6 +76,7 @@
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
         android:text="Continue"
+        android:onClick="show"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="23dp"
@@ -80,7 +96,7 @@
         android:gravity="center"
         android:text="Choose one of the following vacant positions :"
         android:textColor="#000000"
-        android:textSize="30dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,21 +132,20 @@
         app:layout_constraintVertical_bias="0.654" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/medsal"
         android:layout_width="125dp"
         android:layout_height="70dp"
+        android:contentDescription=" "
         android:fontFamily="@font/seoulhangang_cbl_regular"
         android:gravity="center"
         android:text=" "
         android:textColor="#000000"
         android:textSize="20dp"
-        android:contentDescription=" "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776" />
+        app:layout_constraintVertical_bias="0.797" />
 
     <ImageButton
         android:id="@+id/backButtonJobOffer"

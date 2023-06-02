@@ -8,6 +8,105 @@
     tools:layout_editor_absoluteX="4dp"
     tools:layout_editor_absoluteY="94dp">
 
+    <EditText
+        android:id="@+id/g"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:hint="Goal"
+        android:inputType="numberDecimal|number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.789" />
+
+    <TextView
+        android:id="@+id/tvincome4"
+        android:layout_width="252dp"
+        android:layout_height="49dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="left|center"
+        android:text="Current annual income :"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.615" />
+
+    <TextView
+        android:id="@+id/tvexpenses2"
+        android:layout_width="252dp"
+        android:layout_height="49dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="left|center"
+        android:text="Current annual expenses :"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.705" />
+
+    <TextView
+        android:id="@+id/tvgoal2"
+        android:layout_width="252dp"
+        android:layout_height="49dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="left|center"
+        android:text="Current annual goal :"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.79" />
+
+    <EditText
+        android:id="@+id/in"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:hint="Income"
+        android:inputType="numberDecimal|number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.614" />
+
+    <EditText
+        android:id="@+id/ex"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_corner"
+        android:ems="10"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:hint="Expenses"
+        android:inputType="numberDecimal|number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.704" />
+
     <TextView
         android:id="@+id/textView42"
         android:layout_width="70dp"
@@ -39,7 +138,7 @@
         app:layout_constraintVertical_bias="0.974" />
 
     <EditText
-        android:id="@+id/email2"
+        android:id="@+id/sal"
         android:layout_width="125dp"
         android:layout_height="62dp"
         android:background="@drawable/rounded_corner"
@@ -78,6 +177,7 @@
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
         android:text="Continue"
+        android:onClick="show"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="23dp"
@@ -130,20 +230,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.404"
         app:srcCompat="@drawable/euro_1_" />
-
-    <ScrollView
-        android:layout_width="358dp"
-        android:layout_height="295dp"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

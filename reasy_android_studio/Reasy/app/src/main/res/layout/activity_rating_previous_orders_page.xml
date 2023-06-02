@@ -103,7 +103,7 @@
         android:layout_height="48dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:onClick="chooseShopAndFillRating"
+        android:onClick="rateMenu"
         android:text="Rate"
         android:textAllCaps="false"
         android:textColor="#ffffff"

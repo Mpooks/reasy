@@ -3,6 +3,7 @@ package com.example.reasy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class shop_list_page extends AppCompatActivity {
@@ -20,23 +22,42 @@ public class shop_list_page extends AppCompatActivity {
     private ArrayList<user> ul=new ArrayList<>();
     private ArrayList<reservation> arrayList;
     private LinearLayout linearLayout;
-    private ArrayList<reservation> rl=new ArrayList<reservation>();
-    private ArrayList<shop> slist=new ArrayList<>();
+    ArrayList<rating> o = new ArrayList<>();
+    private ArrayList<customer> cl=new ArrayList<>();
     private String sname;
 
     public void showPrevReservations(){
         linearLayout = findViewById(R.id.linear_layout);
+        Bundle bundle = getIntent().getExtras();
+        id= bundle.getInt("id");
+        sid=bundle.getInt("sid");
+        cl=customer.getCustomer(shop_list_page.this);
+        for(customer c:cl){
+            try {
+                DatabaseManager dbm = new DatabaseManager(shop_list_page.this);
+                dbm.open();
+                Cursor cursor=dbm.fetchRH(id,sid);
 
-        for(reservation r: rl)
+                if (cursor.moveToFirst()) {
+                    do {
+                        o.add(new rating(cursor.getInt(0),cursor.getInt(1),cursor.getDouble(2)));
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
+                dbm.close();
+            } catch (SQLDataException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        for(rating c: o)
         {
-            Button b = new Button(this);
+            TextView b = new TextView(this);
 
-            b.setText("Reservation id: "+r.getReservation_id()+"\nShop: "+sname);
+            b.setText("Reservation id: "+c.getsid());
             b.setTextSize(18);
             b.setHeight(192);
             b.setWidth(966);
             b.setPadding(30, 90, 30, 90);
-            b.setId(r.getReservation_id());
             b.setGravity(Gravity.CENTER);
             b.setBackgroundResource(R.drawable.menu_item);
             Typeface typeface = getResources().getFont(R.font.seoulhangang_cbl_regular);
@@ -46,20 +67,6 @@ public class shop_list_page extends AppCompatActivity {
             lp.setMargins(20, 0, 20, 30);
             b.setLayoutParams(lp);
 
-            b.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent=new Intent(shop_list_page.this,rating_form_page.class);
-                    sid=b.getId();
-                    //Create the bundle
-                    Bundle b = new Bundle();
-                    //Add your data to bundle
-                    b.putInt("sid",sid);
-                    b.putInt("id",id);
-                    intent.putExtras(b);
-                    startActivity(intent);
-                }
-            });
             linearLayout.addView(b);
         }
     }

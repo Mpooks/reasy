@@ -154,18 +154,20 @@ public class customer extends user {
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
-            Cursor cursor1 = dbm.fetchRO(cid,sid);
+            Cursor cursor1 = dbm.fetchRH(cid,sid);
             ArrayList<rating> rl = new ArrayList<>();
 
             if (cursor1.moveToFirst()) {
                 do {
-                    rl.add(new rating(cursor1.getInt(0),cursor1.getInt(1),cursor1.getDouble(2)));
+                    rl.add(new rating(cursor1.getInt(0), cursor1.getInt(1), cursor1.getDouble(2)));
                 } while (cursor1.moveToNext());
             }
+                if (rl.isEmpty()) {
+                    dbm.updateP(cid, 0);
+                }
+
             cursor1.close();
-            if(rl.isEmpty()){
-                dbm.updateP(cid);
-            }
+
             Cursor cursor=dbm.fetchOrder(cid,sid);
             ArrayList<order> o = new ArrayList<>();
 
@@ -178,6 +180,31 @@ public class customer extends user {
             cursor.close();
             dbm.close();
             return o;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static ArrayList<Integer> getRatedOrders(Context c, int cid, int oid) {
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor = dbm.fetchRO(cid,oid);
+            ArrayList<Integer> rl = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    rl.add(cursor.getInt(0));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            if(rl.isEmpty()){
+                dbm.updateP(cid,1);
+            }
+
+            cursor.close();
+            dbm.close();
+            return rl;
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }

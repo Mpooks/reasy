@@ -8,6 +8,67 @@
     tools:layout_editor_absoluteX="3dp"
     tools:layout_editor_absoluteY="-128dp">
 
+    <CheckBox
+        android:id="@+id/n"
+        android:layout_width="146dp"
+        android:layout_height="56dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:text="No"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.761" />
+
+    <TextView
+        android:id="@+id/name9"
+        android:layout_width="404dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.824" />
+
+    <CheckBox
+        android:id="@+id/y"
+        android:layout_width="146dp"
+        android:layout_height="56dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:text="Yes"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.761" />
+
+    <TextView
+        android:id="@+id/tvincome"
+        android:layout_width="362dp"
+        android:layout_height="49dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:text="Would you like to pay an extra fee of 5 euros to send the job offer as a notification?"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64" />
+
     <TextView
         android:id="@+id/textView39"
         android:layout_width="70dp"
@@ -113,23 +174,6 @@
         app:layout_constraintVertical_bias="0.288"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/goal"
-        android:layout_width="128dp"
-        android:layout_height="48dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:gravity="center"
-        android:hint="Goal"
-        android:inputType="numberDecimal|number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.789" />
-
     <TextView
         android:id="@+id/logoexp"
         android:layout_width="225dp"
@@ -145,22 +189,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011" />
-
-    <TextView
-        android:id="@+id/tvincome"
-        android:layout_width="252dp"
-        android:layout_height="49dp"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:gravity="left|center"
-        android:text="Current annual income :"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615" />
 
     <TextView
         android:id="@+id/tvincome2"
@@ -194,38 +222,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.401" />
 
-    <TextView
-        android:id="@+id/tvexpenses"
-        android:layout_width="252dp"
-        android:layout_height="49dp"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:gravity="left|center"
-        android:text="Current annual expenses :"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.705" />
-
-    <TextView
-        android:id="@+id/tvgoal"
-        android:layout_width="252dp"
-        android:layout_height="49dp"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:gravity="left|center"
-        android:text="Current annual goal :"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79" />
-
     <ImageButton
         android:id="@+id/backButtonJobOffer"
         android:layout_width="48dp"
@@ -241,40 +237,6 @@
         app:layout_constraintVertical_bias="0.071"
         app:srcCompat="@drawable/back" />
 
-
-    <EditText
-        android:id="@+id/income"
-        android:layout_width="128dp"
-        android:layout_height="48dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:gravity="center"
-        android:hint="Income"
-        android:inputType="numberDecimal|number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.614" />
-
-    <EditText
-        android:id="@+id/expenses"
-        android:layout_width="128dp"
-        android:layout_height="48dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:gravity="center"
-        android:hint="Expenses"
-        android:inputType="numberDecimal|number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.704" />
 
     <TextView
         android:id="@+id/logoJO"
@@ -298,7 +260,8 @@
         android:layout_height="48dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:text="Continue"
+        android:text="Finalize"
+        android:onClick="fillDate"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="23dp"

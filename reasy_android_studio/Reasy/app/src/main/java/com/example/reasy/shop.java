@@ -118,12 +118,22 @@ public class shop extends user{
             throw new RuntimeException(e);
         }
     }
-    public double[] getInOutGoal(){
-        double[] res=new double[3];
-        res[0]=income;
-        res[1]=expenses;
-        res[2]=goal;
-        return res;
+    public static double[] getInOutGoal(Context c, int id){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchIOG(id);
+            double iog[]=new double[3];
+            iog[0]=cursor.getDouble(0);
+            iog[1]=cursor.getDouble(1);
+            iog[2]=cursor.getDouble(2);
+
+            cursor.close();
+            dbm.close();
+            return iog;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
     }
     /*public void addToSupplyHistory(supply newsupply){
         supply_history.add(newsupply);

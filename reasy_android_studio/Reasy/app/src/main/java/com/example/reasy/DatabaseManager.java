@@ -56,6 +56,13 @@ public class DatabaseManager {
         }
         return cursor;
     }
+    public Cursor fetchMR(int sid){
+        Cursor cursor = db.rawQuery("SELECT rating,numofrates FROM menu WHERE s_id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
     public Cursor fetchC(){
         String [] columns = new String[] {"id","email","password","name", "balance","points","num_of_reservations"};
         Cursor cursor = db.query("customer",columns,null,null,null,null,null);
@@ -92,8 +99,15 @@ public class DatabaseManager {
         }
         return cursor;
     }
+    public Cursor fetchRH(int cid,int sid){
+        Cursor cursor = db.rawQuery("SELECT s_id,c_id,evaluation FROM rating WHERE c_id="+cid+" AND s_id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
     public Cursor fetchRO(int cid,int sid){
-        Cursor cursor = db.rawQuery("SELECT * FROM rating WHERE c_id="+cid+" AND s_id="+sid, null);
+        Cursor cursor = db.rawQuery("SELECT oid FROM rated_o WHERE cid="+cid+" AND oid="+sid, null);
         if(cursor !=null){
             cursor.moveToFirst();
         }
@@ -234,6 +248,20 @@ public class DatabaseManager {
         contentValues.put("res_id", res_id);
         db.insert("c_order", null, contentValues);
     }
+    public void insertSR(int s_id, int c_id,double ev){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("s_id", s_id);
+        contentValues.put("c_id", c_id);
+        contentValues.put("evaluation", ev);
+        db.insertOrThrow("rating", null, contentValues);
+    }
+    public void insertOR(int oid, int c_id, double ev){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("oid", oid);
+        contentValues.put("cid", c_id);
+        contentValues.put("evaluation", ev);
+        db.insert("rated_o", null, contentValues);
+    }
     public void insertR(int id, int g, String date, int car, int ca,int cc){
         ContentValues contentValues = new ContentValues();
         contentValues.put("c_id", id);
@@ -263,9 +291,15 @@ public class DatabaseManager {
         contentValues.put("balance", q);
         int ret=db.update("user",contentValues,"id="+id,null);
     }
-    public void updateP(int id){
-        String strSQL = "UPDATE customer SET points = points+50 WHERE id = "+ id;
-        db.execSQL(strSQL);
+    public void updateP(int id,int p){
+        if(p==0) {
+            String strSQL = "UPDATE customer SET points = points+50 WHERE id = " + id;
+            db.execSQL(strSQL);
+        }
+        else{
+            String strSQL = "UPDATE customer SET points = points+20 WHERE id = " + id;
+            db.execSQL(strSQL);
+        }
     }
     public int updateCRes(int cid, int num){
         ContentValues contentValues=new ContentValues();
@@ -279,14 +313,35 @@ public class DatabaseManager {
         contentValues.put("rating", nrat);
         int ret=db.update("shop",contentValues,"id="+sid,null);
     }
+    public void updateMR(int sid,double nrat, int n){
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("numofrates", n);
+        contentValues.put("rating", nrat);
+        int ret=db.update("menu",contentValues,"s_id="+sid,null);
+    }
     public Cursor fetchCat(){
         Cursor cursor = db.rawQuery("SELECT * FROM catering", null);
         if(cursor !=null){
             cursor.moveToFirst();
         }
         return cursor;
-    }public Cursor fetchA(){
+    }
+    public Cursor fetchA(){
         Cursor cursor = db.rawQuery("SELECT * FROM artist", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchJO(){
+        Cursor cursor = db.rawQuery("SELECT * FROM job_offer", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchIOG(int id){
+        Cursor cursor = db.rawQuery("SELECT income,expenses,goal FROM shop WHERE id="+id, null);
         if(cursor !=null){
             cursor.moveToFirst();
         }
