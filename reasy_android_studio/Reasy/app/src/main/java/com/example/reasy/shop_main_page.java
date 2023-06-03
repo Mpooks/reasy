@@ -36,7 +36,6 @@ public class shop_main_page extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void show(){}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -55,6 +55,39 @@ public class table {
             throw new RuntimeException(e);
         }
     }
+    public static table getTD(Context c, int tid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchTD(tid);
+            table t=new table(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2));
+            cursor.close();
+            dbm.close();
+            return t;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static ArrayList<reservation> getReservationsT(Context c, int tid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchTR(tid);
+            ArrayList<reservation> r = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    r.add(new reservation(cursor.getInt(1),cursor.getInt(2),cursor.getInt(0),cursor.getInt(3),cursor.getString(4),cursor.getString(5),cursor.getInt(6),cursor.getString(7),cursor.getString(8)));
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+            dbm.close();
+            return r;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
 /*
     public ArrayList<Integer> getNeighbouringTables(){
         return neighbouring_tables;

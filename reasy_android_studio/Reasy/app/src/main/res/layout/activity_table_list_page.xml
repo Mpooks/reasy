@@ -6,6 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".table_list_page">
 
+    <ImageView
+        android:id="@+id/imageView33"
+        android:layout_width="367dp"
+        android:layout_height="375dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.997"
+        app:srcCompat="@drawable/pngwing_com2" />
+
+    <TextView
+        android:id="@+id/tb2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/balance"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.932"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
+
     <ImageButton
         android:id="@+id/backb13"
         android:layout_width="48dp"
@@ -23,14 +51,17 @@
         app:srcCompat="@drawable/back" />
 
     <ScrollView
-        android:layout_width="337dp"
-        android:layout_height="355dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="336dp"
+        android:layout_width="348dp"
+        android:layout_height="273dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.425">
 
         <LinearLayout
+            android:id="@+id/linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
@@ -56,13 +87,15 @@
         android:id="@+id/textView23"
         android:layout_width="212dp"
         android:layout_height="62dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="244dp"
         android:fontFamily="@font/seoulhangang_cbl_regular"
         android:gravity="center"
         android:text="Choose table:"
         android:textColor="#000000"
         android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.198" />
 </androidx.constraintlayout.widget.ConstraintLayout>
