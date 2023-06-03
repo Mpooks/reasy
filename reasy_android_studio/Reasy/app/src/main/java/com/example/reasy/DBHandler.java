@@ -57,7 +57,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String q23= "CREATE TABLE rating(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, s_id INT NOT NULL, c_id NOT NULL, evaluation DOUBLE NOT NULL,  FOREIGN KEY(s_id) REFERENCES shop(id), FOREIGN KEY(c_id) REFERENCES customer(id))";
         String q24= "CREATE TABLE supply_product(id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, cost DOUBLE NOT NULL,s_id INT NOT NULL, quantity INT NOT NULL, PRIMARY KEY(id,s_id), FOREIGN KEY(s_id) REFERENCES supply(id))";
         String q25= "CREATE TABLE friend(id INTEGER NOT NULL, f_id INT NOT NULL, PRIMARY KEY(id,f_id), FOREIGN KEY(id) REFERENCES customer(id), FOREIGN KEY(f_id) REFERENCES customer(id))";
-        String q26= "CREATE TABLE notif(sid INT NOT NULL, cid INT NOT NULL, jid INT NOT NULL, PRIMARY KEY(sid,cid,jid),  FOREIGN KEY(sid) REFERENCES shop(id), FOREIGN KEY(cid) REFERENCES customer(id), FOREIGN KEY(jid) REFERENCES job_offer(id))";
+        String q26= "CREATE TABLE notif(sid INT NOT NULL, jid INT NOT NULL, PRIMARY KEY(sid,jid),  FOREIGN KEY(sid) REFERENCES shop(id), FOREIGN KEY(jid) REFERENCES job_offer(id))";
         String q27= "CREATE TABLE invitation(rid INT NOT NULL, cid INT NOT NULL, dateR VARCHAR(255) NOT NULL, PRIMARY KEY(rid,cid),  FOREIGN KEY(rid) REFERENCES reception(id), FOREIGN KEY(cid) REFERENCES customer(id))";
         String q28= "CREATE TABLE rated_o(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, cid INT NOT NULL,oid INT NOT NULL,evaluation DOUBLE NOT NULL,  FOREIGN KEY(oid) REFERENCES c_order(id),FOREIGN KEY(cid) REFERENCES customer(id))";
 

@@ -16,11 +16,6 @@ public class menu {
         this.num_of_rates=num_of_rates;
     }
 
-    public void changeRatingMenu(double new_r){
-        double r=num_of_rates*rating;
-        num_of_rates++;
-        rating=(rating+new_r)/num_of_rates;
-    }
     public static ArrayList<product_menu> getMenu(Context c, int sid) {
         ArrayList<product_menu> pm = new ArrayList<>();
         pm = product_menu.getMenuPr(c,sid);

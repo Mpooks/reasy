@@ -24,21 +24,6 @@
         app:layout_constraintVertical_bias="0.554" />
 
     <TextView
-        android:id="@+id/textView34"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@drawable/point"
-        android:gravity="center_horizontal|center_vertical"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
-
-    <TextView
         android:id="@+id/textView33"
         android:layout_width="70dp"
         android:layout_height="70dp"

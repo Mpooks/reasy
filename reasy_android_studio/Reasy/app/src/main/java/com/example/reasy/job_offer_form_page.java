@@ -19,9 +19,10 @@ public class job_offer_form_page extends AppCompatActivity {
     private int id;
     private String selectedJO;
     private ArrayList<job_offer> jl=new ArrayList<>();
+    private ArrayList<shop> sl=new ArrayList<>();
     private double[] iog=new double[3];
     private double mj;
-    private TextView text,sal;
+    private TextView text,sal,b;
 
     public void fillForm(View v){
             text.setText(" ");
@@ -53,6 +54,13 @@ public class job_offer_form_page extends AppCompatActivity {
         id= bundle.getInt("id");
         text = findViewById(R.id.jo);
         sal=findViewById(R.id.medsal);
+        sl=shop.getShops(job_offer_form_page.this);
+        for(shop c: sl) {
+            if (c.getId() == id) {
+                b = findViewById(R.id.textView33);
+                b.setText(String.valueOf(user.getBalance(job_offer_form_page.this,id))+"\u20AC");
+            }
+        }
         Spinner spinner = findViewById(R.id.spinner);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Waiter");

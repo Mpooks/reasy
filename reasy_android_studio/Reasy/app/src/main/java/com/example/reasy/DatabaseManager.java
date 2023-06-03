@@ -262,6 +262,27 @@ public class DatabaseManager {
         contentValues.put("evaluation", ev);
         db.insert("rated_o", null, contentValues);
     }
+    public void insertNotif(int sid, int jid){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("sid", sid);
+        contentValues.put("jid", jid);
+        db.insert("notif", null, contentValues);
+    }
+    public int insertJO(int sid,String pos,double sal,double exp,String sd,String ed){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("s_id", sid);
+        contentValues.put("position", pos);
+        contentValues.put("salary", sal);
+        contentValues.put("experience", exp);
+        contentValues.put("start_date", sd);
+        contentValues.put("end_date", ed);
+        db.insert("job_offer", null, contentValues);
+        Cursor cursor = db.rawQuery("SELECT MAX(id) FROM job_offer", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor.getInt(0);
+    }
     public void insertR(int id, int g, String date, int car, int ca,int cc){
         ContentValues contentValues = new ContentValues();
         contentValues.put("c_id", id);

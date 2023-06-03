@@ -72,5 +72,15 @@ public class job_offer {
             throw new RuntimeException(e);
         }
     }
-
+    public static int createJO(Context c, int sid,String pos,double sal,double exp,String sd,String ed) {
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            int id=dbm.insertJO(sid,pos,sal,exp,sd,ed);
+            dbm.close();
+            return id;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -41,12 +41,12 @@ public class rating_previous_orders_page extends AppCompatActivity {
         a = (double) ratingBar.getRating();
         if(f==0){
             ok=0;
-            rating.createRating(rating_previous_orders_page.this, id, sid, a, sev, oid, ok);
+            rating.createRating(rating_previous_orders_page.this, sid, id, a, sev, oid, ok);
             popupMessage();
         }
         else if(cs.getText().toString().compareTo("")==0){
             ok=0;
-            rating.createRating(rating_previous_orders_page.this, id, sid, a, sev, oid, ok);
+            rating.createRating(rating_previous_orders_page.this, sid, id, a, sev, oid, ok);
             popupMessage();
         }
         else {
@@ -56,7 +56,7 @@ public class rating_previous_orders_page extends AppCompatActivity {
                 t7.setText(" ");
                 oh = customer.getRatedOrders(rating_previous_orders_page.this, id, oid);
                 ok = 1;
-                rating.createRating(rating_previous_orders_page.this, id, sid, a, sev, oid, ok);
+                rating.createRating(rating_previous_orders_page.this, sid, id, a, sev, oid, ok);
                 popupMessage();
             } else {
                 t7.setText("Not valid order id choice.");
@@ -71,7 +71,7 @@ public class rating_previous_orders_page extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent=new Intent(rating_previous_orders_page.this,shop_list_page.class);
+                Intent intent=new Intent(rating_previous_orders_page.this,main_page.class);
                 Bundle b = new Bundle();
                 //Add your data to bundle
                 b.putInt("id", id);

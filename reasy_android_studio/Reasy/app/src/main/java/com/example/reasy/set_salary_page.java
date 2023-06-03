@@ -8,13 +8,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class set_salary_page extends AppCompatActivity {
 
     private int id;
     private double salary,budget;
     private double[] iog=new double[3];
+    private ArrayList<shop> sl=new ArrayList<>();
     private String position;
-    private TextView t1,t2,t3,w;
+    private TextView t1,t2,t3,w,b;
     private EditText s;
     public void fillSalary(View v){
         salary=Integer.valueOf(s.getText().toString());
@@ -53,6 +56,13 @@ public class set_salary_page extends AppCompatActivity {
         t2=findViewById(R.id.ex);
         t3=findViewById(R.id.g);
         w=findViewById(R.id.name10);
+        sl=shop.getShops(set_salary_page.this);
+        for(shop c: sl) {
+            if (c.getId() == id) {
+                b = findViewById(R.id.textView42);
+                b.setText(String.valueOf(user.getBalance(set_salary_page.this,id))+"\u20AC");
+            }
+        }
 
         s=findViewById(R.id.sal);
 
