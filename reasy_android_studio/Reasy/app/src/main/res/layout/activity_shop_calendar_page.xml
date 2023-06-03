@@ -7,6 +7,36 @@
     tools:context=".shop_calendar_page">
 
 
+    <TextView
+        android:id="@+id/warning11"
+        android:layout_width="241dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.917" />
+
+    <TextView
+        android:id="@+id/tb"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/balance"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
+
     <Button
         android:id="@+id/bookb2"
         android:layout_width="138dp"
@@ -18,7 +48,7 @@
         android:textColor="#ffffff"
         android:textSize="23dp"
         android:textStyle="bold"
-        android:onClick="onClick"
+        android:onClick="show"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

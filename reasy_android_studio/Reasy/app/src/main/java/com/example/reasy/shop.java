@@ -187,4 +187,40 @@ public class shop extends user{
             throw new RuntimeException(e);
         }
     }
+    public static ArrayList<table> getOpeningHoursAndTables(Context c,int id, int val){
+        try {
+            int found;
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchOH(id);
+
+            ArrayList<String> oh = new ArrayList<>();
+            ArrayList<table> t = new ArrayList<>();
+
+            if (cursor.moveToFirst()) {
+                do {
+                    oh.add(cursor.getString(0));
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+            if((oh.get(val).compareTo("closed"))==0){
+                found=1;
+                Cursor cursor1=dbm.fetchTablesInfo(id);
+                if (cursor1.moveToFirst()) {
+                    do {
+                        t.add(new table(cursor1.getInt(0),cursor1.getInt(1),cursor1.getInt(2)));
+                    } while (cursor1.moveToNext());
+                }
+            }
+            else{
+                found=0;
+            }
+
+            dbm.close();
+            return t;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

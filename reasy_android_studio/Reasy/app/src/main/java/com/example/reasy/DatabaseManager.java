@@ -127,6 +127,27 @@ public class DatabaseManager {
         }
         return cursor;
     }
+    public Cursor fetchTD(int tid){
+        Cursor cursor = db.rawQuery("SELECT * FROM s_table WHERE t_id="+tid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchTR(int tid){
+        Cursor cursor = db.rawQuery("SELECT * FROM reservation WHERE t_id="+tid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchTablesInfo(int sid){
+        Cursor cursor = db.rawQuery("SELECT * FROM s_table WHERE s_id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
     public Cursor fetchRes(int tid){
         Cursor cursor = db.rawQuery("SELECT * FROM reservation WHERE t_id="+tid, null);
         if(cursor !=null){
