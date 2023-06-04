@@ -42,6 +42,7 @@ public class shop_calendar_page extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth)
             {
+                t1.clear();
                 changed=1;
                 String m=String.valueOf(month+1);
                 String dom=String.valueOf(dayOfMonth);
@@ -87,6 +88,7 @@ public class shop_calendar_page extends AppCompatActivity {
         if(changed==0) {
             Calendar calendar = Calendar.getInstance();
             int day = calendar.get(Calendar.DAY_OF_WEEK);
+            dateb=String.valueOf(java.time.LocalDate.now());
             tl=shop.getOpeningHoursAndTables(shop_calendar_page.this,id,day-1);
             if(tl.isEmpty()){
                 t1.add(0);

@@ -81,4 +81,50 @@ public class reservation {
             throw new RuntimeException(e);
         }
     }
+    public static reservation getRD(Context c, int rid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchRD(rid);
+            reservation t=new reservation(cursor.getInt(1),cursor.getInt(2),cursor.getInt(0),cursor.getInt(3),cursor.getString(4),cursor.getString(5),cursor.getInt(6),cursor.getString(7),cursor.getString(8));
+            cursor.close();
+            dbm.close();
+            return t;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getNum_of_customers() {
+        return num_of_customers;
+    }
+
+    public int getTID() {
+        return table_id;
+    }
+
+    public String getRTime() {
+        return time;
+    }
+    public static int getWaiterId(Context c, int rid){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchWI(rid);
+            int r;
+            if (cursor.getCount() > 0) {
+                do {
+                     r=cursor.getInt(0);
+                } while (cursor.moveToNext());
+            }
+            else{
+                r=0;
+            }
+            cursor.close();
+            dbm.close();
+            return r;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -23,9 +23,14 @@ public class table_list_page extends AppCompatActivity {
     private ArrayList<shop> sl=new ArrayList<>();
     private  ArrayList<Integer> tl=new ArrayList<>(),rl=new ArrayList<>();
     public void chooseTable(int tid){
-        rlist=table.getReservationsT(table_list_page.this,tid);
-        for(reservation r:rlist){
-            rl.add(r.getReservation_id());
+        rlist=table.getReservationsT(table_list_page.this,tid,date);
+        if(rlist.isEmpty()){
+            rl.add(0);
+        }
+        else {
+            for (reservation r : rlist) {
+                rl.add(r.getReservation_id());
+            }
         }
         show();
     }
@@ -38,7 +43,7 @@ public class table_list_page extends AppCompatActivity {
         b.putString("date", date);
         b.putIntegerArrayList("tables", tl);
         b.putIntegerArrayList("reservations", rl);
-
+        b.putInt("tid",tid);
         intent.putExtras(b);
         startActivity(intent);
     }

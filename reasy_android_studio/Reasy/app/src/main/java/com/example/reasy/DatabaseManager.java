@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.SQLDataException;
+import java.util.ArrayList;
 
 public class DatabaseManager {
     private DBHandler dbHelper;
@@ -134,8 +135,43 @@ public class DatabaseManager {
         }
         return cursor;
     }
-    public Cursor fetchTR(int tid){
-        Cursor cursor = db.rawQuery("SELECT * FROM reservation WHERE t_id="+tid, null);
+    public Cursor fetchWD(int wid){
+        Cursor cursor = db.rawQuery("SELECT * FROM waiter WHERE w_id="+wid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchTR(int tid,String date){
+        Cursor cursor = db.rawQuery("SELECT * FROM reservation WHERE t_id="+tid+" AND dateR='"+date+"'", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchNeighT(int tid){
+        Cursor cursor = db.rawQuery("SELECT nt_id FROM n_t WHERE t_id="+tid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchWI(int rid){
+        Cursor cursor = db.rawQuery("SELECT w_id FROM res_waiter WHERE r_id="+rid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchWaiters(int sid){
+        Cursor cursor = db.rawQuery("SELECT * FROM waiter WHERE s_id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchRD(int rid){
+        Cursor cursor = db.rawQuery("SELECT * FROM reservation WHERE id="+rid, null);
         if(cursor !=null){
             cursor.moveToFirst();
         }
@@ -275,6 +311,28 @@ public class DatabaseManager {
         contentValues.put("c_id", c_id);
         contentValues.put("evaluation", ev);
         db.insertOrThrow("rating", null, contentValues);
+    }
+    public void insertAss(int r_id, int w_id, ArrayList<Integer> tid, String date,int w){
+        if(w==1) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("r_id", r_id);
+            contentValues.put("w_id", w_id);
+            db.insertOrThrow("res_waiter", null, contentValues);
+        }
+        for(int i:tid) {
+            Cursor cursor = db.rawQuery("SELECT id FROM reservation WHERE t_id=" + i + " AND dateR='" + date + "'", null);
+            if (cursor != null) {
+                cursor.moveToFirst();
+            }
+            if (cursor.moveToFirst()) {
+                do {
+                    ContentValues contentValues1 = new ContentValues();
+                    contentValues1.put("r_id", cursor.getInt(0));
+                    contentValues1.put("w_id", w_id);
+                    db.insertOrThrow("res_waiter", null, contentValues1);
+                } while (cursor.moveToNext());
+            }
+        }
     }
     public void insertOR(int oid, int c_id, double ev){
         ContentValues contentValues = new ContentValues();

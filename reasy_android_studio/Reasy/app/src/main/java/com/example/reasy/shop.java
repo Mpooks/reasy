@@ -205,6 +205,9 @@ public class shop extends user{
 
             cursor.close();
             if((oh.get(val).compareTo("closed"))==0){
+                found=0;
+            }
+            else{
                 found=1;
                 Cursor cursor1=dbm.fetchTablesInfo(id);
                 if (cursor1.moveToFirst()) {
@@ -212,9 +215,6 @@ public class shop extends user{
                         t.add(new table(cursor1.getInt(0),cursor1.getInt(1),cursor1.getInt(2)));
                     } while (cursor1.moveToNext());
                 }
-            }
-            else{
-                found=0;
             }
 
             dbm.close();

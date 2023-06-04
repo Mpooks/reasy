@@ -68,11 +68,11 @@ public class table {
             throw new RuntimeException(e);
         }
     }
-    public static ArrayList<reservation> getReservationsT(Context c, int tid){
+    public static ArrayList<reservation> getReservationsT(Context c, int tid,String date){
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
-            Cursor cursor=dbm.fetchTR(tid);
+            Cursor cursor=dbm.fetchTR(tid,date);
             ArrayList<reservation> r = new ArrayList<>();
 
             if (cursor.moveToFirst()) {
@@ -88,11 +88,41 @@ public class table {
             throw new RuntimeException(e);
         }
     }
-/*
-    public ArrayList<Integer> getNeighbouringTables(){
-        return neighbouring_tables;
-    }
+    public static ArrayList<Integer> getNeighbouringTables(Context c, int tid,String date){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchNeighT(tid);
+            ArrayList<Integer> r = new ArrayList<>(),rl=new ArrayList<>();
+            ArrayList<reservation> rlist=new ArrayList<>();
+            int wid;
 
+            if (cursor.moveToFirst()) {
+                do {
+                    r.add(cursor.getInt(0));
+                } while (cursor.moveToNext());
+            }
+            for(int l:r){
+                rlist=table.getReservationsT(c,l,date);
+                if(!rlist.isEmpty()) {
+                    for (reservation r1 : rlist) {
+                        wid = reservation.getWaiterId(c, r1.getReservation_id());
+                        if(wid==0){
+                            rl.add(l);
+                        }
+                    }
+                }
+
+            }
+
+            cursor.close();
+            dbm.close();
+            return rl;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+/*
     public void saveToTable(reservation new_r){
         reservations.add(new_r);
     }
