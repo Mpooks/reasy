@@ -72,7 +72,7 @@ public class shop_menu_page extends AppCompatActivity {
                     qu = Integer.valueOf(q.getText().toString());
                 } else {
                     foundq = 1;
-                    text5.setText("Insufficient available quantity."+pr_m.getQuantity());
+                    text5.setText("Insufficient available quantity.");
                 }
             }
             if (foundq == 0 && foundp == 0) {

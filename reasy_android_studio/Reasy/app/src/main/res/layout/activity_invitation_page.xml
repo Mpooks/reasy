@@ -27,7 +27,7 @@
         android:layout_height="41dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:onClick="finalInvitation"
+        android:onClick="fillAndValidate"
         android:text="Invite"
         android:textAllCaps="false"
         android:textColor="#ffffff"
@@ -39,14 +39,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.891" />
-
-    <LinearLayout
-        android:id="@+id/linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/textViewc26"

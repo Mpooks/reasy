@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class active_receptions_page extends AppCompatActivity {
     private int id;
+    private String date;
     private ArrayList<Integer> recid=new ArrayList<>(),fid=new ArrayList<>();
     private ArrayList<reception> rec=new ArrayList<>();
     private ArrayList<String> recd=new ArrayList<>();
@@ -24,7 +25,7 @@ public class active_receptions_page extends AppCompatActivity {
     private TextView text4;
 
     public void invite(int i){
-        fid=customer.getFriendList(active_receptions_page.this,id);
+        fid=customer.getFriendList(active_receptions_page.this,id,i);
         if(fid.isEmpty()){
             popupMessage();
         }else{
@@ -41,6 +42,7 @@ public class active_receptions_page extends AppCompatActivity {
         b.putIntegerArrayList("recid",recid);
         b.putStringArrayList("recd",recd);
         b.putInt("rid",i);
+        b.putString("date",date);
         intent.putExtras(b);
         startActivity(intent);
     }
@@ -92,6 +94,7 @@ public class active_receptions_page extends AppCompatActivity {
                 tv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        date=recd.get(recid.indexOf(i));
                         invite(i);
                     }
                 });

@@ -59,31 +59,33 @@ public class final_order_page extends AppCompatActivity {
                 bal=user.getBalance(final_order_page.this,id);
                 if(bal>=tc) {
                     user.setBalance(final_order_page.this,id,bal-tc);
+                    order.createO(final_order_page.this,pm,"Online",tc,sid,id,res_id,arrayList,oq,mq,mpr);
+                    popupMessage();
                 }
                else{
                     show(v);
                 }
             }
-            order.createO(final_order_page.this,pm,"Online",tc,sid,id,res_id,arrayList,oq,mq,mpr);
-            popupMessage();
+
         }
     }
     public void show(View v){
-        Intent intent = new Intent(this, rejection_page.class);
-        //Create the bundle
-        Bundle b = new Bundle();
-        //Add your data to bundle
-        b.putInt("sid", sid);
-        b.putInt("id", id);
-        b.putInt("res_id",res_id);
-        b.putIntegerArrayList("orders", orders);
-        b.putIntegerArrayList("prods", prods);
-        b.putIntegerArrayList("opr", opr);
-        b.putIntegerArrayList("mpr", mpr);
-        b.putIntegerArrayList("oq", oq);
-        b.putIntegerArrayList("mq", mq);
-        intent.putExtras(b);
-        startActivity(intent);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Your balance is insufficient!");
+        alertDialogBuilder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent=new Intent(final_order_page.this,main_page.class);
+                Bundle b = new Bundle();
+                //Add your data to bundle
+                b.putInt("id", id);
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

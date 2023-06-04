@@ -129,21 +129,14 @@ public class customer extends user {
         }
     }
 
-    public static ArrayList<Integer> getFriendList(Context c, int cid) {
+    public static ArrayList<Integer> getFriendList(Context c, int cid,int rid) {
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
-            Cursor cursor = dbm.fetchFL(cid);
+
             ArrayList<Integer> rl = new ArrayList<>();
+            rl = dbm.fetchFL(cid,rid);
 
-            if (cursor.moveToFirst()) {
-                do {
-                    rl.add(cursor.getInt(0));
-                } while (cursor.moveToNext());
-            }
-
-            cursor.close();
-            dbm.close();
             return rl;
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
@@ -208,6 +201,17 @@ public class customer extends user {
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }
+    }
+    public static ArrayList<Integer> getAv(Context c,ArrayList<Integer> in,String d){
+        int av;
+        ArrayList cl=new ArrayList<>();
+        for(int cus:in){
+            av=calendar.getAv(c,cus,d);
+            if(av==1){
+                cl.add(cus);
+            }
+        }
+        return cl;
     }
 
 }

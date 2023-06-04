@@ -234,12 +234,36 @@ public class DatabaseManager {
         }
         return cursor;
     }
-    public Cursor fetchFL(int id){
+    public ArrayList<Integer> fetchFL(int id,int rid){
+        ArrayList<Integer> i=new ArrayList<>(),n=new ArrayList<>(),f=new ArrayList<>(),set=new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT f_id FROM friend WHERE id="+id, null);
         if(cursor !=null){
             cursor.moveToFirst();
         }
-        return cursor;
+        if (cursor.moveToFirst()) {
+            do {
+                n.add(cursor.getInt(0));
+            } while (cursor.moveToNext());
+        }
+        Cursor cursor1 = db.rawQuery("SELECT c_id FROM calendar WHERE r_id=" + rid, null);
+        if (cursor1 != null) {
+            cursor1.moveToFirst();
+        }
+        if (cursor1.moveToFirst()) {
+            do {
+                i.add(cursor1.getInt(0));
+            } while (cursor1.moveToNext());
+        }
+        if(!n.isEmpty()) {
+            if(i.isEmpty()){
+                f.addAll(n);
+            }
+            else {
+                f.addAll(n);
+                f.removeAll(i);
+                }
+            }
+        return f;
     }
     public Cursor fetchOrderID(int id){
         Cursor cursor = db.rawQuery("SELECT id FROM c_order WHERE res_id="+id, null);
@@ -264,6 +288,13 @@ public class DatabaseManager {
     }
     public Cursor fetchRec(int rid,String d){
         Cursor cursor = db.rawQuery("SELECT * FROM reception WHERE rad="+rid+" AND dateR='"+d+"'", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchAv(int cid,String d){
+        Cursor cursor = db.rawQuery("SELECT * FROM calendar WHERE c_id="+cid+" AND dateC='"+d+"'", null);
         if(cursor !=null){
             cursor.moveToFirst();
         }
@@ -311,6 +342,18 @@ public class DatabaseManager {
         contentValues.put("c_id", c_id);
         contentValues.put("evaluation", ev);
         db.insertOrThrow("rating", null, contentValues);
+    }
+    public void insertInv(int cid, int rid,String date){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("rid", rid);
+        contentValues.put("cid", cid);
+        contentValues.put("dateR", date);
+        db.insertOrThrow("invitation", null, contentValues);
+        ContentValues contentValues1 = new ContentValues();
+        contentValues1.put("c_id", rid);
+        contentValues1.put("r_id", cid);
+        contentValues1.put("dateC", date);
+        db.insertOrThrow("calendar", null, contentValues1);
     }
     public void insertAss(int r_id, int w_id, ArrayList<Integer> tid, String date,int w){
         if(w==1) {
