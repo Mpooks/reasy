@@ -28,7 +28,8 @@ public class sample_request_page extends AppCompatActivity {
     private ArrayList<String> sln=new ArrayList<>();
     private CheckBox yb,nb;
     private double tc;
-    private TextView text5;
+    private ArrayList<shop> sli=new ArrayList<>();
+    private TextView text5,b;
 
     public void chooseSample(View view){
         if(!(yb.isChecked())&&(!(nb.isChecked()))){
@@ -92,6 +93,13 @@ public class sample_request_page extends AppCompatActivity {
         sq=bundle.getIntegerArrayList("sq");
         supr=bundle.getIntegerArrayList("supr");
         suq=bundle.getIntegerArrayList("suq");
+        sli=shop.getShops(sample_request_page.this);
+        for(shop c: sli) {
+            if (c.getId() == id) {
+                b = findViewById(R.id.textView12);
+                b.setText(String.valueOf(user.getBalance(sample_request_page.this,id))+"\u20AC");
+            }
+        }
 
     }
 
@@ -124,5 +132,7 @@ public class sample_request_page extends AppCompatActivity {
         b.putIntegerArrayList("sl", sl);
         b.putStringArrayList("sln", sln);
         b.putIntegerArrayList("sp", sp);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 }

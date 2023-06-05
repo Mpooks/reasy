@@ -29,11 +29,12 @@ public class supplier_products_page extends AppCompatActivity {
     private ArrayList<product_supplier> ps=new ArrayList<>(),arrayList=new ArrayList<>();
     private ArrayList<Integer> sl=new ArrayList<>(),sp=new ArrayList<>();
     private ArrayList<Integer> spr=new ArrayList<>(),sq=new ArrayList<>(),supr=new ArrayList<>(),suq=new ArrayList<>();
+    private ArrayList<shop> sli=new ArrayList<>();
 
     private ArrayList<String> sln=new ArrayList<>();
     private EditText pr,q;
     private double tc;
-    private TextView text5;
+    private TextView text5,b;
 
     public void chooseProductAndQuantity(View view) {
         pr = findViewById(R.id.pid);
@@ -139,6 +140,13 @@ public class supplier_products_page extends AppCompatActivity {
         sln=bundle.getStringArrayList("sln");
         sp=bundle.getIntegerArrayList("sp");
         sid=bundle.getInt("sid");
+        sli=shop.getShops(supplier_products_page.this);
+        for(shop c: sli) {
+            if (c.getId() == id) {
+                b = findViewById(R.id.textView47);
+                b.setText(String.valueOf(user.getBalance(supplier_products_page.this,id))+"\u20AC");
+            }
+        }
         for(int pr: sp){
             ps.add(product_supplier.getPrD(supplier_products_page.this,pr,sid));
         }
