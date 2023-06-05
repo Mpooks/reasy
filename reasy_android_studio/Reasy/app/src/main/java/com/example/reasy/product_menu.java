@@ -6,15 +6,19 @@ import android.database.Cursor;
 import java.sql.SQLDataException;
 import java.util.ArrayList;
 
+
 public class product_menu extends product{
+
+    private int shop_id;
+    private int available_quantity;
+
     public product_menu(int id, String name, double cost, int shop_id, int available_quantity) {
         super(id,name,cost);
         this.shop_id = shop_id;
         this.available_quantity = available_quantity;
     }
 
-    private int shop_id;
-    private int available_quantity;
+
 
     public int getQuantity(){
         return available_quantity;

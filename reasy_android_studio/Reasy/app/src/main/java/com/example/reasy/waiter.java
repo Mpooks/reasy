@@ -9,6 +9,9 @@ import java.util.ArrayList;
 public class waiter {
 
     private String name;
+    private int waiter_id;
+
+    private int shop_id;
 
     public waiter(String name, int waiter_id, int shop_id) {
         this.name = name;
@@ -16,9 +19,7 @@ public class waiter {
         this.shop_id = shop_id;
     }
 
-    private int waiter_id;
 
-    private int shop_id;
     public static ArrayList<waiter> getWaiters(Context c, int sid){
         try {
             DatabaseManager dbm = new DatabaseManager(c);

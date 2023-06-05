@@ -1,8 +1,14 @@
 package com.example.reasy;
 
-import java.util.ArrayList;
 
 public class supply {
+
+    private int supply_id;
+    private int shop_id;
+    private int supplier_id;
+    private String address;
+    private boolean sample;
+    private double cost;
 
     public supply(int supply_id, int shop_id, int supplier_id, String address, boolean sample, double cost) {
         this.supply_id = supply_id;
@@ -13,10 +19,5 @@ public class supply {
         this.cost = cost;
     }
 
-    private int supply_id;
-    private int shop_id;
-    private int supplier_id;
-    private String address;
-    private boolean sample;
-    private double cost;
+
 }
