@@ -26,7 +26,8 @@ public class shipping_address_page extends AppCompatActivity {
 
     private ArrayList<String> sln=new ArrayList<>();
     private double tc;
-    private TextView text5;
+    private TextView text5,b;
+    private ArrayList<shop> sli=new ArrayList<>();
     private EditText a;
 
 
@@ -65,6 +66,13 @@ public class shipping_address_page extends AppCompatActivity {
         sq=bundle.getIntegerArrayList("sq");
         supr=bundle.getIntegerArrayList("supr");
         suq=bundle.getIntegerArrayList("suq");
+        sli=shop.getShops(shipping_address_page.this);
+        for(shop c: sli) {
+            if (c.getId() == id) {
+                b = findViewById(R.id.textView12);
+                b.setText(String.valueOf(user.getBalance(shipping_address_page.this,id))+"\u20AC");
+            }
+        }
     }
 
     public void goBack(View v) {

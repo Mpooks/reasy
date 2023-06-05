@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -19,10 +20,13 @@ public class supplier_list_page extends AppCompatActivity {
     private LinearLayout linearLayout;
     private int id,sid;
     private int supp_id;
-    private main_lists ml;
+
+    private TextView b;
     private ArrayList<supplier> supp_list = new ArrayList<>();
     private ArrayList<product_supplier> ps=new ArrayList<>();
     private ArrayList<Integer> sl=new ArrayList<>(),sp=new ArrayList<>();
+    private ArrayList<shop> sli=new ArrayList<>();
+
     private ArrayList<String> sln=new ArrayList<>();
 
     public void chooseSupplier(int sid){
@@ -50,12 +54,19 @@ public class supplier_list_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_page);
+        setContentView(R.layout.activity_supplier_list_page);
         Bundle bundle = getIntent().getExtras();
         id= bundle.getInt("id");
         linearLayout = findViewById(R.id.linear_layout);
         sl=bundle.getIntegerArrayList("sl");
         sln=bundle.getStringArrayList("sln");
+        sli=shop.getShops(supplier_list_page.this);
+        for(shop c: sli) {
+            if (c.getId() == id) {
+                b = findViewById(R.id.but);
+                b.setText(String.valueOf(user.getBalance(supplier_list_page.this,id))+"\u20AC");
+            }
+        }
         for(int s: sl){
             Button tv = new Button(this);
             tv.setText("Supplier id: "+s+" Name: "+sln.get(sl.indexOf(s)));
