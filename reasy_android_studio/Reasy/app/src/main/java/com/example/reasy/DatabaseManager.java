@@ -403,8 +403,8 @@ public class DatabaseManager {
         contentValues.put("dateR", date);
         db.insertOrThrow("invitation", null, contentValues);
         ContentValues contentValues1 = new ContentValues();
-        contentValues1.put("c_id", rid);
-        contentValues1.put("r_id", cid);
+        contentValues1.put("c_id", cid);
+        contentValues1.put("r_id", rid);
         contentValues1.put("dateC", date);
         db.insertOrThrow("calendar", null, contentValues1);
     }
@@ -571,7 +571,19 @@ public class DatabaseManager {
         int ret=db.update(DBHandler.u_TABLE_NAME,contentValues,DBHandler.u_id+"="+id,null);
         return ret;
     }
+    public void updateNOI(int rid, int n){
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("guests", n);
+        int ret=db.update("reception",contentValues,"id="+rid,null);
+    }
     public void delete(int id){
         db.delete(DBHandler.u_TABLE_NAME,DBHandler.u_id+"="+id,null);
+    }
+    public Cursor fetchRecN(int rid){
+        Cursor cursor = db.rawQuery("SELECT guests FROM reception WHERE id="+rid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
     }
 }

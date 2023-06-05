@@ -22,7 +22,9 @@ public class active_receptions_page extends AppCompatActivity {
     private ArrayList<reception> rec=new ArrayList<>();
     private ArrayList<String> recd=new ArrayList<>();
     private LinearLayout linearLayout;
-    private TextView text4;
+    private ArrayList<customer> cl=new ArrayList<>();
+
+    private TextView text4,po,b;
 
     public void invite(int i){
         fid=customer.getFriendList(active_receptions_page.this,id,i);
@@ -57,6 +59,15 @@ public class active_receptions_page extends AppCompatActivity {
         recd= bundle.getStringArrayList("recd");
         linearLayout = findViewById(R.id.linear_layout);
         text4=findViewById(R.id.textViewc16);
+        cl=customer.getCustomer(active_receptions_page.this);
+        for(customer c: cl) {
+            if (c.getId() == id) {
+                po = findViewById(R.id.textView18);
+                po.setText(String.valueOf(c.getPoints()) + "pts");
+                b = findViewById(R.id.textView50);
+                b.setText(String.valueOf(user.getBalance(active_receptions_page.this, id)) + "\u20AC");
+            }
+        }
         if(recid.isEmpty()){
             TextView tv = new TextView(this);
             text4.setText("");

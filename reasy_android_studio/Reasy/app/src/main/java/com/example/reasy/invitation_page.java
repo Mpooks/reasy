@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,10 @@ public class invitation_page extends AppCompatActivity {
     private ArrayList<Integer> av=new ArrayList<>();
     private ArrayList<reception> rec=new ArrayList<>();
     private ArrayList<String> recd=new ArrayList<>(),cn=new ArrayList<>();
+    private ArrayList<customer> cl=new ArrayList<>();
     private EditText e;
+    private TextView po,b;
+
     public void fillAndValidate(View view){
         r=String.valueOf(e.getText());
         invitation.createInv(invitation_page.this,av,rid,date);
@@ -42,6 +46,15 @@ public class invitation_page extends AppCompatActivity {
         fnum=bundle.getInt("fnum");
         w=bundle.getInt("w");
         e = findViewById(R.id.details2);
+        cl=customer.getCustomer(invitation_page.this);
+        for(customer c: cl) {
+            if (c.getId() == id) {
+                po = findViewById(R.id.textView61);
+                po.setText(String.valueOf(c.getPoints()) + "pts");
+                b = findViewById(R.id.textView65);
+                b.setText(String.valueOf(user.getBalance(invitation_page.this, id)) + "\u20AC");
+            }
+        }
     }
 
     public void popupMessage(){
@@ -61,5 +74,38 @@ public class invitation_page extends AppCompatActivity {
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+    }
+    public void goBack(View v){
+        if(w==0) {
+            Intent intent = new Intent(this, change_people_number_page.class);
+            Bundle b = new Bundle();
+            //Add your data to bundle
+            b.putInt("id", id);
+            b.putIntegerArrayList("recid", recid);
+            b.putStringArrayList("recd", recd);
+            b.putInt("rid", rid);
+            b.putIntegerArrayList("fid", fid);
+            b.putString("date", date);
+            b.putIntegerArrayList("av",av);
+            b.putInt("num",num);
+            b.putInt("fnum",fnum);
+
+            intent.putExtras(b);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(this, friend_list_page.class);
+            Bundle b = new Bundle();
+            //Add your data to bundle
+            b.putInt("id", id);
+            b.putIntegerArrayList("recid", recid);
+            b.putStringArrayList("recd", recd);
+            b.putInt("rid", rid);
+            b.putIntegerArrayList("fid", fid);
+            b.putString("date", date);
+
+            intent.putExtras(b);
+            startActivity(intent);
+        }
     }
 }

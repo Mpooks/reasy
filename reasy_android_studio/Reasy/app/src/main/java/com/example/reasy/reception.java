@@ -66,4 +66,28 @@ public class reception {
         return av;
     }
 
+    public static void updateRecN(Context c, int rid, int newnum, int fnum){
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            if(newnum<fnum) {
+                dbm.updateNOI(rid, newnum);
+            }
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static int getGuest_number(Context c,int rid) {
+        try {
+            DatabaseManager dbm = new DatabaseManager(c);
+            dbm.open();
+            Cursor cursor=dbm.fetchRecN(rid);
+            int n=cursor.getInt(0);
+            dbm.close();
+            return n;
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

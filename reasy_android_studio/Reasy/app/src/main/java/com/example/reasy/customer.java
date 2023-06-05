@@ -204,7 +204,7 @@ public class customer extends user {
     }
     public static ArrayList<Integer> getAv(Context c,ArrayList<Integer> in,String d){
         int av;
-        ArrayList cl=new ArrayList<>();
+        ArrayList<Integer> cl=new ArrayList<>();
         for(int cus:in){
             av=calendar.getAv(c,cus,d);
             if(av==1){

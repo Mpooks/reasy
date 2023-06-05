@@ -23,19 +23,20 @@ public class friend_list_page extends AppCompatActivity {
         private ArrayList<Integer> av=new ArrayList<>();
         private ArrayList<reception> rec=new ArrayList<>();
         private ArrayList<String> recd=new ArrayList<>(),cn=new ArrayList<>();
+        private ArrayList<customer> cl=new ArrayList<>();
         private LinearLayout linearLayout;
-        private TextView text4;
+        private TextView text4,po,b;
 
         public void chooseFriends(View view){
             av=customer.getAv(friend_list_page.this,invited,date);
-            fnum=invited.size();
+            fnum=reception.getGuest_number(friend_list_page.this,rid);
             if(av.size()==invited.size()){
                 a=0;
-                num=invited.size()-av.size();
+                num=fnum;
             }
             else{
                 a=1;
-                num=invited.size();
+                num=fnum-av.size();
             }
             show();
         }
@@ -54,8 +55,9 @@ public class friend_list_page extends AppCompatActivity {
                 b.putIntegerArrayList("av",av);
                 b.putInt("num",num);
                 b.putInt("fnum",fnum);
-                intent.putExtras(b);
                 b.putInt("w",1);
+                intent.putExtras(b);
+
                 startActivity(intent);
             }
             else{
@@ -90,16 +92,19 @@ public class friend_list_page extends AppCompatActivity {
             date=bundle.getString("date");
             linearLayout = findViewById(R.id.linear_layout);
             text4=findViewById(R.id.textViewc18);
-            DatabaseManager dbm = new DatabaseManager(friend_list_page.this);
-            try {
-                dbm.open();
-                for(int i:fid){
-                    Cursor cursor=dbm.fetchCN(i);
-                    cn.add(cursor.getString(0));
+            cl=customer.getCustomer(friend_list_page.this);
+            for(customer c: cl) {
+                if(c.getId()==id){
+                    po = findViewById(R.id.textView54);
+                    po.setText(String.valueOf(c.getPoints())+"pts");
+                    b = findViewById(R.id.textView55);
+                    b.setText(String.valueOf(user.getBalance(friend_list_page.this,id))+"\u20AC");
                 }
-                dbm.close();
-            } catch (SQLDataException e) {
-                throw new RuntimeException(e);
+                for(int i :fid) {
+                    if (c.getId() == i) {
+                        cn.add(c.getName());
+                    }
+                }
             }
             for (int i : fid) {
                 CheckBox tv = new CheckBox(this);
