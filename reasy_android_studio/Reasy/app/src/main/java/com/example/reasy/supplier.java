@@ -9,13 +9,15 @@ import java.util.ArrayList;
 public class supplier {
 
     private int supplier_id;
+    private String name;
+
 
     public supplier(int supplier_id, String name) {
         this.supplier_id = supplier_id;
         this.name = name;
     }
 
-    private String name;
+
     public String getName() {
         return name;
     }

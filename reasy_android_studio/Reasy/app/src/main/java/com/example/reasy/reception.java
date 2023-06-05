@@ -7,6 +7,15 @@ import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class reception {
+
+    private int guest_number;
+    private int reception_id;
+    private int customer_id;
+    private String date;
+    private int artist_id;
+    private int reception_area_id;
+    private int catering_id;
+
     public reception(int reception_id, int customer_id,int guest_number, String date, int artist_id, int reception_area_id, int catering_id) {
         this.guest_number = guest_number;
         this.reception_id = reception_id;
@@ -17,13 +26,6 @@ public class reception {
         this.catering_id = catering_id;
     }
 
-    private int guest_number;
-    private int reception_id;
-    private int customer_id;
-    private String date;
-    private int artist_id;
-    private int reception_area_id;
-    private int catering_id;
 
     public void changeReception(int new_number)   {
         guest_number=new_number;
