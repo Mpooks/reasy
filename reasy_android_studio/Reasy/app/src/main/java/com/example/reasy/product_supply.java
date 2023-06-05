@@ -15,8 +15,6 @@ public class product_supply extends product{
         this.quantity = quantity;
     }
 
-    private int supply_id;
-    private int quantity;
     public static void createPS(int pid, String n, double p, int q, ArrayList<Integer> spr, ArrayList<Integer> sq){
         product_supply ps = new product_supply(pid,n,p,0,q);
         spr.add(pid);
