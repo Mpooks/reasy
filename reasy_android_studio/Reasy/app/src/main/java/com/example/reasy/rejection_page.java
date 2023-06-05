@@ -14,6 +14,7 @@ import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 public class rejection_page extends AppCompatActivity {
+    private int id;
     private ArrayList<Integer> rl=new ArrayList<>();
     LinearLayout linearLayout;
     private ArrayList<reservation> r = new ArrayList<>();
@@ -22,16 +23,18 @@ public class rejection_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rejection_page);
         Bundle bundle = getIntent().getExtras();
-        rl= bundle.getIntegerArrayList("reservations");
+        id=bundle.getInt("id");
         linearLayout = findViewById(R.id.linear_layout);
-       /* try {
-            dbm.open();
-            Cursor cursor = dbm.fetchCustRes(id);
+        ArrayList<supply> sl = new ArrayList<>();
 
+        try {
+            DatabaseManager dbm = new DatabaseManager(rejection_page.this);
+            dbm.open();
+            Cursor cursor=dbm.fetchSupH(id);
 
             if (cursor.moveToFirst()) {
                 do {
-                    r.add(new reservation(cursor.getInt(1), cursor.getInt(2), cursor.getInt(0), cursor.getInt(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6), cursor.getString(7), cursor.getString(8)));
+                    sl.add(new supply(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5)));
                 } while (cursor.moveToNext());
             }
 
@@ -39,14 +42,14 @@ public class rejection_page extends AppCompatActivity {
             dbm.close();
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
-        }*/
+        }
         Typeface typeface = getResources().getFont(R.font.seoulhangang_cbl_regular);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        for (int o : rl) {
+        for (supply o : sl) {
             TextView tv = new TextView(this);
-            //tv.setText("Resrvation Id: " + o.getReservation_id() + "    Number of guests: " + o.getNum_of_customers()+"    Time: "+o.getRTime()+ " "+o.getTID());
-            tv.setId(o);
+            tv.setText("Supply Id: " + o.getSupplier_id());
+            tv.setId(o.getSupplier_id());
             tv.setTextSize(18);
             tv.setHeight(192);
             tv.setWidth(966);

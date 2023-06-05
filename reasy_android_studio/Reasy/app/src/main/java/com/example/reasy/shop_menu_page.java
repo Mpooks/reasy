@@ -76,14 +76,8 @@ public class shop_menu_page extends AppCompatActivity {
                 }
             }
             if (foundq == 0 && foundp == 0) {
-                createOrder();
-                mpr.add(pid);
-                for (product_menu p : arrayList) {
-                    if (p.getId() == Integer.valueOf(pr.getText().toString())) {
-                        arrayList.set(arrayList.indexOf(p), new product_menu(Integer.valueOf(pr.getText().toString()), p.getName(), p.getPrice(), sid, pr_m.updateQuantity(qu)));
-                    }
-                }
-                mq.add(pr_m.updateQuantity(qu));
+               product_order.createPr(pid,pr_m.getName(),pr_m.getPrice(),qu,opr,oq);
+               product_menu.updateQuantityP(qu,mpr,pid,arrayList,sid,mq);
             }
         }
         foundp=0;
@@ -111,11 +105,6 @@ public class shop_menu_page extends AppCompatActivity {
             intent.putExtras(b);
             startActivity(intent);
         }
-    }
-    public void createOrder(){
-        product_order po = new product_order(pid,pr_m.getName(),pr_m.getPrice(),0,qu);
-        opr.add(pid);
-        oq.add(qu);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

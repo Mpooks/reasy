@@ -7,8 +7,24 @@
     tools:context=".supplier_products_page">
 
 
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="300dp"
+        android:layout_height="46dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:text="Products"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.265" />
+
     <EditText
-        android:id="@+id/pid3"
+        android:id="@+id/pid"
         android:layout_width="183dp"
         android:layout_height="37dp"
         android:ems="10"
@@ -23,7 +39,7 @@
         app:layout_constraintVertical_bias="0.706" />
 
     <EditText
-        android:id="@+id/quan3"
+        android:id="@+id/quan"
         android:layout_width="183dp"
         android:layout_height="37dp"
         android:ems="10"
@@ -111,7 +127,7 @@
         android:layout_height="41dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
-        android:onClick="show"
+        android:onClick="pay"
         android:text="Pay"
         android:textAllCaps="false"
         android:textColor="#ffffff"
@@ -124,31 +140,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.843" />
 
+
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tv"
         android:layout_width="300dp"
         android:layout_height="46dp"
-        android:layout_marginBottom="450dp"
-        android:text="TextView"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="32sp"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.627" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="388dp"
-        android:layout_height="149dp"
+        android:layout_height="185dp"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.585">
+        app:layout_constraintVertical_bias="0.43">
 
         <LinearLayout
             android:id="@+id/linear_layout"
@@ -159,7 +177,6 @@
         </LinearLayout>
 
     </ScrollView>
-
 
     <ImageView
         android:id="@+id/imageView21"

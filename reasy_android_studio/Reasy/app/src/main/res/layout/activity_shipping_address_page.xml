@@ -7,6 +7,20 @@
     tools:context=".shipping_address_page">
 
     <TextView
+        android:id="@+id/tv5"
+        android:layout_width="407dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <TextView
         android:id="@+id/textView12"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -25,17 +39,19 @@
         android:id="@+id/button3"
         android:layout_width="134dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="28dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/seoulhangang_cbl_regular"
+        android:onClick="fill"
         android:text="Order"
-        android:textSize="23dp"
         android:textAllCaps="false"
         android:textColor="@color/black"
+        android:textSize="23dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.517" />
+        app:layout_constraintVertical_bias="0.559" />
 
     <ImageButton
         android:id="@+id/backb11"
@@ -86,23 +102,27 @@
         android:id="@+id/textView20"
         android:layout_width="374dp"
         android:layout_height="54dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="204dp"
         android:text="Please fill in a shipping address:"
         android:textColor="@color/black"
         android:textSize="22sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.304" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/add"
         android:layout_width="375dp"
         android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="284dp"
         android:ems="10"
         android:inputType="text"
         android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/imageView22"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.404" />
 </androidx.constraintlayout.widget.ConstraintLayout>

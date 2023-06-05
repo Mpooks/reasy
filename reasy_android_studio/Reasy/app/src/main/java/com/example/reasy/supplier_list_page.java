@@ -17,50 +17,66 @@ public class supplier_list_page extends AppCompatActivity {
 
 
     private LinearLayout linearLayout;
-    private int id;
+    private int id,sid;
     private int supp_id;
     private main_lists ml;
     private ArrayList<supplier> supp_list = new ArrayList<>();
+    private ArrayList<product_supplier> ps=new ArrayList<>();
+    private ArrayList<Integer> sl=new ArrayList<>(),sp=new ArrayList<>();
+    private ArrayList<String> sln=new ArrayList<>();
 
-    public void chooseSupplier(){}
-    public void show(){}
+    public void chooseSupplier(int sid){
+       ps=supplier.getSupplierProducts(supplier_list_page.this,sid);
+       for(product_supplier p:ps){
+           sp.add(p.getId());
+       }
+       show();
+    }
+    public void show(){
+        Intent intent=new Intent(supplier_list_page.this,supplier_products_page.class);
+        //Create the bundle
+        Bundle b = new Bundle();
+        //Add your data to bundle
+        b.putInt("sid",sid);
+        b.putInt("id", id);
+        b.putIntegerArrayList("sl",sl);
+        b.putStringArrayList("sln",sln);
+        b.putIntegerArrayList("sp",sp);
+        intent.putExtras(b);
+        startActivity(intent);
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Bundle bundle = getIntent().getExtras();
-        id = bundle.getInt("id");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supplier_list_page);
+        setContentView(R.layout.activity_search_page);
+        Bundle bundle = getIntent().getExtras();
+        id= bundle.getInt("id");
         linearLayout = findViewById(R.id.linear_layout);
-        //ml= main_lists.createLists();
-        supp_list = (ArrayList<supplier>) ml.getSupplierList().clone();
-        for(supplier s: supp_list){
+        sl=bundle.getIntegerArrayList("sl");
+        sln=bundle.getStringArrayList("sln");
+        for(int s: sl){
             Button tv = new Button(this);
-            tv.setText(s.getName());
+            tv.setText("Supplier id: "+s+" Name: "+sln.get(sl.indexOf(s)));
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent=new Intent(supplier_list_page.this,supplier_products_page.class);
-                    supp_id = tv.getId();
-                    //Create the bundle
-                    Bundle b = new Bundle();
-                    //Add your data to bundle
-                    b.putInt("supp_id",supp_id);
-                    b.putInt("id",id);
-                    intent.putExtras(b);
-                    startActivity(intent);
+                    sid=s;
+                    chooseSupplier(sid);
                 }
             });
             tv.setTextSize(18);
             tv.setHeight(192);
             tv.setWidth(966);
+            tv.setAllCaps(false);
             tv.setPadding(30, 90, 30, 90);
-            tv.setId(s.getId());
+            tv.setId(s);
             tv.setGravity(Gravity.CENTER);
             tv.setBackgroundResource(R.drawable.menu_item);
             Typeface typeface = getResources().getFont(R.font.seoulhangang_cbl_regular);
             tv.setTypeface(typeface);
+
 
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.setMargins(20, 0, 20, 30);

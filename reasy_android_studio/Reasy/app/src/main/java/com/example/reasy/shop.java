@@ -223,4 +223,15 @@ public class shop extends user{
             throw new RuntimeException(e);
         }
     }
+    public static int getSupplyHistory(Context c,int id,int sid){
+        ArrayList<supply> sh=new ArrayList<>();
+        sh=supply.getSupplyHistory(c,id);
+        int g=0;
+        for(supply s:sh){
+            if(s.getSupplier_id()==sid){
+                g=1;
+            }
+        }
+        return g;
+    }
 }

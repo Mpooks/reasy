@@ -108,7 +108,7 @@ public class order {
             int o = order.getOrderID(c, resid);
             dbm.close();
             product_order.createPO(c,arrayList,o,oq,mpr);
-            product_menu.createPM(c,arrayList,mq,mpr);
+            product_menu.updatePM(c,arrayList,mq,mpr);
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }

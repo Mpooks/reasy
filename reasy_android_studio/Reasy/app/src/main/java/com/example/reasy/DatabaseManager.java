@@ -79,6 +79,27 @@ public class DatabaseManager {
         }
         return cursor;
     }
+    public Cursor fetchPrSD(int id,int sid){
+        Cursor cursor = db.rawQuery("SELECT * FROM supplier_product WHERE s_id="+sid+" AND id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchSP(int sid){
+        Cursor cursor = db.rawQuery("SELECT * FROM supplier_product WHERE s_id="+sid, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchSupH(int id){
+        Cursor cursor = db.rawQuery("SELECT * FROM supply WHERE s_id="+id, null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
     public Cursor fetchNumRes(int id){
         Cursor cursor = db.rawQuery("SELECT num_of_reservations FROM customer WHERE id="+id, null);
         if(cursor !=null){
@@ -272,8 +293,22 @@ public class DatabaseManager {
         }
         return cursor;
     }
+    public Cursor fetchSupplyID(){
+        Cursor cursor = db.rawQuery("SELECT MAX(id) FROM supply", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
     public Cursor fetchRA(){
         Cursor cursor = db.rawQuery("SELECT * FROM reception_area", null);
+        if(cursor !=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor fetchSL(){
+        Cursor cursor = db.rawQuery("SELECT * FROM supplier", null);
         if(cursor !=null){
             cursor.moveToFirst();
         }
@@ -335,6 +370,24 @@ public class DatabaseManager {
         contentValues.put("pm", pm);
         contentValues.put("res_id", res_id);
         db.insert("c_order", null, contentValues);
+    }
+    public void insertSupplyPr(int id, String name, double cost, int s_id, int q){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id", id);
+        contentValues.put("name", name);
+        contentValues.put("cost", cost);
+        contentValues.put("s_id", s_id);
+        contentValues.put("quantity", q);
+        db.insert("supply_product", null, contentValues);
+    }
+    public void insertSupply(int s_id,int supid, String ad, String s,double cost){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("s_id", s_id);
+        contentValues.put("supplier_id", supid);
+        contentValues.put("address", ad);
+        contentValues.put("sample", s);
+        contentValues.put("cost", cost);
+        db.insert("supply", null, contentValues);
     }
     public void insertSR(int s_id, int c_id,double ev){
         ContentValues contentValues = new ContentValues();
@@ -428,6 +481,11 @@ public class DatabaseManager {
         ContentValues contentValues=new ContentValues();
         contentValues.put("quantity", q);
         int ret=db.update("m_product",contentValues,"id="+id,null);
+    }
+    public void updatePSupQ(int id, int q){
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("quantity", q);
+        int ret=db.update("supplier_product",contentValues,"id="+id,null);
     }
     public void updateB(int id, double q){
         ContentValues contentValues=new ContentValues();

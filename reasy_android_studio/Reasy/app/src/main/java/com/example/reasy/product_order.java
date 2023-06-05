@@ -51,4 +51,9 @@ public class product_order extends product{
             throw new RuntimeException(e);
         }
     }
+    public static void createPr(int pid, String n, double p, int q, ArrayList<Integer> opr, ArrayList<Integer> oq){
+        product_order po = new product_order(pid,n,p,0,q);
+        opr.add(pid);
+        oq.add(q);
+    }
 }

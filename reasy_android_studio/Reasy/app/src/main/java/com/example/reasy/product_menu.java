@@ -19,10 +19,23 @@ public class product_menu extends product{
     public int getQuantity(){
         return available_quantity;
     }
+    public static void updateQuantityP(int q, ArrayList<Integer> mpr, int pid, ArrayList<product_menu> arrayList, int sid, ArrayList<Integer> mq){
+        int available_quantity;
+        mpr.add(pid);
+        for (product_menu p : arrayList) {
+            if (p.getId() == pid) {
+                available_quantity=p.getQuantity();
+                available_quantity=available_quantity-q;
+                arrayList.set(arrayList.indexOf(p), new product_menu(pid, p.getName(), p.getPrice(), sid,available_quantity));
+                mq.add(available_quantity);
+            }
+        }
+    }
     public int updateQuantity(int q){
         available_quantity=available_quantity-q;
         return available_quantity;
     }
+
     public static ArrayList<product_menu> getMenuPr(Context c, int sid){
         try {
             DatabaseManager dbm = new DatabaseManager(c);
@@ -56,7 +69,7 @@ public class product_menu extends product{
             throw new RuntimeException(e);
         }
     }
-    public static void createPM(Context c, ArrayList<product_menu> arrayList, ArrayList<Integer> mq, ArrayList<Integer> mpr) {
+    public static void updatePM(Context c, ArrayList<product_menu> arrayList, ArrayList<Integer> mq, ArrayList<Integer> mpr) {
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
