@@ -18,7 +18,7 @@ public class rating {
         this.customer_id = customer_id;
         this.evaluation = evaluation;
     }
-    
+
     public static void createRating(Context c, int s_id, int c_id, double ev, double sev, int oid, int ok) {
         try {
             DatabaseManager dbm = new DatabaseManager(c);
