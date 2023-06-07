@@ -26,11 +26,6 @@ public class reception {
         this.catering_id = catering_id;
     }
 
-
-    public void changeReception(int new_number)   {
-        guest_number=new_number;
-    }
-
     public int getReception_id() {
         return reception_id;
     }
