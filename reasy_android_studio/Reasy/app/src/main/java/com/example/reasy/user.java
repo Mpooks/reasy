@@ -25,10 +25,6 @@ public class user {
         return id;
     }
 
-    public double getBalanceC(){
-        return balance;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -36,20 +32,6 @@ public class user {
     public String getPassword() {
         return password;
     }
-
-    /*public void saveToUser(reservation new_res){
-        reservations= new ArrayList<>();
-        reservations.add(new_res);
-    }*/
-
-    /*public void updateRes(int res_id,int waiter_id){
-        for(int i=0;i<reservations.size();i++){
-           int j= (reservations.get(i)).getReservation_id();
-           if(res_id==j){
-               reservations.get(i).setWaiterToRes(waiter_id);
-           }
-        }
-    }*/
 
     public String getName() {
         return name;

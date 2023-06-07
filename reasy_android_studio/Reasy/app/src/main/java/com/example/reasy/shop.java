@@ -43,9 +43,6 @@ public class shop extends user{
         return pm;
     }
 
-    /*public ArrayList<supply> getSupplyHistory(){
-        return supply_history;
-    }*/
     public static ArrayList<String> getOpeningHours(Context c, int sid){
         try {
             DatabaseManager dbm = new DatabaseManager(c);
@@ -65,9 +62,6 @@ public class shop extends user{
         } catch (SQLDataException e) {
             throw new RuntimeException(e);
         }
-    }
-    public int getCapacity(){
-        return capacity;
     }
     public static ArrayList<table> getTables(Context c, int sid,int cap, String date, String time){
         try {
@@ -135,9 +129,7 @@ public class shop extends user{
             throw new RuntimeException(e);
         }
     }
-    /*public void addToSupplyHistory(supply newsupply){
-        supply_history.add(newsupply);
-    }*/
+
     public static void changeRating(Context c, int sid, double newr){
         try {
             DatabaseManager dbm = new DatabaseManager(c);

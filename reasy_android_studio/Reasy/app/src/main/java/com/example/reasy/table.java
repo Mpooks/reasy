@@ -122,17 +122,4 @@ public class table {
             throw new RuntimeException(e);
         }
     }
-/*
-    public void saveToTable(reservation new_r){
-        reservations.add(new_r);
-    }
-
-    public void updateTable(int res_id, int waiter_id){
-        for(int i=0;i<reservations.size();i++){
-            int j= (reservations.get(i)).getReservation_id();
-            if(res_id==j){
-                reservations.get(i).setWaiterToRes(waiter_id);
-            }
-        }
-    }*/
 }

@@ -248,13 +248,6 @@ public class DatabaseManager {
         }
         return cursor;
     }
-    public Cursor fetchCN(int id){
-        Cursor cursor = db.rawQuery("SELECT name FROM customer WHERE id="+id, null);
-        if(cursor !=null){
-            cursor.moveToFirst();
-        }
-        return cursor;
-    }
     public ArrayList<Integer> fetchFL(int id,int rid){
         ArrayList<Integer> i=new ArrayList<>(),n=new ArrayList<>(),f=new ArrayList<>(),set=new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT f_id FROM friend WHERE id="+id, null);
@@ -396,11 +389,12 @@ public class DatabaseManager {
         contentValues.put("evaluation", ev);
         db.insertOrThrow("rating", null, contentValues);
     }
-    public void insertInv(int cid, int rid,String date){
+    public void insertInv(int cid, int rid,String date, String r){
         ContentValues contentValues = new ContentValues();
         contentValues.put("rid", rid);
         contentValues.put("cid", cid);
         contentValues.put("dateR", date);
+        contentValues.put("descr", r);
         db.insertOrThrow("invitation", null, contentValues);
         ContentValues contentValues1 = new ContentValues();
         contentValues1.put("c_id", cid);
@@ -566,22 +560,10 @@ public class DatabaseManager {
         }
         return cursor;
     }
-    public int update(int id, String email, String password, String name, double balance){
-        ContentValues contentValues=new ContentValues();
-        contentValues.put(DBHandler.u_email, email);
-        contentValues.put(DBHandler.u_password, password);
-        contentValues.put(DBHandler.u_name, name);
-        contentValues.put(DBHandler.u_balance, balance);
-        int ret=db.update(DBHandler.u_TABLE_NAME,contentValues,DBHandler.u_id+"="+id,null);
-        return ret;
-    }
     public void updateNOI(int rid, int n){
         ContentValues contentValues=new ContentValues();
         contentValues.put("guests", n);
         int ret=db.update("reception",contentValues,"id="+rid,null);
-    }
-    public void delete(int id){
-        db.delete(DBHandler.u_TABLE_NAME,DBHandler.u_id+"="+id,null);
     }
     public Cursor fetchRecN(int rid){
         Cursor cursor = db.rawQuery("SELECT guests FROM reception WHERE id="+rid, null);

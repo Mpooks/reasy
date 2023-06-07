@@ -48,12 +48,6 @@ public class reservation {
             throw new RuntimeException(e);
         }
     }
-    /*public int getWaiter(){
-       return waiter_id;
-    }
-    public void setWaiterToRes(int waiter_id){
-        this.waiter_id=waiter_id;
-    }*/
     public int getReservation_id(){
         return reservation_id;
     }
@@ -97,10 +91,6 @@ public class reservation {
 
     public int getNum_of_customers() {
         return num_of_customers;
-    }
-
-    public int getTID() {
-        return table_id;
     }
 
     public String getRTime() {

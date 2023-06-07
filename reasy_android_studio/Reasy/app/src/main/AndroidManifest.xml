@@ -69,10 +69,6 @@
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".shop_list_page"
-            android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".shop_calendar_page"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -101,14 +97,6 @@
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".rejection_page"
-            android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".recommend_shop_page"
-            android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".rating_previous_orders_page"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -127,10 +115,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".order_history_page"
-            android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".notify_customers_page"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

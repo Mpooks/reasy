@@ -18,12 +18,12 @@ public class invitation {
         this.customer_id = customer_id;
         this.date = date;
     }
-    public static void createInv(Context c, ArrayList<Integer> cid,int rid,String date) {
+    public static void createInv(Context c, ArrayList<Integer> cid,int rid,String date, String r) {
         try {
             DatabaseManager dbm = new DatabaseManager(c);
             dbm.open();
             for(int j:cid) {
-                dbm.insertInv(j, rid, date);
+                dbm.insertInv(j, rid, date,r);
             }
             dbm.close();
         } catch (SQLDataException e) {

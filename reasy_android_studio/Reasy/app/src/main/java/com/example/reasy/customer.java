@@ -16,14 +16,6 @@ public class customer extends user {
         this.num_of_reservations = num_of_reservations;
     }
 
-    public void addPointsRShop(int p) {
-        points = points + p;
-    }
-
-    public void addPointsROrder(int p, order o) {
-        points = points + p;
-    }
-
     public static int getNumOfReservations(Context c, int id) {
         try {
             DatabaseManager dbm = new DatabaseManager(c);

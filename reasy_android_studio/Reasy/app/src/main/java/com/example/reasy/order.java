@@ -29,10 +29,6 @@ public class order {
         return order_id;
     }
 
-    public int getShop_id() {
-        return shop_id;
-    }
-
     public double getCost() {
         return cost;
     }

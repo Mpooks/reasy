@@ -27,7 +27,7 @@ public class invitation_page extends AppCompatActivity {
 
     public void fillAndValidate(View view){
         r=String.valueOf(e.getText());
-        invitation.createInv(invitation_page.this,av,rid,date);
+        invitation.createInv(invitation_page.this,av,rid,date,r);
         popupMessage();
     }
     @Override
