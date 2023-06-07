@@ -1,5 +1,6 @@
 package com.example.reasy;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -29,7 +31,7 @@ import java.util.Calendar;
 
 public class organize_reception_page extends AppCompatActivity {
 
-    private int id,g,found=0,changed=0,foundp=0,av=0;
+    private int id,g,found=0,changed=0,foundp=0;
     private ArrayList<Integer> oh=new ArrayList<>();
     private ArrayList<String> ar_n=new ArrayList<>();
     private ArrayList<reception_area> ra=new ArrayList<>();
@@ -58,31 +60,15 @@ public class organize_reception_page extends AppCompatActivity {
         }
         if(foundp==0){
             g=Integer.valueOf(per.getText().toString());
-            DatabaseManager dbm = new DatabaseManager(organize_reception_page.this);
-            try {
-                dbm.open();
-                Cursor cursor=dbm.fetchRA();
-                if (cursor.moveToFirst()) {
-                    do {
-                        ra.add(new reception_area(cursor.getString(1),cursor.getInt(0),cursor.getInt(3),cursor.getDouble(2)));
-                    } while (cursor.moveToNext());
-                }
-                cursor.close();
-                dbm.close();
-            } catch (SQLDataException e) {
-                throw new RuntimeException(e);
-            }
-            for(reception_area r: ra){
-                    av=r.getAvailability(organize_reception_page.this,g,dateb,r.getReception_area_id(),r.getNum_of_guests());
-                    if(av==1){
-                        oh.add(r.getReception_area_id());
-                        ar_n.add(r.getName());
-                    }
-            }
-            if(oh.isEmpty()){
-                text5.setText("There are no available reception areas for your choice.");
+            ra=reception_area.getAvailability(organize_reception_page.this,g,dateb);
+            if(ra.isEmpty()){
+                popupMessage();
             }
             else{
+                for(reception_area r: ra){
+                    oh.add(r.getReception_area_id());
+                    ar_n.add(r.getName());
+                }
                 show(v);
             }
         }
@@ -142,6 +128,24 @@ public class organize_reception_page extends AppCompatActivity {
         b.putInt("id",id);
         intent.putExtras(b);
         startActivity(intent);
+    }
+    public void popupMessage() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Not available reception area found.");
+        alertDialogBuilder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent=new Intent(organize_reception_page.this,main_page.class);
+                Bundle b = new Bundle();
+                //Add your data to bundle
+                b.putInt("id", id);
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 

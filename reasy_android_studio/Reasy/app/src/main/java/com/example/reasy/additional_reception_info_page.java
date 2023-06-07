@@ -1,7 +1,9 @@
 package com.example.reasy;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -32,40 +34,27 @@ public class additional_reception_info_page extends AppCompatActivity {
             w4.setText("You have to choose cuisine type and music genre.");
         }
         else{
-            DatabaseManager dbm = new DatabaseManager(additional_reception_info_page.this);
-            try {
-                dbm.open();
-                Cursor cursor=dbm.fetchCat();
-                if (cursor.moveToFirst()) {
-                    do {
-                        c.add(new catering(cursor.getInt(0),cursor.getString(1),cursor.getDouble(2),cursor.getString(3)));
-                    } while (cursor.moveToNext());
-                }
-                cursor.close();
-                Cursor cu=dbm.fetchA();
-                if (cu.moveToFirst()) {
-                    do {
-                        a.add(new artist(cu.getInt(0),cu.getString(1),cu.getDouble(2),cu.getString(3)));
-                    } while (cu.moveToNext());
-                }
-                cu.close();
-                dbm.close();
+            c=catering.getCaterings(additional_reception_info_page.this);
                 for(catering cat:c){
                     if(cat.getCuisineType().compareTo(type)==0){
                         c_r.add(cat.getCatering());
                         c_n.add(cat.getName());
                     }
                 }
-                for(artist ar:a){
+            a=artist.getArtists(additional_reception_info_page.this);
+            for(artist ar:a){
                     if(ar.getMusicGenre().compareTo(genre)==0){
                         a_r.add(ar.getArtist());
                         a_n.add(ar.getName());
                     }
                 }
-            } catch (SQLDataException e) {
-                throw new RuntimeException(e);
+            if(c_r.isEmpty()||a_r.isEmpty()){
+                reception.createRec(additional_reception_info_page.this,id,g,date,car,0,0);
+                popupMessage();
             }
-            show();
+            else {
+                show();
+            }
         }
     }
     @Override
@@ -302,19 +291,27 @@ public class additional_reception_info_page extends AppCompatActivity {
         b.putIntegerArrayList("ar_r", ar_r);
         b.putInt("g", g);
         b.putStringArrayList("ar_n", ar_n);
-        bal=user.getBalance(additional_reception_info_page.this,id);
-        DatabaseManager dbm = new DatabaseManager(additional_reception_info_page.this);
-        try {
-            dbm.open();
-            Cursor c=dbm.fetchRAfromID(car);
-            cost=c.getDouble(0);
-            user.setBalance(additional_reception_info_page.this,id,bal+cost);
-            dbm.close();
-
-        } catch (SQLDataException e) {
-            throw new RuntimeException(e);
-        }
+        bal = user.getBalance(additional_reception_info_page.this, id);
+        user.setBalance(additional_reception_info_page.this, id, bal + cost);
         intent.putExtras(b);
         startActivity(intent);
+    }
+    public void popupMessage() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("You have successfully organized the reception.");
+        alertDialogBuilder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent=new Intent(additional_reception_info_page.this,main_page.class);
+                Bundle b = new Bundle();
+                //Add your data to bundle
+                b.putInt("id", id);
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

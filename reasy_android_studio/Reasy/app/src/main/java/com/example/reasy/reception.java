@@ -90,4 +90,16 @@ public class reception {
             throw new RuntimeException(e);
         }
     }
+
+    public static void createRec(Context c,int id,int g, String date,int car,int ca,int cc){
+        DatabaseManager dbm = new DatabaseManager(c);
+        try {
+            dbm.open();
+            dbm.insertR(id,g,date,car,ca,cc);
+            dbm.close();
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

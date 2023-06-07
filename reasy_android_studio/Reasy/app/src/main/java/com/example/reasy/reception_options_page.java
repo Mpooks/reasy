@@ -36,26 +36,16 @@ public class reception_options_page extends AppCompatActivity {
         }
         else{
             bal=user.getBalance(reception_options_page.this,id);
-
-            DatabaseManager dbm = new DatabaseManager(reception_options_page.this);
-            try {
                 totalc=cost+costc+costa;
                 if(bal>=costc+costa) {
                     user.setBalance(reception_options_page.this,id,bal-costc-costa);
-                    dbm.open();
-                    dbm.insertR(id,g,date,car,ca,cc);
-                    dbm.close();
-                    popupMessageOk();
+                    reception.createRec(reception_options_page.this,id,g,date,car,ca,cc);
+                    popupMessage();
                 }
                 else{
-                    dbm.open();
-                    dbm.insertR(id,g,date,car,0,0);
-                    dbm.close();
-                    popupMessageOk();
+                    reception.createRec(reception_options_page.this,id,g,date,car,0,0);
+                    popupMessage();
                 }
-            } catch (SQLDataException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
     @Override
@@ -177,7 +167,7 @@ public class reception_options_page extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void popupMessageOk() {
+    public void popupMessage() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("You have successfully organized the reception.");
         alertDialogBuilder.setNegativeButton("ok", new DialogInterface.OnClickListener() {

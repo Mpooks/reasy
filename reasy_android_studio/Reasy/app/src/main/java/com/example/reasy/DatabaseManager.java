@@ -460,12 +460,16 @@ public class DatabaseManager {
     }
     public void insertR(int id, int g, String date, int car, int ca,int cc){
         ContentValues contentValues = new ContentValues();
+        if(ca!=0){
+            contentValues.put("a_id", ca);
+        }
+        if(cc!=0){
+            contentValues.put("cid", cc);
+        }
         contentValues.put("c_id", id);
         contentValues.put("guests", g);
         contentValues.put("dateR", date);
-        contentValues.put("a_id", ca);
         contentValues.put("rad", car);
-        contentValues.put("cid", cc);
         db.insert("reception", null, contentValues);
     }
     public void insertPrO(int id, String name, double cost, int o_id, int quantity){

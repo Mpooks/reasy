@@ -47,26 +47,14 @@ public class reception_area_page extends AppCompatActivity {
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    bal=user.getBalance(reception_area_page.this,id);
-
-                        DatabaseManager dbm = new DatabaseManager(reception_area_page.this);
-                        try {
-                            dbm.open();
-                            Cursor c=dbm.fetchRAfromID(o);
-                            cost=c.getDouble(0);
-                            if(bal>=cost) {
-                                user.setBalance(reception_area_page.this,id,bal-cost);
-                                dbm.close();
-                                show(o);
-                            }
-                            else{
-                                dbm.close();
-                                popupMessage();
-                            }
-                        } catch (SQLDataException e) {
-                            throw new RuntimeException(e);
-                        }
-
+                    bal = user.getBalance(reception_area_page.this, id);
+                    cost = reception_area.getCost(reception_area_page.this,o);
+                    if (bal >= cost) {
+                        user.setBalance(reception_area_page.this, id, bal - cost);
+                        show(o);
+                    } else {
+                        popupMessage();
+                    }
                 }
             });
             tv.setTextSize(18);
@@ -150,5 +138,4 @@ public class reception_area_page extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-
 }

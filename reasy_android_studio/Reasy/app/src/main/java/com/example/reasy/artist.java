@@ -1,5 +1,11 @@
 package com.example.reasy;
 
+import android.content.Context;
+import android.database.Cursor;
+
+import java.sql.SQLDataException;
+import java.util.ArrayList;
+
 public class artist {
 
     private String name;
@@ -24,5 +30,23 @@ public class artist {
 
     public String getName() {
         return name;
+    }
+    public static ArrayList<artist> getArtists(Context c){
+        DatabaseManager dbm = new DatabaseManager(c);
+        ArrayList<artist> ar=new ArrayList<>();
+        try {
+            dbm.open();
+            Cursor cu=dbm.fetchA();
+            if (cu.moveToFirst()) {
+                do {
+                    ar.add(new artist(cu.getInt(0),cu.getString(1),cu.getDouble(2),cu.getString(3)));
+                } while (cu.moveToNext());
+            }
+            cu.close();
+            dbm.close();
+        } catch (SQLDataException e) {
+            throw new RuntimeException(e);
+        }
+        return ar;
     }
 }
