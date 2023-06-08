@@ -66,6 +66,10 @@ public class final_order_page extends AppCompatActivity {
                     show(v);
                 }
             }
+            else{
+                order.createO(final_order_page.this,pm,"In person",tc,sid,id,res_id,arrayList,oq,mq,mpr);
+                popupMessage();
+            }
 
         }
     }

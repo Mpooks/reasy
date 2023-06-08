@@ -116,11 +116,6 @@ public class shop_calendar_page extends AppCompatActivity {
         chooseDate();
     }
 
-    public void onClick(View view) {
-        Intent intent1 = new Intent(shop_calendar_page.this, table_list_page.class);
-        startActivity(intent1);
-    }
-
     public void goBack(View v){
         Intent intent=new Intent(this,shop_main_page.class);
         Bundle b = new Bundle();

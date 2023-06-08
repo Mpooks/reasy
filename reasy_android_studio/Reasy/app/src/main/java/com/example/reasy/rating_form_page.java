@@ -33,19 +33,23 @@ public class rating_form_page extends AppCompatActivity {
     RatingBar ratingBar;
 
    public void chooseShopAndFillRating(View v){
-       sid=Integer.valueOf(cs.getText().toString());
-       if(sl.contains(sid)) {
-            a = (double) ratingBar.getRating();
-           shop.changeRating(rating_form_page.this, sid, a);
-           t7.setText(" ");
-           oh=customer.getOrderAndRatingHistory(rating_form_page.this,id,sid);
-           for (order r:oh){
-               ol.add(r.getOrder_id());
-           }
-           show(v);
-       }
-       else{
+       if(cs.getText().toString().compareTo("")==0) {
            t7.setText("Not valid shop id choice.");
+       }
+       else {
+           sid = Integer.valueOf(cs.getText().toString());
+           if (sl.contains(sid)) {
+               a = (double) ratingBar.getRating();
+               shop.changeRating(rating_form_page.this, sid, a);
+               t7.setText(" ");
+               oh = customer.getOrderAndRatingHistory(rating_form_page.this, id, sid);
+               for (order r : oh) {
+                   ol.add(r.getOrder_id());
+               }
+               show(v);
+           } else {
+               t7.setText("Not valid shop id choice.");
+           }
        }
     }
 
