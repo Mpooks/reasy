@@ -21,10 +21,7 @@ public class product_supplier extends product{
     public int getQuantity(){
         return available_quantity;
     }
-    public int updateQuantity(int q){
-        available_quantity=available_quantity-q;
-        return available_quantity;
-    }
+
     public static ArrayList<product_supplier> getSupplierPr(Context c, int sid){
         try {
             DatabaseManager dbm = new DatabaseManager(c);

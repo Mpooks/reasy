@@ -24,16 +24,7 @@ public class DatabaseManager {
     public void close(){
         dbHelper.close();
     }
-    public void insert(int id, String email, String password, String name, double balance) {
-        ContentValues values = new ContentValues();
-        values.put(DBHandler.u_id, id);
-        values.put(DBHandler.u_email, email);
-        values.put(DBHandler.u_password, password);
-        values.put(DBHandler.u_name, name);
-        values.put(DBHandler.u_balance, balance);
 
-        db.insert(DBHandler.u_TABLE_NAME, null, values);
-    }
     public Cursor fetchU(){
         String [] columns = new String[] {DBHandler.u_id,DBHandler.u_email,DBHandler.u_password, DBHandler.u_name,DBHandler.u_balance};
         Cursor cursor = db.query(DBHandler.u_TABLE_NAME,columns,null,null,null,null,null);
