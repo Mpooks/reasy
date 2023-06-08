@@ -1,1 +1,19 @@
+Για τη πλοήγηση στην εφαρμογή είναι απαραίτητη η σύνδεση είτε ως πελάτης είτε ως κατάστημα.
 
+Για τη σύνδεση ως κατάστημα υπάρχουν τα εξής email και passwords : 
+
+mats@gmail.com / 123
+pen@gmail.com / 123
+sal@gmail.com / 123
+meze@gmail.com / 123
+
+Για τη σύνδεση ως πελάτης υπάρχουν τα εξής email και passwords : 
+
+josh@gmail.com / 123
+alex@gmail.com / 123
+kurtis@gmail.com / 123
+danny@gmail.com / 123
+
+Περισσότερα στοιχεία για παλιές παραγγελίες και κρατήσεις μπορούν να προβληθούν συνδέοντας ως josh@gmail.com.
+
+Η βάση μαζί με τα CREATE και INSERT της βρίσκονται στη κλάση DBHANDLER.
